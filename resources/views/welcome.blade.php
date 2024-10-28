@@ -1,0 +1,1 @@
+<h1>Go To <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></h1>
