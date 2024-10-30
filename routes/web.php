@@ -44,5 +44,6 @@ Route::get('/admin/invoice/print', [AdminController::class, 'AdminInvoicePrint']
 Route::get('/admin/language', [AdminController::class, 'AdminLanguage'])->name('admin.language');
 Route::get('/admin/pages/notifications', [AdminController::class,'AdminNotification'])->name('admin.pages.notifications');
 Route::get('/admin/pages/terms-conditions', [AdminController::class, 'AdminTermsCondition'])->name('admin.pages.terms-conditions');
-
-
+Route::get('/admin/vendor/grid', [AdminController::class, 'VendorGrid'])->name('admin.vendor.grid');
+Route::get('/admin/vendor/list', [AdminController::class, 'VendorList'])->name('admin.vendor.list');
+Route::get('/admin/vendor/profile', [AdminController::class, 'VendorProfile'])->name('admin.vendor.profile');

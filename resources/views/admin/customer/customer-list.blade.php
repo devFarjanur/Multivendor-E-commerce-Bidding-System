@@ -1,19 +1,5 @@
 @extends('admin.index')
-
 @section('admin')
-
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-	<head>
-		<!-- Meta Tags -->
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="keywords" content="Site keywords here">
-		<meta name="description" content="#">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
-		<!-- Site Title -->
-		<title>Sherah - HTML eCommerce Dashboard Template</title>
 
 		<!-- Font -->
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
@@ -33,10 +19,10 @@
 		<link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
 		
 		
-	</head>
-	<body id="sherah-dark-light">
 	
-		<div class="sherah-body-area">
+	
+	
+		<div class="sherah-body-area" id="sherah-dark-light">
 			<!-- sherah Admin Menu -->
 			<div class="sherah-smenu">
 				<!-- Admin Menu -->
@@ -72,7 +58,7 @@
 									<span class="menu-bar__name">Dashboard</span></span></a></span>
 									
 								</li>
-								<li><a href="#!" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu-item_vendors"><span class="menu-bar__text">
+								<li><a href="{{ route('admin.vendor.grid') }}" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu-item_vendors"><span class="menu-bar__text">
 									<span class="sherah-menu-icon sherah-svg-icon__v1">
 										<svg  class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="22.038" height="17.943" viewBox="0 0 22.038 17.943">
 											<g id="Icon" transform="translate(-325.516 -274.72)">
@@ -86,9 +72,9 @@
 									<!-- Dropdown Menu -->
 									<div class="collapse sherah__dropdown" id="menu-item_vendors"  data-bs-parent="#sherahMenu">
 										<ul class="menu-bar__one-dropdown">
-											<li><a href="vendor.html"><span class="menu-bar__text"><span class="menu-bar__name">Vendor Grid</span></span></a></li>
-											<li><a href="vendor-list.html"><span class="menu-bar__text"><span class="menu-bar__name">Vendor List</span></span></a></li>
-											<li><a href="vendor-profile.html"><span class="menu-bar__text"><span class="menu-bar__name">Vendor Profile</span></span></a></li>
+											<li><a href="{{ route('admin.vendor.grid') }}"><span class="menu-bar__text"><span class="menu-bar__name">Vendor Grid</span></span></a></li>
+											<li><a href="{{ route('admin.vendor.list') }}"><span class="menu-bar__text"><span class="menu-bar__name">Vendor List</span></span></a></li>
+											<li><a href="{{ route('admin.vendor.profile') }}"><span class="menu-bar__text"><span class="menu-bar__name">Vendor Profile</span></span></a></li>
 										  </ul>
 									</div>
 								</li>
@@ -1235,7 +1221,6 @@
 				});
 		</script>
 		
-	</body>
-</html>
+
 	
 @endsection

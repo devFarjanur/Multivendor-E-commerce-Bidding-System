@@ -1,0 +1,280 @@
+## **Project Name:**  
+**Multivendor E-commerce Bidding System**  
+
+---
+
+## **Project Requirements:**  
+
+### 1. **Admin Panel**  
+   - **User Management:**  
+     - Manage vendors and customers.  
+     - Approve or reject vendor registrations.  
+   - **Monitoring and Control:**  
+     - Monitor transactions, product listings, orders, and bids.  
+   - **Report Generation:**  
+     - Generate reports on:  
+       - Sales performance  
+       - Bidding activities  
+       - Vendor performance and reviews  
+
+---
+
+### 2. **Vendor Panel**  
+   - **Vendor Registration and Profile Management:**  
+     - Vendors can register, log in, and manage their profiles.  
+   - **Product Category Management:**  
+     - Add custom categories and subcategories relevant to their business niche.  
+     - **Example:** Electronics → Mobile Phones, Fashion → Men’s Shoes.  
+     - Subcategories improve product organization for easy browsing.  
+   - **Product Management:**  
+     - Add and update product details:  
+       - Name, description, images, price, category, and subcategory.  
+   - **Bidding Rules Configuration:**  
+     - Set minimum bid prices, reserve prices, and bidding durations for each product.  
+   - **Order and Customer Communication Management:**  
+     - Manage customer orders and chat with customers via in-app messaging.  
+   - **Bidding on Customer Requests:**  
+     - View product requests from customers via notifications.  
+     - Submit bids on requested products or services.  
+
+---
+
+### 3. **Customer Panel**  
+   - **User Account Management:**  
+     - Create an account, log in, and manage profile settings.  
+   - **Product Search and Browsing:**  
+     - View product listings by categories or use the search feature.  
+   - **Bidding Participation:**  
+     - Place bids on products listed for auction.  
+   - **Post Product Requests:**  
+     - Customers can post requests for specific products or services.  
+     - Vendors receive notifications of these requests and can submit bids.  
+   - **View Vendor Bids on Customer Requests:**  
+     - Customers can see the **bids submitted by vendors**, including price, delivery timelines, and additional offer details.  
+     - Compare bids and select the most suitable one.  
+   - **In-App Communication:**  
+     - Chat with vendors regarding product inquiries or orders.  
+   - **Order Tracking:**  
+     - Track bids, order statuses, and payment histories.  
+
+---
+
+### 4. **Map Integration**  
+   - **Vendor and Product Location Mapping:**  
+     - Locate nearby vendors and delivery zones.  
+     - Display store locations and product availability based on region.  
+
+---
+
+### 5. **Product Information**  
+   - **Detailed Product Listings:**  
+     - Vendors provide product information, including:  
+       - Name, description, price, images, and category.  
+       - Bidding-related details such as the minimum bid, reserve price, and auction end date.  
+   - **Customer Product View:**  
+     - Customers can view:  
+       - Product reviews, specifications, and vendor policies.  
+
+---
+
+### 6. **Messaging Features**  
+   - **In-App Chat:**  
+     - Communication between customers and vendors via messaging.  
+   - **Notification System:**  
+     - Real-time notifications for:  
+       - New messages, bids, product requests, and updates.  
+       - Bid status changes (outbid, auction ended, or winning bid).  
+
+---
+
+### 7. **Bidding System**  
+   - **Product Bidding Functionality:**  
+     - Vendors list products with time-limited auctions.  
+     - Customers place bids to compete for listed products.  
+   - **Bid Management:**  
+     - Vendors review bids and choose the winning offer.  
+   - **Bidding on Customer Requests:**  
+     - Vendors can bid on customer-posted product or service requests.  
+     - Customers can view and compare vendor bids in real-time to select the most competitive offer.  
+   - **Bid Status Notifications:**  
+     - Customers receive automatic updates on bid status (e.g., outbid, winning, or auction ended).  
+
+---
+
+### 8. **Payment Methods**  
+   - **Multiple Payment Options:**  
+     - **Cash on Delivery (COD)** available for local transactions.  
+     - **SSL Commerz Integration:**  
+       - Secure online payment processing for seamless transactions.  
+
+---
+
+---
+
+## **Database Table Structure**
+
+---
+
+### **1. `users` Table**  
+Stores all user information (vendors, customers, admins).
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| name            | VARCHAR(255)       | Not Null                            |
+| email           | VARCHAR(255)       | Unique, Not Null                    |
+| password        | VARCHAR(255)       | Not Null                            |
+| role            | ENUM('vendor', 'customer', 'admin') | Not Null |
+| address         | VARCHAR(255)       | Nullable                            |
+| phone           | VARCHAR(50)        | Nullable                            |
+| profile_image   | VARCHAR(255)       | Nullable                            |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **2. `vendors` Table**  
+Stores vendor-specific information.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| user_id         | BIGINT             | Foreign Key -> users(id)            |
+| store_name      | VARCHAR(255)       | Not Null                            |
+| store_logo      | VARCHAR(255)       | Nullable                            |
+| status          | ENUM('approved', 'pending', 'rejected') | Default 'pending' |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **3. `categories` Table**  
+Stores flat (non-hierarchical) categories specific to vendors.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| vendor_id       | BIGINT             | Foreign Key -> vendors(id)          |
+| name            | VARCHAR(255)       | Not Null                            |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **4. `products` Table**  
+Stores products listed by vendors under specific categories.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| vendor_id       | BIGINT             | Foreign Key -> vendors(id)          |
+| category_id     | BIGINT             | Foreign Key -> categories(id)       |
+| name            | VARCHAR(255)       | Not Null                            |
+| description     | TEXT               | Nullable                            |
+| price           | DECIMAL(10, 2)     | Not Null                            |
+| image           | VARCHAR(255)       | Nullable                            |
+| bidding_end     | DATETIME           | Not Null                            |
+| status          | ENUM('active', 'inactive') | Default 'active' |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **5. `product_requests` Table**  
+Stores product or service requests made by customers.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| customer_id     | BIGINT             | Foreign Key -> users(id)            |
+| title           | VARCHAR(255)       | Not Null                            |
+| description     | TEXT               | Nullable                            |
+| category_id     | BIGINT             | Foreign Key -> categories(id)       |
+| status          | ENUM('open', 'closed') | Default 'open' |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **6. `bids` Table**  
+Stores bids placed on products or product requests.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| product_id      | BIGINT             | Nullable, Foreign Key -> products(id) |
+| product_request_id | BIGINT          | Nullable, Foreign Key -> product_requests(id) |
+| vendor_id       | BIGINT             | Foreign Key -> vendors(id)          |
+| bid_amount      | DECIMAL(10, 2)     | Not Null                            |
+| bid_status      | ENUM('pending', 'accepted', 'rejected') | Default 'pending' |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **7. `orders` Table**  
+Stores orders placed by customers for products.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| product_id      | BIGINT             | Foreign Key -> products(id)         |
+| customer_id     | BIGINT             | Foreign Key -> users(id)            |
+| vendor_id       | BIGINT             | Foreign Key -> vendors(id)          |
+| quantity        | INT                | Not Null                            |
+| total_price     | DECIMAL(10, 2)     | Not Null                            |
+| status          | ENUM('pending', 'shipped', 'delivered', 'cancelled') | Default 'pending' |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **8. `payments` Table**  
+Stores payment information related to orders.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| order_id        | BIGINT             | Foreign Key -> orders(id)           |
+| payment_method  | ENUM('COD', 'SSLCommerz') | Not Null |
+| payment_status  | ENUM('pending', 'completed', 'failed') | Default 'pending' |
+| amount          | DECIMAL(10, 2)     | Not Null                            |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **9. `messages` Table**  
+Stores messages exchanged between users (customers and vendors).
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| sender_id       | BIGINT             | Foreign Key -> users(id)            |
+| receiver_id     | BIGINT             | Foreign Key -> users(id)            |
+| content         | TEXT               | Not Null                            |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+### **10. `notifications` Table**  
+Stores notifications for users.
+
+| **Field**       | **Type**           | **Attributes**                       |
+|-----------------|--------------------|--------------------------------------|
+| id              | BIGINT             | Primary Key, Auto Increment         |
+| user_id         | BIGINT             | Foreign Key -> users(id)            |
+| message         | VARCHAR(255)       | Not Null                            |
+| status          | ENUM('unread', 'read') | Default 'unread' |
+| created_at      | TIMESTAMP          | Default Current Timestamp           |
+| updated_at      | TIMESTAMP          | Default Current Timestamp on Update |
+
+---
+
+
+
+
+
+
+

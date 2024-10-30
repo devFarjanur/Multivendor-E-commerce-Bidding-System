@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Bid extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
-        'address',
-        'phone',
-        'profile_image'
+        'product_id',
+        'product_request_id',
+        'vendor_id',
+        'bid_amount',
+        'bid_status',
     ];
 }

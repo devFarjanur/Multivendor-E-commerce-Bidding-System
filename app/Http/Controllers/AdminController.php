@@ -172,5 +172,17 @@ class AdminController extends Controller
     {
         return view('admin.pages.terms-conditions');
     }
+    public function VendorGrid()
+    {
+        return view('admin.vendor.vendor-grid');
+    }
+    public function VendorList()
+    {
+        return view('admin.vendor.vendor-list');
+    }
+    public function VendorProfile()
+    {
+        return view('admin.vendor.vendor-profile');
+    }
     
 }
