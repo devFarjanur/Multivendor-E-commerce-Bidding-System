@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
@@ -19,7 +20,7 @@ Route::get('/', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::get('/admin-login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
 Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
@@ -42,8 +43,7 @@ Route::get('/admin/history', [AdminController::class, 'AdminHistory'])->name('ad
 Route::get('/admin/invoice', [AdminController::class, 'AdminInvoice'])->name('admin.invoice');
 Route::get('/admin/invoice/print', [AdminController::class, 'AdminInvoicePrint'])->name('admin.invoice.print');
 Route::get('/admin/language', [AdminController::class, 'AdminLanguage'])->name('admin.language');
-Route::get('/admin/pages/notifications', [AdminController::class,'AdminNotification'])->name('admin.pages.notifications');
+Route::get('/admin/pages/notifications', [AdminController::class, 'AdminNotification'])->name('admin.pages.notifications');
 Route::get('/admin/pages/terms-conditions', [AdminController::class, 'AdminTermsCondition'])->name('admin.pages.terms-conditions');
-Route::get('/admin/vendor/grid', [AdminController::class, 'VendorGrid'])->name('admin.vendor.grid');
-Route::get('/admin/vendor/list', [AdminController::class, 'VendorList'])->name('admin.vendor.list');
-Route::get('/admin/vendor/profile', [AdminController::class, 'VendorProfile'])->name('admin.vendor.profile');
+
+

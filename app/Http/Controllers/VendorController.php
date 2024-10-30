@@ -1,40 +1,42 @@
 <?php
 
 namespace App\Http\Controllers;
-use Hash;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class AdminController extends Controller
+class VendorController extends Controller
 {
-    public function AdminDashboard()
+    public function VendorDashboard()
     {
-        return view('admin.admin_dashboard');
+        return view('vendor.vendor_dashboard');
     }
 
-    public function AdminLogout(Request $request): RedirectResponse
+    public function VendorLogout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('admin.login');
+        return redirect()->route('vendor.login');
     }  // end method
 
-    public function AdminLogin()
+    public function VendorLogin()
     {
-        return view('admin.admin_login');
+        return view('vendor.vendor_login');
     }  // end method
 
-    public function AdminProfile()
+    public function VendorProfile()
     {
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.admin_profile_view', compact('profileData'));
+        return view('vendor.vendor_profile_view', compact('profileData'));
     }  // end method
 
-    public function AdminProfileStore(Request $request)
+    public function VendorProfileStore(Request $request)
     {
         $id = Auth::user()->id;
         $data = User::find($id);
@@ -60,14 +62,14 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     } // end method
 
-    public function AdminChangePassword()
+    public function VendorChangePassword()
     {
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.admin_change_password', compact('profileData'));
+        return view('vendor.vendor_change_password', compact('profileData'));
     } //  end method
 
-    public function AdminUpdatePassword(Request $request)
+    public function VendorUpdatePassword(Request $request)
     {
         $request->validate([
             'old_password' => 'required',
@@ -99,78 +101,65 @@ class AdminController extends Controller
 
     //products page
 
-    public function AdminProducts()
+    public function VendorProducts()
     {
-        return view('admin.product.products');
+        return view('vendor.product.products');
     }
 
-    public function AdminProductUpload()
+    public function VendorProductUpload()
     {
-        return view ('admin.product.product-upload');
+        return view('vendor.product.product-upload');
     }
-    public function AdminDetailsProduct()
+    public function VendorDetailsProduct()
     {
-        return view ('admin.product.product-details');
+        return view('vendor.product.product-details');
     }
-    public function AdminCustomer()
+    public function VendorCustomer()
     {
-        return view('admin.customer.customer');
+        return view('vendor.customer.customer');
     }
-    public function AdminCustomerList()
+    public function VendorCustomerList()
     {
-        return view('admin.customer.customer-list');
+        return view('vendor.customer.customer-list');
     }
-    public function AdminOrderDetails()
+    public function VendorOrderDetails()
     {
-        return view('admin.order.order-details');
+        return view('vendor.order.order-details');
     }
-    public function AdminOrderList()
+    public function VendorOrderList()
     {
-        return view('admin.order.order-list');
+        return view('vendor.order.order-list');
     }
-    public function AdminChatMessage()
+    public function VendorChatMessage()
     {
-        return view('admin.chat.chat-message');
+        return view('vendor.chat.chat-message');
     }
-    public function AdminPagesFaqs()
+    public function VendorPagesFaqs()
     {
-        return view('admin.pages.faqs');
+        return view('vendor.pages.faqs');
     }
-    public function AdminHistory()
+    public function VendorHistory()
     {
-        return view('admin.history.history');
+        return view('vendor.history.history');
     }
-    public function AdminInvoice()
+    public function VendorInvoice()
     {
-        return view('admin.invoice.invoice');
+        return view('vendor.invoice.invoice');
     }
-    public function AdminInvoicePrint()
+    public function VendorInvoicePrint()
     {
-        return view('admin.invoice.invoice-print');
+        return view('vendor.invoice.invoice-print');
     }
-    public function AdminLanguage()
+    public function VendorLanguage()
     {
-        return view('admin.language.language');
+        return view('vendor.language.language');
     }
-    public function AdminNotification()
+    public function VendorNotification()
     {
-        return view('admin.pages.notifications');
+        return view('vendor.pages.notifications');
     }
-    public function AdminTermsCondition()
+    public function VendorTermsCondition()
     {
-        return view('admin.pages.terms-conditions');
+        return view('vendor.pages.terms-conditions');
     }
-    public function VendorGrid()
-    {
-        return view('admin.vendor.vendor-grid');
-    }
-    public function VendorList()
-    {
-        return view('admin.vendor.vendor-list');
-    }
-    public function VendorProfile()
-    {
-        return view('admin.vendor.vendor-profile');
-    }
-    
 }
