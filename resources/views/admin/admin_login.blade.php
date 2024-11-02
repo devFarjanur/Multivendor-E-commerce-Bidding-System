@@ -37,15 +37,14 @@
             <div class="row g-0">
                 <div class="col-lg-6 col-md-6 col-12 sherah-wc-col-one">
                     <div class="sherah-wc__inner"
-                        style="background-image: url{{ asset('backend/assets/img/welcome-bg.png') }};">
+                        style="background-image: url('{{ asset('backend/assets/img/welcome-bg.png') }}');">
                         <!-- Logo -->
                         <div class="sherah-wc__logo">
-                            <a href="index.html"><img src="{{ asset('backend/assets/img/logo.png') }}"
-                                    alt="#"></a>
+                            <a href=""><img src="{{ asset('backend/assets/img/logo.png') }}" alt="#"></a>
                         </div>
                         <!-- Middle Image -->
                         <div class="sherah-wc__middle">
-                            <a href="index.html"><img src="{{ asset('backend/assets/img/welcome-vector.png') }}"
+                            <a href=""><img src="{{ asset('backend/assets/img/welcome-vector.png') }}"
                                     alt="#"></a>
                         </div>
                         <!-- Welcome Heading -->
@@ -58,7 +57,7 @@
                             <h3 class="sherah-wc__form-title sherah-wc__form-title__one">Login Your Account <span>Please
                                     enter your email and password to continue</span></h3>
                             <!-- Sign in Form -->
-                            <form class="sherah-wc__form-main p-0" action="index.html" method="post">
+                            <form class="sherah-wc__form-main p-0" action="" method="post">
                                 <div class="form-group">
                                     <label class="sherah-wc__form-label">Email Address</label>
                                     <div class="form-group__input">
