@@ -33,12 +33,15 @@
     <div class="sherah-body-area">
         <!-- sidebar -->
         @include('admin.sidebar')
-        <!--navbar.html -->
-        @include('admin.header')
-        <!-- admin index -->
-        @yield('admin')
-        <!-- footer -->
-        @include('admin.footer')
+        <div class="page-wrapper">
+            <!------------------------navbar.html -->
+            @include('admin.header')
+            <!---------------------- admin index -->
+            @yield('admin')
+            <!----------------------------footer -->
+            @include('admin.footer')
+
+        </div>
     </div>
     <!-- Sherah Scripts -->
     <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>

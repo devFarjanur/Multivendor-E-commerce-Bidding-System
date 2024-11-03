@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('sender_id');
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('receiver_id');
