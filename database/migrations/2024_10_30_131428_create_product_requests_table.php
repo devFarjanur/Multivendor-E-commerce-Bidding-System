@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('product_requests', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title', 255);
