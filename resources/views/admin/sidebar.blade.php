@@ -44,7 +44,7 @@
                                 <span class="menu-bar__name">Dashboard</span></span></a></span>
 
                     </li>
-                    <li><a href="{{ route('admin.vendor.grid') }}" class="collapsed" data-bs-toggle="collapse"
+                    <li><a href="" class="collapsed" data-bs-toggle="collapse"
                             data-bs-target="#menu-item_vendors"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="22.038"
@@ -67,9 +67,9 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item_vendors" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('admin.vendor.grid') }}"><span class="menu-bar__text"><span
+                                <li><a href="#"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Vendor Grid</span></span></a></li>
-                                <li><a href="{{ route('admin.vendor.list') }}"><span class="menu-bar__text"><span
+                                <li><a href="#"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Vendor List</span></span></a></li>
                                 <li><a href="vendor-profile.html"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Vendor Profile</span></span></a></li>

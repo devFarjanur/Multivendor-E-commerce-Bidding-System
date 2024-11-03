@@ -57,12 +57,13 @@
                             <h3 class="sherah-wc__form-title sherah-wc__form-title__one">Login Your Account <span>Please
                                     enter your email and password to continue</span></h3>
                             <!-- Sign in Form -->
-                            <form class="sherah-wc__form-main p-0" action="" method="post">
+                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('login') }}">
+                                @csrf
                                 <div class="form-group">
                                     <label class="sherah-wc__form-label">Email Address</label>
                                     <div class="form-group__input">
                                         <input class="sherah-wc__form-input" type="email" name="email"
-                                            placeholder="demo3243@gmail.com" required="required">
+                                            placeholder="" required="required">
                                     </div>
                                 </div>
                                 <!-- Form Group -->
@@ -71,7 +72,7 @@
                                     <div class="form-group__input">
                                         <input class="sherah-wc__form-input"
                                             placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" id="password-field"
-                                            type="password" name="password" placeholder="" maxlength="8"
+                                            type="password" name="password" placeholder="" maxlength=""
                                             required="required">
                                     </div>
                                 </div>
