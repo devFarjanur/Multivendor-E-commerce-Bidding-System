@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}  # Your FTP username
           password: ${{ secrets.FTP_PASSWORD }}  # Your FTP password
           local-dir: "./"   # Root folder to upload (root of your repo)
-          server-dir: "/public_html/addfamily"  # Subdomain directory
+          server-dir: "/public_html/addfamily/"  # Subdomain directory
           exclude: |  # Exclude unnecessary files and folders
             .git*
             .github*
