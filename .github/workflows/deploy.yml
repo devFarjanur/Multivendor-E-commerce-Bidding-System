@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21  # Use 22 if your server requires SFTP
           local-dir: "./"  # Root folder to upload (root of your repo)
-          server-dir: "/public_html/addfamily"  # Directory on your server for the subdomain
+          server-dir: "/public_html/addfamily/"  # Directory on your server for the subdomain
           exclude: |
             .git*
             .github*
