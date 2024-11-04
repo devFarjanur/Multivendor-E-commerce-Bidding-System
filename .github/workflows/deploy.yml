@@ -3,7 +3,7 @@ name: Deploy Laravel to Addfamily Subdomain
 on:
   push:
     branches:
-      - fahim  # Deploy on push to the specified branch (adjust if needed)
+      - fahim  # Adjust to the branch you want to trigger deployment on
 
 jobs:
   ftp-deploy:
@@ -16,15 +16,17 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.FTP_SERVER }}   # Your FTP server, securely stored
-          username: ${{ secrets.FTP_USERNAME }}  # Your FTP username
-          password: ${{ secrets.FTP_PASSWORD }}  # Your FTP password
-          local-dir: "./"   # Root folder to upload (root of your repo)
-          server-dir: "/public_html/addfamily/"  # Subdomain directory
-          exclude: |  # Exclude unnecessary files and folders
+          server: "ftp://${{ secrets.FTP_SERVER }}"  # Use SFTP if supported by changing to "sftp://"
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21  # Use 22 if your server requires SFTP
+          local-dir: "./"  # Root folder to upload (root of your repo)
+          server-dir: "/public_html/addfamily/"  # Directory on your server for the subdomain
+          exclude: |
             .git*
             .github*
             .env
             node_modules
             storage/*.*
             vendor/*.*
+          log-level: verbose  # Optional: sets log level to verbose for more detailed output
