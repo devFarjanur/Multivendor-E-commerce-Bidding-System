@@ -16,10 +16,10 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.FTP_SERVER }}  # Do NOT include ftp:// or sftp:// here
+          server: "sftp://${{ secrets.FTP_SERVER }}"  # Switch to SFTP if supported
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21  # Use 22 if your server requires SFTP
+          port: 22  # Use 22 for SFTP
           local-dir: "./"  # Root folder to upload (root of your repo)
           server-dir: "/public_html/addfamily/"  # Directory on your server for the subdomain
           exclude: |
