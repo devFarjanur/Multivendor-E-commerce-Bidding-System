@@ -1,0 +1,31 @@
+name: Deploy Laravel to Addfamily Subdomain
+
+on:
+  push:
+    branches:
+      - fahim  # Deploy on push to the specified branch (adjust if needed)
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}   # Your FTP server, securely stored
+          username: ${{ secrets.FTP_USERNAME }}  # Your FTP username
+          password: ${{ secrets.FTP_PASSWORD }}  # Your FTP password
+          local-dir: "./"   # Root folder to upload (root of your repo)
+          server-dir: "/public_html/addfamily"  # Subdomain directory
+          method: "ftp"     # Use "ftps" if your hosting supports secure FTP
+          exclude: |  # Exclude unnecessary files and folders
+            .git*
+            .github*
+            .env
+            node_modules
+            storage/*.*
+            vendor/*.*
