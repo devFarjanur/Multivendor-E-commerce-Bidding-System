@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: FTP Deploy using SamKirkland's FTP-Deploy-Action
+      # Step 2: FTP Deploy using SamKirkland's FTP-Deploy-Action with passive mode and detailed logging
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -30,6 +30,7 @@ jobs:
             .env
             node_modules
             storage/*
-            vendor/*   # Exclude the vendor directory
-          log-level: verbose
-          # Remove dangerous-clean-slate if deletion is not required
+            vendor/*   # Exclude the vendor directory to avoid redundant uploads
+          log-level: debug  # Set log level to debug for detailed output
+          passive: true  # Enable passive mode for FTP connection
+
