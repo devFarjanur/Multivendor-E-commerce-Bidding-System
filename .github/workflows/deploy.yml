@@ -24,4 +24,13 @@ jobs:
           port: 21
           local-dir: "./"
           server-dir: "/public_html/addfamily/"
+          exclude: |
+            .git*
+            .github*
+            .env
+            node_modules
+            storage/*
+            vendor/*   # Exclude vendor directory with dependencies
+            bootstrap/cache/*   # Exclude Laravel cache files
+            setup.lock   # Exclude setup lock file
           log-level: verbose  # Set log level to verbose for detailed output
