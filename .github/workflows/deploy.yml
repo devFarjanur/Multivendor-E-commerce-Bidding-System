@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: FTP Deploy using SamKirkland's FTP-Deploy-Action with passive mode and detailed logging
+      # Step 2: FTP Deploy using SamKirkland's FTP-Deploy-Action in dry-run mode
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -24,13 +24,5 @@ jobs:
           port: 21
           local-dir: "./"
           server-dir: "/public_html/addfamily/"
-          exclude: |
-            .git*
-            .github*
-            .env
-            node_modules
-            storage/*
-            vendor/*   # Exclude the vendor directory to avoid redundant uploads
-          log-level: debug  # Set log level to debug for detailed output
-          passive: true  # Enable passive mode for FTP connection
-
+          dry-run: true  # Only for testing, no files will be uploaded
+          log-level: verbose  # Set log level to verbose for detailed output
