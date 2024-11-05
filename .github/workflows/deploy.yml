@@ -16,12 +16,12 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.FTP_SERVER }}  # No prefix like ftp:// or sftp://
+          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21  # Use 22 if your server requires SFTP
-          local-dir: "./"  # Root folder to upload (root of your repo)
-          server-dir: "/public_html/addfamily/"  # Directory on your server for the subdomain
+          port: 21
+          local-dir: "./"
+          server-dir: "/public_html/addfamily/"
           exclude: |
             .git*
             .github*
@@ -29,4 +29,5 @@ jobs:
             node_modules
             storage/*.*
             vendor/*.*
-          log-level: verbose  # Optional: sets log level to verbose for more detailed output
+          log-level: verbose
+          dangerous-clean-slate: true  # This will delete everything in the target directory before uploading
