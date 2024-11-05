@@ -18,7 +18,7 @@ jobs:
       - name: Install LFTP
         run: sudo apt-get install -y lftp
 
-      # Step 3: FTP Deploy using LFTP with Active Mode and Debugging
+      # Step 3: FTP Deploy using LFTP with Active Mode and SSL Verification Disabled
       - name: FTP Deploy with LFTP
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
@@ -27,7 +27,8 @@ jobs:
         run: |
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" -e "
             set ftp:passive-mode off;  # Use active mode
-            set -a;  # Show all environment variables for debugging
+            set ssl:verify-certificate no;  # Disable SSL certificate verification
+            set debug 3;  # Enable detailed logging
             ls /public_html/addfamily/  # Verify connection with a simple list command
             mirror --reverse --verbose \
             --exclude-glob .git* \
