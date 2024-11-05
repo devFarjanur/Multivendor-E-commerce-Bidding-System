@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: FTP Deploy using SamKirkland's FTP-Deploy-Action in dry-run mode
+      # Step 2: FTP Deploy using SamKirkland's FTP-Deploy-Action
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -24,5 +24,4 @@ jobs:
           port: 21
           local-dir: "./"
           server-dir: "/public_html/addfamily/"
-          dry-run: true  # Only for testing, no files will be uploaded
           log-level: verbose  # Set log level to verbose for detailed output
