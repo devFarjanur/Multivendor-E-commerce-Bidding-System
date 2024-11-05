@@ -19,7 +19,7 @@ jobs:
         run: sudo apt-get install -y lftp
 
       # Step 3: FTP Deploy using LFTP in active mode
-      - name: FTP Deploy with LFTP
+      - name: FTP Connection Test
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
@@ -27,6 +27,6 @@ jobs:
         run: |
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -e "
             set ftp:passive-mode off;  # Use active mode
-            ls /public_html/addfamily/  # Run a simple list command to check connection
             exit
           " "$FTP_SERVER"
+
