@@ -18,7 +18,7 @@ jobs:
       - name: Install LFTP
         run: sudo apt-get install -y lftp
 
-      # Step 3: FTP Deploy using LFTP
+      # Step 3: FTP Deploy using LFTP with additional debugging and connection testing
       - name: FTP Deploy with LFTP
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
@@ -26,6 +26,9 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -e "
+            set debug 3;  # Enable debugging for detailed logs
+            set ftp:passive-mode true;  # Use passive mode for FTP connection
+            ls /public_html/addfamily;  # List contents of the target directory to test connection
             mirror --reverse --verbose \
             --exclude-glob .git* \
             --exclude-glob .github* \
