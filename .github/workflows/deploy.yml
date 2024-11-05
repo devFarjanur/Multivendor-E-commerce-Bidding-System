@@ -3,7 +3,7 @@ name: Deploy Laravel to Addfamily Subdomain
 on:
   push:
     branches:
-      - fahim  # Replace with the branch you want to trigger deployment on
+      - fahim  # Specify the branch that triggers the deployment
 
 jobs:
   ftp-deploy:
@@ -35,4 +35,4 @@ jobs:
             --exclude-glob vendor/*.* \
             ./ /public_html/addfamily/
             exit
-          " "$FTP_SERVER"
+          " "ftp://$FTP_SERVER"
