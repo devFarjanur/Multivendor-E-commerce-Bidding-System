@@ -35,4 +35,3 @@ jobs:
             setup.lock
           log-level: verbose  # Set log level to verbose for detailed output
           dangerous-clean-slate: true  # Delete everything in target directory before deploying
-          dry-run: true  # Enable dry-run for debugging to simulate deployment
