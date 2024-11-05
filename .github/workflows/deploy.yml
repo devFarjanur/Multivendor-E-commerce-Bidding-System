@@ -30,7 +30,8 @@ jobs:
             .env
             node_modules
             storage/*
-            vendor/*   # Exclude vendor directory with dependencies
-            bootstrap/cache/*   # Exclude Laravel cache files
-            setup.lock   # Exclude setup lock file
+            vendor/**   # Ensure all files in vendor are excluded
+            bootstrap/cache/**  # Exclude Laravel cache files
+            setup.lock
           log-level: verbose  # Set log level to verbose for detailed output
+          dangerous-clean-slate: true  # Delete everything in target directory before deploying
