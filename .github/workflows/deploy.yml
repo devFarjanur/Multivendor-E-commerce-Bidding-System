@@ -3,16 +3,18 @@ name: Deploy Laravel to Addfamily Subdomain
 on:
   push:
     branches:
-      - fahim  # Adjust to the branch you want to trigger deployment on
+      - fahim  # Specify the branch to trigger deployment
 
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the latest code
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Step 2: FTP Deploy using SamKirkland's FTP-Deploy-Action
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -27,9 +29,7 @@ jobs:
             .github*
             .env
             node_modules
-            storage/*.*
-            vendor/*.*
+            storage/*
+            vendor/*   # Exclude the vendor directory
           log-level: verbose
-          dangerous-clean-slate: true  # This will delete everything in the target directory before uploading
-
-
+          # Remove dangerous-clean-slate if deletion is not required
