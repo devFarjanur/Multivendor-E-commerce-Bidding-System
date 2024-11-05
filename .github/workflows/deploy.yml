@@ -18,8 +18,8 @@ jobs:
       - name: Install LFTP
         run: sudo apt-get install -y lftp
 
-      # Step 3: FTP Deploy using LFTP in active mode
-      - name: FTP Connection Test
+      # Step 3: FTP Deploy using LFTP with mirror command
+      - name: FTP Deploy with LFTP
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
@@ -27,6 +27,14 @@ jobs:
         run: |
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -e "
             set ftp:passive-mode off;  # Use active mode
+            mirror --reverse --verbose \
+            --exclude-glob .git* \
+            --exclude-glob .github* \
+            --exclude-glob .env \
+            --exclude-glob node_modules* \
+            --exclude-glob storage/* \
+            --exclude-glob vendor/* \
+            --exclude-glob bootstrap/cache/* \
+            ./ /public_html/addfamily/
             exit
           " "$FTP_SERVER"
-
