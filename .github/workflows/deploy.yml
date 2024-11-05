@@ -25,9 +25,9 @@ jobs:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -e "
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" -e "
             set ftp:passive-mode off;  # Use active mode
-            set debug 3;  # Enable detailed logging
+            set -a;  # Show all environment variables for debugging
             ls /public_html/addfamily/  # Verify connection with a simple list command
             mirror --reverse --verbose \
             --exclude-glob .git* \
@@ -39,4 +39,4 @@ jobs:
             --exclude-glob bootstrap/cache/* \
             ./ /public_html/addfamily/
             exit
-          " "$FTP_SERVER"
+          "
