@@ -43,6 +43,9 @@ jobs:
             --exclude-glob storage/* \
             --exclude-glob vendor/* \
             --exclude-glob bootstrap/cache/* \
+            --exclude-glob public/* \          # Exclude the public folder
+            --no-remove-source-files \         # Don't remove source files on successful transfer
+            --only-newer \                     # Only transfer files that are newer
             ./ /public_html/addfamily/
             exit
           " || echo "Deployment failed. Please check the debug output above for errors."
