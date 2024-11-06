@@ -19,7 +19,7 @@ jobs:
         run: sudo apt-get install -y lftp
 
       # Step 3: FTP Deploy with Debugging
-      - name: FTP Deploy with LFTP (Debugging Enabled)
+      - name: FTP Deploy with LFTP (Faster Deployment)
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
@@ -28,15 +28,15 @@ jobs:
           # Enable detailed debugging logs for troubleshooting
           set -x
 
-          # Run LFTP with debugging enabled
+          # Run LFTP with faster deployment options
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" -e "
             set ftp:passive-mode off;          # Use active mode for FTP
             set ssl:verify-certificate no;     # Disable SSL certificate verification
             set ftp:sync-mode off;             # Only transfer new/modified files
-            set mirror:use-pget-n 5;           # Use multiple connections for faster upload
-            set cmd:trace true;                # Enable command tracing
-            set debug 10;                      # Set highest debug level for detailed output
-            mirror --reverse --verbose --continue --dereference \
+            set mirror:use-pget-n 10;          # Increase number of parallel connections (10)
+            set cmd:trace false;               # Disable command tracing for faster execution
+            set debug 1;                       # Reduce the debug level for less output
+            mirror --reverse --continue --dereference \
             --exclude-glob .git/* \
             --exclude-glob .github/* \
             --exclude-glob node_modules/* \
@@ -44,9 +44,7 @@ jobs:
             --exclude-glob vendor/* \
             --exclude-glob bootstrap/cache/* \
             --exclude-glob public/* \          # Exclude the public folder
-            --no-remove-source-files \         # Don't remove source files on successful transfer
-            --only-newer \                     # Only transfer files that are newer
-            ./ /public_html/addfamily/
+            ./ /public_html/addfamily/       # Deploy to target directory
             exit
           " || echo "Deployment failed. Please check the debug output above for errors."
 
