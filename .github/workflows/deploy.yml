@@ -44,7 +44,7 @@ jobs:
             --exclude-glob vendor/* \
             --exclude-glob bootstrap/cache/* \
             --exclude-glob public/* \          # Exclude the public folder
-            ./ /public_html/addfamily/       # Deploy to target directory
+            ./ ./public_html/addfamily/       # Corrected the command: specify local path correctly
             exit
           " || echo "Deployment failed. Please check the debug output above for errors."
 
