@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'web', // The default guard for web-based sessions.
+        'passwords' => 'users', // Default password reset provider.
     ],
 
     /*
@@ -23,23 +23,26 @@ return [
     | Authentication Guards
     |--------------------------------------------------------------------------
     |
-    | Next, you may define every authentication guard for your application.
+    | Here you may define every authentication guard for your application.
     | Of course, a great default configuration has been defined for you
     | here which uses session storage and the Eloquent user provider.
     |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
-    |
-    | Supported: "session"
+    | Supported: "session", "token"
     |
     */
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+            'driver' => 'session', // Use session-based authentication.
+            'provider' => 'users', // The provider for this guard is 'users'.
         ],
+
+        // You can define more guards here if needed.
+        // Example for API guard (using token-based authentication):
+        // 'api' => [
+        //     'driver' => 'token',
+        //     'provider' => 'users',
+        // ],
     ],
 
     /*
@@ -52,7 +55,7 @@ return [
     | mechanisms used by this application to persist your user's data.
     |
     | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
+    | sources which represent each model/table. These sources may then
     | be assigned to any extra authentication guards you have defined.
     |
     | Supported: "database", "eloquent"
@@ -61,14 +64,9 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'driver' => 'eloquent', // Using Eloquent ORM for user model.
+            'model' => App\Models\User::class,  // Specify the User model here.
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -92,10 +90,10 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
+            'provider' => 'users', // Uses the 'users' provider for password resets.
+            'table' => 'password_reset_tokens', // Table for storing reset tokens.
+            'expire' => 60, // Expiration time for password reset tokens (in minutes).
+            'throttle' => 60, // Throttle time between reset requests (in seconds).
         ],
     ],
 
@@ -110,6 +108,6 @@ return [
     |
     */
 
-    'password_timeout' => 10800,
+    'password_timeout' => 10800, // Password confirmation timeout in seconds (default is 3 hours).
 
 ];

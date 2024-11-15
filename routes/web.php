@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -21,6 +22,8 @@ Route::get('/', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/admin-login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::post('/admin/login', [AuthenticatedSessionController::class, 'store'])->name('admin.login.post');
+
 
 // Admin Routes (only accessible by users with 'admin' role)
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
@@ -52,6 +55,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
 
 
 Route::get('/vendor-login', [VendorController::class, 'VendorLogin'])->name('vendor.login');
+Route::post('/vendor/login', [AuthenticatedSessionController::class, 'store'])->name('vendor.login.post');
+
 
 // Vendor Routes (only accessible by users with 'vendor' role)
 Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () {
