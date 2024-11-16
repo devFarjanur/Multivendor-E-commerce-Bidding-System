@@ -1,52 +1,52 @@
-name: Deploy Laravel to Addfamily Subdomain
+# name: Deploy Laravel to Addfamily Subdomain
 
-on:
-  push:
-    branches:
-      - fahim  # Specify the branch that triggers deployment on push
+# on:
+#   push:
+#     branches:
+#       - fahim  # Specify the branch that triggers deployment on push
 
-jobs:
-  ftp-deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   ftp-deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      # Step 1: Checkout the latest code
-      - name: Checkout code
-        uses: actions/checkout@v2
+#     steps:
+#       # Step 1: Checkout the latest code
+#       - name: Checkout code
+#         uses: actions/checkout@v2
 
-      # Step 2: Install LFTP
-      - name: Install LFTP
-        run: sudo apt-get install -y lftp
+#       # Step 2: Install LFTP
+#       - name: Install LFTP
+#         run: sudo apt-get install -y lftp
 
-      # Step 3: FTP Deploy with Debugging
-      - name: FTP Deploy with LFTP (Debugging Enabled)
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          # Enable detailed debugging logs for troubleshooting
-          set -x
+#       # Step 3: FTP Deploy with Debugging
+#       - name: FTP Deploy with LFTP (Debugging Enabled)
+#         env:
+#           FTP_SERVER: ${{ secrets.FTP_SERVER }}
+#           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+#           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+#         run: |
+#           # Enable detailed debugging logs for troubleshooting
+#           set -x
 
-          # Run LFTP with debugging enabled and overwrite old files without removing them
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" -e "
-            set ftp:passive-mode off;          # Use active mode for FTP
-            set ssl:verify-certificate no;     # Disable SSL certificate verification
-            set ftp:sync-mode off;             # Only transfer new/modified files
-            set mirror:use-pget-n 5;           # Use multiple connections for faster upload
-            set cmd:trace true;                # Enable command tracing
-            set debug 10;                      # Set highest debug level for detailed output
-            mirror --reverse --verbose --continue --dereference \
-            --exclude-glob .git/* \
-            --exclude-glob .github/* \
-            --exclude-glob node_modules/* \
-            --exclude-glob storage/* \
-            --exclude-glob vendor/* \
-            --exclude-glob bootstrap/cache/* \
-            --exclude-glob public/* \
-            ./ /public_html/addfamily/       # Deploy to target directory
-            exit
-          " || echo "Deployment failed. Please check the debug output above for errors."
+#           # Run LFTP with debugging enabled and overwrite old files without removing them
+#           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" -e "
+#             set ftp:passive-mode off;          # Use active mode for FTP
+#             set ssl:verify-certificate no;     # Disable SSL certificate verification
+#             set ftp:sync-mode off;             # Only transfer new/modified files
+#             set mirror:use-pget-n 5;           # Use multiple connections for faster upload
+#             set cmd:trace true;                # Enable command tracing
+#             set debug 10;                      # Set highest debug level for detailed output
+#             mirror --reverse --verbose --continue --dereference \
+#             --exclude-glob .git/* \
+#             --exclude-glob .github/* \
+#             --exclude-glob node_modules/* \
+#             --exclude-glob storage/* \
+#             --exclude-glob vendor/* \
+#             --exclude-glob bootstrap/cache/* \
+#             --exclude-glob public/* \
+#             ./ /public_html/addfamily/       # Deploy to target directory
+#             exit
+#           " || echo "Deployment failed. Please check the debug output above for errors."
 
-          # Disable debugging mode
-          set +x
+#           # Disable debugging mode
+#           set +x
