@@ -24,7 +24,7 @@ class AdminController extends Controller
 
     public function AdminLogin()
     {
-        return view('admin.admin_login');
+        return view(view: 'admin.admin_login');
     }  // end method
 
     public function AdminProfile()
@@ -96,9 +96,20 @@ class AdminController extends Controller
         return back()->with($notification);
     }  // end method
 
+    public function VendorGrid()
+    {
+        return view('admin.vendor.vendor-grid');
+    }
+    public function VendorRequestList()
+    {
+        return view('admin.vendor.vendor-request-list');
+    }
+    public function VendorProfile()
+    {
+        return view('admin.vendor.vendor-profile');
+    }
 
     //products page
-
     public function AdminProducts()
     {
         return view('admin.product.products');
@@ -106,11 +117,11 @@ class AdminController extends Controller
 
     public function AdminProductUpload()
     {
-        return view ('admin.product.product-upload');
+        return view('admin.product.product-upload');
     }
     public function AdminDetailsProduct()
     {
-        return view ('admin.product.product-details');
+        return view('admin.product.product-details');
     }
     public function AdminCustomer()
     {
@@ -160,17 +171,4 @@ class AdminController extends Controller
     {
         return view('admin.pages.terms-conditions');
     }
-    public function VendorGrid()
-    {
-        return view('admin.vendor.vendor-grid');
-    }
-    public function VendorList()
-    {
-        return view('admin.vendor.vendor-list');
-    }
-    public function VendorProfile()
-    {
-        return view('admin.vendor.vendor-profile');
-    }
-    
 }
