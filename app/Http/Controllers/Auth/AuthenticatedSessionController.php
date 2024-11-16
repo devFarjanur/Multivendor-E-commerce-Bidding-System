@@ -106,15 +106,31 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Logout the user
         Auth::logout();
 
+        // Invalidate the session
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // Flash success message for toastr
+        // Flash success message
         $request->session()->flash('message', 'You have been logged out successfully.');
         $request->session()->flash('alert-type', 'success');
 
-        return redirect('/');
+        // Redirect based on the role
+        switch ($user->role) {
+            case 'admin':
+                return redirect()->route('admin.login');
+            case 'vendor':
+                return redirect()->route('vendor.login');
+            case 'customer':
+                return redirect()->route('login');
+            default:
+                return redirect('/');
+        }
     }
+
 }

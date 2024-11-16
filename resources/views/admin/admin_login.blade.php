@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Site Title -->
     <title>Sherah - HTML eCommerce Dashboard Template</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
     <!-- Font -->
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
@@ -39,15 +42,12 @@
                     <div class="sherah-wc__inner"
                         style="background-image: url('{{ asset('backend/assets/img/welcome-bg.png') }}');">
                         <!-- Logo -->
-                        <div class="sherah-wc__logo">
-                            <a href=""><img src="{{ asset('backend/assets/img/logo.png') }}" alt="#"></a>
-                        </div>
                         <!-- Middle Image -->
                         <div class="sherah-wc__middle">
                             <a href=""><img src="{{ asset('backend/assets/img/welcome-vector.png') }}" alt="#"></a>
                         </div>
                         <!-- Welcome Heading -->
-                        <h2 class="sherah-wc__title">Welcome to Sherah eCommerce <br> Admin Panel</h2>
+                        <h2 class="sherah-wc__title">Welcome to Add Family <br> Admin Panel</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 sherah-wc-col-two">
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                                 <!-- Form Group -->
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <div class="sherah-wc__check-inline">
                                         <div class="sherah-wc__checkbox">
                                             <input class="sherah-wc__form-check" id="checkbox" name="checkbox"
@@ -90,12 +90,12 @@
                                             <a href="forgot-password.html" class="forgot-pass">Forget Password?</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- Form Group -->
                                 <div class="form-group form-mg-top25">
                                     <div class="sherah-wc__button sherah-wc__button--bottom">
                                         <button class="ntfmax-wc__btn" type="submit">Login</button>
-                                        <div class="sherah-wc__inside--group">
+                                        {{-- <div class="sherah-wc__inside--group">
                                             <button class="ntfmax-wc__btn ntfmax-wc__btn-social " type="submit">
                                                 <div class="ntfmax-wc__btn-icon"><i class="fa-brands fa-google"></i>
                                                 </div>Sign In with Google
@@ -104,17 +104,17 @@
                                                 <div class="ntfmax-wc__btn-icon"><i class="fa-brands fa-twitter"></i>
                                                 </div>Sign In with Google
                                             </button>
-                                        </div>
+                                        </div> --}}
 
                                     </div>
                                 </div>
-                                <!-- Form Group -->
+                                {{-- <!-- Form Group -->
                                 <div class="form-group mg-top-20">
                                     <div class="sherah-wc__bottom">
                                         <p class="sherah-wc__text">Dont’t have an account ? <a
                                                 href="create-account.html">Sign up free</a></p>
                                     </div>
-                                </div>
+                                </div> --}}
                             </form>
                             <!-- End Sign in Form -->
                         </div>
