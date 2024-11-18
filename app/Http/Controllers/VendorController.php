@@ -11,6 +11,17 @@ use App\Models\User;
 
 class VendorController extends Controller
 {
+
+    public function VendorLogin()
+    {
+        return view('vendor.vendor_login');
+    }  // end method
+
+    public function VendorRegister()
+    {
+        return view('vendor.vendor_register');
+    }  // end method
+
     public function VendorDashboard()
     {
         return view('vendor.vendor_dashboard');
@@ -22,11 +33,6 @@ class VendorController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('vendor.login');
-    }  // end method
-
-    public function VendorLogin()
-    {
-        return view('vendor.vendor_login');
     }  // end method
 
     public function VendorProfile()

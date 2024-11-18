@@ -9,7 +9,7 @@
     <meta name="description" content="#">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Site Title -->
-    <title>Sherah - HTML eCommerce Dashboard Template</title>
+    <title>Add Family - Vendor Login</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
@@ -18,7 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <!-- Fav Icon -->
-    <link rel="icon" href="{{ asset('backend/assets/img/favicon.png') }}">
+    <link rel="icon" href="{{ asset('backend/assets/img/logo.png') }}">
     <!-- sherah Stylesheet -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/font-awesome-all.min.css') }}">
@@ -56,12 +56,12 @@
                             <h3 class="sherah-wc__form-title sherah-wc__form-title__one">Login Your Account <span>Please
                                     enter your email and password to continue</span></h3>
                             <!-- Sign in Form -->
-                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('login') }}">
+                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('vendor.login.post') }}">
                                 @csrf
                                 <div class="form-group">
                                     <label class="sherah-wc__form-label">Email Address</label>
                                     <div class="form-group__input">
-                                        <input class="sherah-wc__form-input" type="email" name="email" placeholder=""
+                                        <input class="sherah-wc__form-input" type="email" name="email" placeholder="Email"
                                             required="required">
                                     </div>
                                 </div>
@@ -69,13 +69,8 @@
                                 <div class="form-group">
                                     <label class="sherah-wc__form-label">Password</label>
                                     <div class="form-group__input">
-                                        <!-- <input class="sherah-wc__form-input"
-                                            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" id="password-field"
-                                            type="password" name="password" placeholder="" maxlength=""
-                                            required="required"> -->
-
                                         <input class="sherah-wc__form-input" id="password-field" type="password"
-                                            name="password" required="required">
+                                            name="password" placeholder="Password" required="required">
                                     </div>
                                 </div>
                                 <!-- Form Group -->
@@ -87,7 +82,7 @@
                                             <label for="checkbox">Remember me later</label>
                                         </div>
                                         <div class="sherah-wc__forgot">
-                                            <a href="forgot-password.html" class="forgot-pass">Forget Password?</a>
+                                            <a href="#" class="forgot-pass">Forget Password?</a>
                                         </div>
                                     </div>
                                 </div>
@@ -95,24 +90,13 @@
                                 <div class="form-group form-mg-top25">
                                     <div class="sherah-wc__button sherah-wc__button--bottom">
                                         <button class="ntfmax-wc__btn" type="submit">Login</button>
-                                        {{-- <div class="sherah-wc__inside--group">
-                                            <button class="ntfmax-wc__btn ntfmax-wc__btn-social " type="submit">
-                                                <div class="ntfmax-wc__btn-icon"><i class="fa-brands fa-google"></i>
-                                                </div>Sign In with Google
-                                            </button>
-                                            <button class="ntfmax-wc__btn ntfmax-wc__btn-social " type="submit">
-                                                <div class="ntfmax-wc__btn-icon"><i class="fa-brands fa-twitter"></i>
-                                                </div>Sign In with Google
-                                            </button>
-                                        </div> --}}
-
                                     </div>
                                 </div>
                                 <!-- Form Group -->
                                 <div class="form-group mg-top-20">
                                     <div class="sherah-wc__bottom">
                                         <p class="sherah-wc__text">Dont’t have an account ? <a
-                                                href="create-account.html">Sign up free</a></p>
+                                                href="{{ route('vendor.register') }}">Sign up free</a></p>
                                     </div>
                                 </div>
                             </form>

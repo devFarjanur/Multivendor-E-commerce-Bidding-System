@@ -9,7 +9,7 @@
     <meta name="description" content="#">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Site Title -->
-    <title>Add Family - Admin Login</title>
+    <title>Add Family - Vendor Registration</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
@@ -48,7 +48,7 @@
                                     alt="#"></a>
                         </div>
                         <!-- Welcome Heading -->
-                        <h2 class="sherah-wc__title">Welcome to Add Family <br> Admin Panel</h2>
+                        <h2 class="sherah-wc__title">Welcome to Add Family <br> Vendor Panel</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 sherah-wc-col-two">
@@ -57,28 +57,82 @@
                             <h3 class="sherah-wc__form-title sherah-wc__form-title__one">Login Your Account <span>Please
                                     enter your email and password to continue</span></h3>
                             <!-- Sign in Form -->
-                            <form class="sherah-wc__form-main p-0" method="post"
-                                action="{{ route('admin.login.post') }}">
+                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('vendor.register.store') }}">
                                 @csrf
-                                <div class="form-group">
-                                    <label class="sherah-wc__form-label">Email Address</label>
-                                    <div class="form-group__input">
-                                        <input class="sherah-wc__form-input" type="email" name="email"
-                                            placeholder="Email" required="required">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="sherah-wc__form-label">Name</label>
+                                            <div class="form-group__input">
+                                                <input class="sherah-wc__form-input" type="text" name="name"
+                                                    placeholder="Name" required="required">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Form Group -->
-                                <div class="form-group">
-                                    <label class="sherah-wc__form-label">Password</label>
-                                    <div class="form-group__input">
-                                        <input class="sherah-wc__form-input" id="password-field" type="password"
-                                            name="password" placeholder="Password" required="required">
+                                    {{-- <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label class="sherah-wc__form-label">Last Name *</label>
+                                            <div class="form-group__input">
+                                                <input class="sherah-wc__form-input" type="text" name="email"
+                                                    placeholder="Tegforor" required="required">
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="sherah-wc__form-label">Email Address</label>
+                                            <div class="form-group__input">
+                                                <input class="sherah-wc__form-input" type="email" name="email"
+                                                    placeholder="Email" required="required">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Form Group -->
-                                <div class="form-group form-mg-top25">
-                                    <div class="sherah-wc__button sherah-wc__button--bottom">
-                                        <button class="ntfmax-wc__btn" type="submit">Login</button>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="sherah-wc__form-label">Phone</label>
+                                            <div class="form-group__input">
+                                                <input class="sherah-wc__form-input" type="text" name="phone"
+                                                    placeholder="Phone" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <label class="sherah-wc__form-label">Password</label>
+                                            <div class="form-group__input">
+                                                <input class="sherah-wc__form-input" placeholder="Password"
+                                                    type="password" name="password" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <label class="sherah-wc__form-label">Confirm Password</label>
+                                            <div class="form-group__input">
+                                                <input class="sherah-wc__form-input"
+                                                    placeholder="Confrim Password" type="password" name="password"
+                                                    required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group mg-top-20">
+                                            <div class="sherah-wc__bottom">
+                                                <p class="sherah-wc__text">Already have an account? <a
+                                                        href="{{ route('vendor.login') }}">Log in</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <!-- Form Group -->
+                                        <div class="form-group form-mg-top25">
+                                            <div class="sherah-wc__button sherah-wc__button--bottom">
+                                                <button class="ntfmax-wc__btn" type="submit">SignUp</button>
+                                            </div>
+                                        </div>
+                                        <!-- Form Group -->
                                     </div>
                                 </div>
                             </form>

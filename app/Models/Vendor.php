@@ -14,4 +14,9 @@ class Vendor extends Model
         'store_logo',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
