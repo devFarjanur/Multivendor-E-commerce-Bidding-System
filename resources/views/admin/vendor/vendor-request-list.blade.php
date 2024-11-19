@@ -75,7 +75,6 @@
                                                             <p class="sherah-table__product-desc">
                                                                 {{ $vendor->user->created_at ? date('d M, Y - h:i a', strtotime($vendor->user->created_at)) : '--' }}
                                                             </p>
-                                                            {{-- {{ $vendor->user->created_at ?? '--' }} --}}
                                                         </div>
                                                     </td>
                                                     <td class="sherah-table__column-5 sherah-table__data-5">
