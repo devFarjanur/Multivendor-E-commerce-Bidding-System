@@ -35,7 +35,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 
-    Route::get('/vendors', [AdminController::class, 'VendorGrid'])->name('admin.vendor.grid');
+    Route::get('/vendors', [AdminController::class, 'VendorList'])->name('admin.vendor.list');
     Route::get('/vendor-profile', [AdminController::class, 'VendorProfile'])->name('admin.vendor.profile');
     Route::get('/vendor-request-list', [AdminController::class, 'VendorRequestList'])->name('admin.vendor.request.list');
     Route::get('/products', [AdminController::class, 'AdminProducts'])->name('admin.products');

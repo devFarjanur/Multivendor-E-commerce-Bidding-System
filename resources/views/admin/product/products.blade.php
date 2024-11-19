@@ -74,7 +74,7 @@
 									<span class="menu-bar__name">Dashboard</span></span></a></span>
 									
 								</li>
-								<li><a href="{{ route('admin.vendor.grid') }}" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu-item_vendors"><span class="menu-bar__text">
+								<li><a href="{{ route('admin.vendor.list') }}" class="collapsed" data-bs-toggle="collapse" data-bs-target="#menu-item_vendors"><span class="menu-bar__text">
 									<span class="sherah-menu-icon sherah-svg-icon__v1">
 										<svg  class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="22.038" height="17.943" viewBox="0 0 22.038 17.943">
 											<g id="Icon" transform="translate(-325.516 -274.72)">

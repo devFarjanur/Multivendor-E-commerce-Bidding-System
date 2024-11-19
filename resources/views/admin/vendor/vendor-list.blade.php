@@ -15,7 +15,7 @@
                                         <h2 class="sherah-breadcrumb__title">Vendors</h2>
                                         <ul class="sherah-breadcrumb__list">
                                             <li><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('admin.vendor.grid') }}">Vendor List</a>
+                                            <li class="active"><a href="{{ route('admin.vendor.list') }}">Vendor List</a>
                                             </li>
                                         </ul>
                                     </div>

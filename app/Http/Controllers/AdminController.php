@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Services\AdminService\AdminVendorService;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -9,6 +10,12 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
+    protected $adminVendorService;
+
+    public function __construct(AdminVendorService $adminVendorService)
+    {
+        $this->adminVendorService = $adminVendorService;
+    }
     public function AdminDashboard()
     {
         return view('admin.admin_dashboard');
@@ -96,13 +103,15 @@ class AdminController extends Controller
         return back()->with($notification);
     }  // end method
 
-    public function VendorGrid()
+    public function Vendorlist()
     {
-        return view('admin.vendor.vendor-grid');
+        $vendors = $this->adminVendorService->vendorlist();
+        return view('admin.vendor.vendor-list', compact('vendors'));
     }
     public function VendorRequestList()
     {
-        return view('admin.vendor.vendor-request-list');
+        $vendorsRequest = $this->adminVendorService->vendorRequest();
+        return view('admin.vendor.vendor-request-list', compact('vendorsRequest'));
     }
     public function VendorProfile()
     {
