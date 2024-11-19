@@ -69,8 +69,12 @@
                             <ul class="menu-bar__one-dropdown">
                                 <li><a href="{{ route('admin.vendor.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Vendor List</span></span></a></li>
-                                <li><a href="{{ route('admin.vendor.request.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Vendor Request List</span></span></a></li>
+                                <li><a href="{{ route('admin.vendor.request.list') }}"><span
+                                            class="menu-bar__text"><span class="menu-bar__name">Vendor Request
+                                                List</span></span></a></li>
+                                <li><a href="{{ route('admin.vendor.reject.list') }}"><span
+                                            class="menu-bar__text"><span class="menu-bar__name">Vendor Reject
+                                                List</span></span></a></li>
                             </ul>
                         </div>
                     </li>

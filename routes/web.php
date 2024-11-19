@@ -38,11 +38,14 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/vendors', [AdminController::class, 'VendorList'])->name('admin.vendor.list');
     Route::get('/vendor-profile', [AdminController::class, 'VendorProfile'])->name('admin.vendor.profile');
     Route::get('/vendor-request-list', [AdminController::class, 'VendorRequestList'])->name('admin.vendor.request.list');
+    Route::get('/vendor-reject-list', [AdminController::class, 'VendorRejectList'])->name('admin.vendor.reject.list');
+    Route::post('/approve/{id}', [AdminController::class, 'approveVendorRequest'])->name('vendor.approve.request');
+    Route::post('/reject/{id}', [AdminController::class, 'rejectVendorRequest'])->name('vendor.reject.request');
     Route::get('/products', [AdminController::class, 'AdminProducts'])->name('admin.products');
     Route::get('/upload/products', [AdminController::class, 'AdminProductUpload'])->name('admin.upload.products');
     Route::get('/product/details', [AdminController::class, 'AdminDetailsProduct'])->name('admin.product.details');
-    Route::get('/customer/page', [AdminController::class, 'AdminCustomer'])->name('admin.customer.page');
-    Route::get('/customer/list', [AdminController::class, 'AdminCustomerList'])->name('admin.customer.list');
+    Route::get('/customer-list', [AdminController::class, 'AdminCustomerList'])->name('admin.customer.list');
+    Route::get('/customer-profile', [AdminController::class, 'AdminCustomerProfile'])->name('admin.customer.profile');
     Route::get('/order/details', [AdminController::class, 'AdminOrderDetails'])->name('admin.order.details');
     Route::get('/order/list', [AdminController::class, 'AdminOrderList'])->name('admin.order.list');
     Route::get('/chat/message', [AdminController::class, 'AdminChatMessage'])->name('admin.chat.message');

@@ -15,8 +15,8 @@
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Customers</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="#">Home</a></li>
-                                            <li class="active"><a href="{{ route('admin.customer.page') }}">Customer
+                                            <li><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                                            <li class="active"><a href="{{ route('admin.customer.profile') }}">Customer
                                                     Profile</a>
                                             </li>
                                         </ul>

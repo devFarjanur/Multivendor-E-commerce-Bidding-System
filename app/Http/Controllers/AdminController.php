@@ -113,9 +113,41 @@ class AdminController extends Controller
         $vendorsRequest = $this->adminVendorService->vendorRequest();
         return view('admin.vendor.vendor-request-list', compact('vendorsRequest'));
     }
+
+    public function VendorRejectList()
+    {
+        $vendorsReject = $this->adminVendorService->vendorReject();
+        return view('admin.vendor.vendor-reject-list', compact('vendorsReject'));
+    }
+
+    public function approveVendorRequest(Request $request, $id)
+    {
+        $this->adminVendorService->vendeorApprove($id);
+        $request->session()->flash('message', 'Vendor request approve successfully.');
+        $request->session()->flash('alert-type', 'success');
+        return redirect()->back();
+    }
+
+    public function rejectVendorRequest(Request $request, $id)
+    {
+        $this->adminVendorService->rejectVendor($id);
+        $request->session()->flash('message', 'Vendor request reject successfully.');
+        $request->session()->flash('alert-type', 'success');
+        return redirect()->back();
+    }
+
     public function VendorProfile()
     {
         return view('admin.vendor.vendor-profile');
+    }
+
+    public function AdminCustomerProfile()
+    {
+        return view('admin.customer.customer-profile');
+    }
+    public function AdminCustomerList()
+    {
+        return view('admin.customer.customer-list');
     }
 
     //products page
@@ -132,14 +164,7 @@ class AdminController extends Controller
     {
         return view('admin.product.product-details');
     }
-    public function AdminCustomer()
-    {
-        return view('admin.customer.customer');
-    }
-    public function AdminCustomerList()
-    {
-        return view('admin.customer.customer-list');
-    }
+
     public function AdminOrderDetails()
     {
         return view('admin.order.order-details');

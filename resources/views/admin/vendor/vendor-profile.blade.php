@@ -2,6 +2,7 @@
 @section('admin')
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="sherah-body">
@@ -14,8 +15,8 @@
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Vendors</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="#">Home</a></li>
-                                            <li class="active"><a href="vendor-profile.html">Vendor Profile</a></li>
+                                            <li><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                                            <li class="active"><a href="{{ 'admin.vendor.profile' }}">Vendor Profile</a></li>
                                         </ul>
                                     </div>
                                     <!-- End Sherah Breadcrumb -->
@@ -1028,6 +1029,7 @@
                         <!-- End Dashboard Inner -->
                     </div>
                 </div>
+            </div>
             </div>
     </section>
     <!-- End sherah Dashboard -->

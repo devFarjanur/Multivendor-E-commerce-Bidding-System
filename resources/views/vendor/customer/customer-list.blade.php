@@ -44,7 +44,7 @@
                                                     </div>
                                                     <div class="sherah-table__vendor-img">
                                                         <img src="{{ asset('backend/assets/img/vendor-1.png') }}"
-                                                            alt="#">
+                                                            alt="#">s
                                                     </div>
                                                     <h4 class="sherah-table__vendor--title"><a
                                                             href="customers.html">Mendorcart</a></h4>

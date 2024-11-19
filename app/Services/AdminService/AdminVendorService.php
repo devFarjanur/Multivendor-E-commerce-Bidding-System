@@ -14,16 +14,36 @@ class AdminVendorService
         return Vendor::with('user')->where('status', 'pending')->get();
     }
 
+    public function vendorReject()
+    {
+        return Vendor::with('user')->where('status', 'rejected')->get();
+    }
+
     public function vendeorApprove($id)
     {
-        try{
+        try {
             $vendor = Vendor::where('user_id', $id)->find($id);
             $vendor->update([
                 $vendor->status = 'approved',
             ]);
+            return true;
         } catch (Exception $e) {
             \Log::error("Failed to approve vendor: " . $e->getMessage());
             return false;
+        }
+    }
+
+    public function rejectVendor($id)
+    {
+        try {
+            $vendor = Vendor::where('user_id', $id)->firstOrFail();
+            $vendor->update([
+                'status' => 'rejected',
+            ]);
+            return true;
+        } catch (Exception $e) {
+            \Log::error("Failed to reject vendor: " . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to reject vendor.');
         }
     }
 
