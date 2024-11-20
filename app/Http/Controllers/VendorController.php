@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Services\VendorService\VendorCategoryService;
 use Illuminate\Http\Request;
 use Hash;
 use Illuminate\Http\RedirectResponse;
@@ -11,6 +12,12 @@ use App\Models\User;
 
 class VendorController extends Controller
 {
+    protected $vendorCategoryService;
+
+    public function __construct(VendorCategoryService $vendorCategoryService)
+    {
+        $this->vendorCategoryService = $vendorCategoryService;
+    }
 
     public function VendorLogin()
     {
@@ -105,11 +112,51 @@ class VendorController extends Controller
     }  // end method
 
 
-    //products page
-
-    public function VendorProducts()
+    public function vendorCategoryList()
     {
-        return view('vendor.product.products');
+        $categories = $this->vendorCategoryService->CategoryList();
+        return view('vendor.category.category-list', compact('categories'));
+    }
+
+    public function vendorAddCategory()
+    {
+        return view('vendor.category.add-category');
+    }
+
+    public function vendorCategoryStore(Request $request)
+    {
+        $this->vendorCategoryService->CategoryStore($request);
+        return redirect()->route('vendor.category.list');
+    }
+
+    public function vendorCategoryEdit($id)
+    {
+        $category = $this->vendorCategoryService->findCategory($id);
+        return view('vendor.category.edit-category', compact('category'));
+    }
+
+    public function vendorCategoryUpdate(Request $request, $id)
+    {
+        $this->vendorCategoryService->categoryUpdate($request, $id);
+        return redirect()->route('vendor.category.list');
+    }
+
+    public function vendorCategoryUpdateStatus($request, $id)
+    {
+        $this->vendorCategoryService->categoryUpdateStatus($request, $id);
+        return redirect()->back();
+    }
+
+    public function VendorCategoryDelete($request, $id)
+    {
+        $this->vendorCategoryService->categoryDelete($request, $id);
+        return redirect()->back();
+    }
+
+    //products page
+    public function vendorProductList()
+    {
+        return view('vendor.product.product-list');
     }
 
     public function VendorProductUpload()
