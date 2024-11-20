@@ -11,12 +11,27 @@ class AdminVendorService
 {
     public function vendorRequest()
     {
-        return Vendor::with('user')->where('status', 'pending')->get();
+        return Vendor::with('user')
+            ->where('status', 'pending')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
     }
+
+    public function vendorlist()
+    {
+        return Vendor::with('user')
+            ->where('status', 'approved')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+    }
+
 
     public function vendorReject()
     {
-        return Vendor::with('user')->where('status', 'rejected')->get();
+        return Vendor::with('user')
+            ->where('status', 'rejected')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
     }
 
     public function vendeorApprove($id)
@@ -45,10 +60,5 @@ class AdminVendorService
             \Log::error("Failed to reject vendor: " . $e->getMessage());
             return redirect()->back()->with('error', 'Failed to reject vendor.');
         }
-    }
-
-    public function vendorlist()
-    {
-        return Vendor::with('user')->where('status', 'approved')->get();
     }
 }

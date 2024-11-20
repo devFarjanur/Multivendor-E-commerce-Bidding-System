@@ -43,7 +43,7 @@
             <!---------------------- admin index -->
             @yield('admin')
             <!----------------------------footer -->
-            @include('admin.footer')
+            {{-- @include('admin.footer') --}}
 
         </div>
     </div>

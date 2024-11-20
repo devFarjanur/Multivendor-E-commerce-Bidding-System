@@ -41,7 +41,7 @@
         <!-- admin index -->
         @yield('vendor')
         <!-- footer -->
-        @include('vendor.footer')
+        {{-- @include('vendor.footer') --}}
     </div>
     <!-- Sherah Scripts -->
     <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>

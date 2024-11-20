@@ -32,6 +32,7 @@
                                                 <th class="sherah-table__column-4 sherah-table__h4">Phone</th>
                                                 <th class="sherah-table__column-8 sherah-table__h7">Join On</th>
                                                 <th class="sherah-table__column-7 sherah-table__h6">Status</th>
+                                                <th class="sherah-table__column-7 sherah-table__h6">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody class="sherah-table__body">
@@ -48,21 +49,20 @@
                                                 </td>
                                                 <td class="sherah-table__column-2 sherah-table__data-2">
                                                     <div class="sherah-table__vendor">
-                                                        <h4 class="sherah-table__vendor--title"><a
-                                                                href="{{ route('admin.customer.profile') }}">--</a>
+                                                        <h4 class="sherah-table__vendor--title">Fahim
                                                         </h4>
                                                     </div>
                                                 </td>
                                                 <td class="sherah-table__column-3 sherah-table__data-3">
                                                     <div class="sherah-table__product-content">
                                                         <p class="sherah-table__product-desc">
-                                                            --</p>
+                                                            farjanur15-2956@gmail.com</p>
                                                     </div>
                                                 </td>
                                                 <td class="sherah-table__column-4 sherah-table__data-4">
                                                     <div class="sherah-table__product-content">
                                                         <p class="sherah-table__product-desc">
-                                                            --</p>
+                                                            01775282986</p>
                                                     </div>
                                                 </td>
                                                 <td class="sherah-table__column-6 sherah-table__data-6">
@@ -80,8 +80,18 @@
                                                         <div
                                                             class="sherah-table__status sherah-color2 sherah-color2__bg--opactity text-capitalize">
                                                             {{-- {{ $vendor->status ?? '--' }} --}}
+                                                            Active
                                                         </div>
                                                     </div>
+                                                </td>
+
+                                                <td class="sherah-table__column-8 sherah-table__data-8">
+                                                    {{-- <div class="d-flex justify-content-center align-items-center gap-2"> --}}
+                                                    <a class="btn fw-bold" href="{{ route('admin.customer.profile') }}"
+                                                        style="background-color: #6176FE; color: white;">
+                                                        View Profile
+                                                    </a>
+                                                    {{-- </div> --}}
                                                 </td>
 
                                                 {{-- <td class="sherah-table__column-8 sherah-table__data-8">
