@@ -11,5 +11,11 @@ class Category extends Model
     protected $fillable = [
         'vendor_id',
         'name',
+        'image',
     ];
+
+    public function vendor()
+    {
+        $this->belongsTo(Vendor::class, 'vendor_id');
+    }
 }
