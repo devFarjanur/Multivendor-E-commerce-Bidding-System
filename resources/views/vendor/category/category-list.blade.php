@@ -17,6 +17,10 @@
                                             <li class="active"><a href="{{ route('admin.customer.list') }}">Customer
                                                     List</a></li>
                                         </ul>
+                                        <a class="btn fw-bold" href="{{ route('vendor.add.category') }}"
+                                            style="background-color: #6176FE; color: white;">
+                                            Add Category
+                                        </a>
                                     </div>
                                 </div>
                             </div>
