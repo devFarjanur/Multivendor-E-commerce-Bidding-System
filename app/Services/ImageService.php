@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin;
+namespace App\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,17 +14,16 @@ class ImageService
      * @param  string|null  $oldPhoto
      * @return string|null
      */
-    public function uploadImage(Request $request, $oldPhoto = null)
+    public function uploadImage(Request $request)
     {
-        if ($request->hasFile('photo')) {
-            if ($oldPhoto && Storage::exists('public/upload/admin_images/' . $oldPhoto)) {
-                Storage::delete('public/upload/admin_images/' . $oldPhoto);
-            }
-            $file = $request->file('photo');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/upload/admin_images', $filename);
-            return $filename;
+        if ($request->hasFile('image')) {
+            $photo = $request->file('image');
+            $photoName = now()->format('YmdHi') . $photo->getClientOriginalName();
+            $photo->storeAs('public/admin_images', $photoName);
+
+            return $photoName;
         }
         return null;
     }
+
 }

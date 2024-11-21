@@ -29,7 +29,7 @@
                                         <!-- Category Name -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="form-label">Category Name*</label>
+                                                <label class="form-label">Category Name</label>
                                                 <input class="form-control" placeholder="Enter category name" type="text"
                                                     name="name" required>
                                             </div>
@@ -50,7 +50,7 @@
                                                                 class="image-upload-group__single image-upload-group__single--upload">
                                                                 <input type="file" class="btn-check" name="image"
                                                                     id="image" accept="image/*"
-                                                                    onchange="previewImage(event)" autocomplete="off">
+                                                                    onchange="previewImage(event)" autocomplete="off" required>
                                                                 <label class="image-upload-label" for="image">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="91.787"
                                                                         height="84.116" viewBox="0 0 91.787 84.116">

@@ -3,15 +3,22 @@
 namespace App\Services\VendorService;
 
 use App\Models\Category;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Exception;
 
 class VendorCategoryService
 {
+    protected $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
     public function categoryList()
     {
         return Category::with('vendor')
-            ->where('status', 'approved')
+            ->where('status', 'active')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
     }
@@ -19,9 +26,12 @@ class VendorCategoryService
     public function categoryStore(Request $request)
     {
         try {
+            $imageName = $this->imageService->uploadImage($request);
             Category::create([
+                'vendor_id' => auth()->user()->id, 
                 'name' => $request->name,
-                'image' => $request->image
+                'image' => $imageName,
+                'status' => 'active',
             ]);
             $request->session()->flash('message', 'Category added successfully.');
             $request->session()->flash('alert-type', 'success');
@@ -36,7 +46,7 @@ class VendorCategoryService
 
     public function findCategory($id)
     {
-        return Category::where('vendor_id', $id)->findOrFail($id);
+        return Category::findOrFail($id);
     }
 
     public function categoryUpdateStatus(Request $request, $id)
@@ -61,10 +71,10 @@ class VendorCategoryService
     {
         try {
             $category = $this->findCategory($id);
+            $photoName = $this->imageService->uploadImage($request);
             $category->update([
                 'name' => $request->name,
-                'image' => $request->image,
-                'status' => $request->status,
+                'image' => $photoName
             ]);
             $request->session()->flash('message', 'Category updated successfully.');
             $request->session()->flash('alert-type', 'success');
@@ -77,7 +87,7 @@ class VendorCategoryService
         }
     }
 
-    public function categoryDelete(Request $request, $id)
+    public function categoryDelete($request, $id)
     {
         try {
             $category = $this->findCategory($id);

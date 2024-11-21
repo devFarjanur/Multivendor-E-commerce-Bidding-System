@@ -125,6 +125,7 @@ class VendorController extends Controller
 
     public function vendorCategoryStore(Request $request)
     {
+        // dd($request->all());
         $this->vendorCategoryService->CategoryStore($request);
         return redirect()->route('vendor.category.list');
     }
@@ -147,9 +148,9 @@ class VendorController extends Controller
         return redirect()->back();
     }
 
-    public function VendorCategoryDelete($request, $id)
+    public function vendorCategoryDelete(Request $request, $id)
     {
-        $this->vendorCategoryService->categoryDelete($request, $id);
+        $this->vendorCategoryService->categoryDelete($request,$id);
         return redirect()->back();
     }
 

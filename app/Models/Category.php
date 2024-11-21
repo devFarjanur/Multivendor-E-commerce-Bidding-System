@@ -12,10 +12,11 @@ class Category extends Model
         'vendor_id',
         'name',
         'image',
+        'status',
     ];
 
     public function vendor()
     {
-        $this->belongsTo(Vendor::class, 'vendor_id');
+        return $this->belongsTo(Vendor::class, 'vendor_id');
     }
 }
