@@ -81,7 +81,7 @@
                                                                     @method('DELETE')  
                                                                     <button type="submit"
                                                                         class="btn btn-outline-danger d-flex align-items-center gap-1">
-                                                                        <i class="fa-solid fa-trash"></i>
+                                                                        <i class="fa-solid fa-trash"></i> Delete
                                                                     </button>
                                                                 </form>
 
