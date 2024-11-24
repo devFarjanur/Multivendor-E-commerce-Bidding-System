@@ -25,24 +25,6 @@ class UsersTableSeeder extends Seeder
                 'profile_image' => 'admin_image.png',
             ],
             [
-                'name' => 'Vendor',
-                'email' => 'vendor@gmail.com',
-                'phone' => '+8801775282987',
-                'password' => Hash::make('123456789'),
-                'role' => 'vendor',
-                'address' => 'Vendor Address',
-                'profile_image' => 'vendor_image.png',
-            ],
-            [
-                'name' => 'Vendor2',
-                'email' => 'vendor2@gmail.com',
-                'phone' => '+8801775282987',
-                'password' => Hash::make('123456789'),
-                'role' => 'vendor',
-                'address' => 'Vendor2 Address',
-                'profile_image' => 'vendor2_image.png',
-            ],
-            [
                 'name' => 'Customer',
                 'email' => 'user@gmail.com',
                 'phone' => '+8801775282988',
@@ -53,23 +35,36 @@ class UsersTableSeeder extends Seeder
             ],
         ]);
 
-        // Now create vendor details in the 'vendors' table
-        // Fetching user IDs that correspond to vendors
-        $vendorUserIds = DB::table('users')->whereIn('email', ['vendor@gmail.com', 'vendor2@gmail.com'])->pluck('id');
+        // Create 20 vendor users
+        $vendorNames = [];
+        for ($i = 1; $i <= 20; $i++) {
+            $vendorNames[] = "Vendor " . $i;
+        }
 
-        DB::table('vendors')->insert([
-            [
-                'user_id' => $vendorUserIds[0], // Vendor 1
-                'store_name' => 'Vendor Store 1',
-                'store_logo' => 'vendor_logo_1.png',
-                'status' => 'approved',  // Vendor status can be 'approved', 'pending', etc.
-            ],
-            [
-                'user_id' => $vendorUserIds[1], // Vendor 2
-                'store_name' => 'Vendor Store 2',
-                'store_logo' => 'vendor_logo_2.png',
-                'status' => 'pending',  // Vendor status set to 'pending'
-            ],
-        ]);
+        // Insert 20 vendor users into the 'users' table and fetch their IDs
+        $vendorUserIds = [];
+        foreach ($vendorNames as $i => $name) {
+            $userId = DB::table('users')->insertGetId([
+                'name' => $name,
+                'email' => strtolower(str_replace(' ', '', $name)) . "@gmail.com",
+                'phone' => '+880177528' . str_pad($i + 1, 4, '0', STR_PAD_LEFT),
+                'password' => Hash::make('123456789'),
+                'role' => 'vendor',
+                'address' => $name . ' Address',
+                'profile_image' => strtolower(str_replace(' ', '_', $name)) . '_image.png',
+            ]);
+            $vendorUserIds[] = $userId;
+        }
+
+        // Insert vendors data for each vendor user with random status
+        $statuses = ['active', 'pending', 'rejected'];  // Randomly assign one of these statuses
+        foreach ($vendorUserIds as $index => $userId) {
+            DB::table('vendors')->insert([
+                'user_id' => $userId,
+                'store_name' => 'Store of ' . $vendorNames[$index], // Vendor store name
+                'store_logo' => strtolower(str_replace(' ', '_', $vendorNames[$index])) . '_logo.png', // Vendor store logo
+                'status' => $statuses[array_rand($statuses)], // Random status
+            ]);
+        }
     }
 }

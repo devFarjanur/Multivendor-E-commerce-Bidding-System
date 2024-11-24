@@ -31,8 +31,8 @@ class AuthenticatedSessionController extends Controller
             $user = $request->user();
             if ($user->role === 'vendor') {
                 $vendorStatus = $user->vendor->status ?? 'pending';
-                if ($vendorStatus !== 'approved') {
-                    $request->session()->flash('message', 'Your vendor account is not approved yet. Please contact support.');
+                if ($vendorStatus !== 'active') {
+                    $request->session()->flash('message', 'Your vendor account is not active yet. Please contact support.');
                     $request->session()->flash('alert-type', 'error');
                     Auth::logout();
                     return redirect()->route('vendor.login');

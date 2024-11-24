@@ -1,5 +1,5 @@
-@extends('vendor.index')
-@section('vendor')
+
+<?php $__env->startSection('vendor'); ?>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -13,13 +13,13 @@
                                     <div class="sherah-breadcrumb mg-top-30">
                                         <h2 class="sherah-breadcrumb__title">Categories</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('vendor.category.list') }}">Category
+                                            <li><a href="<?php echo e(route('vendor.dashboard')); ?>">Home</a></li>
+                                            <li class="active"><a href="<?php echo e(route('vendor.category.list')); ?>">Category
                                                     List</a></li>
                                         </ul>
                                     </div>
                                     <div class="d-flex justify-content-end">
-                                        <a class="btn fw-bold" href="{{ route('vendor.add.category') }}"
+                                        <a class="btn fw-bold" href="<?php echo e(route('vendor.add.category')); ?>"
                                             style="background-color: #6176FE; color: white;">
                                             Add Category
                                         </a>
@@ -38,14 +38,14 @@
                                             </tr>
                                         </thead>
                                         <tbody class="sherah-table__body">
-                                            @if (count($categories) > 0)
-                                                @foreach ($categories as $category)
+                                            <?php if(count($categories) > 0): ?>
+                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <tr>
                                                         <td class="sherah-table__column-1 sherah-table__data-1">
                                                             <div
                                                                 class="sherah-table__product d-flex justify-content-center">
                                                                 <div class="sherah-table__vendor-img">
-                                                                    <img src="{{ asset('upload/admin_images/' . $category->image) }}"
+                                                                    <img src="<?php echo e(asset('upload/admin_images/' . $category->image)); ?>"
                                                                         alt="Category Image" class="img-fluid">
                                                                 </div>
                                                             </div>
@@ -53,7 +53,8 @@
                                                         <td class="sherah-table__column-2 sherah-table__data-2">
                                                             <div class="sherah-table__vendor">
                                                                 <h4 class="sherah-table__vendor--title">
-                                                                    {{ $category->name }}
+                                                                    <?php echo e($category->name); ?>
+
                                                                 </h4>
                                                             </div>
                                                         </td>
@@ -61,21 +62,13 @@
                                                             <div
                                                                 class="d-flex justify-content-center align-items-center gap-2">
                                                                 <!-- Approve Button -->
-                                                                {{-- <form method="POST"
-                                                            action="{{ route('vendor.approve.request', $vendor->user_id) }}"
-                                                            style="display:inline;">
-                                                            @csrf
-                                                            <button type="submit"
-                                                                class="btn btn-outline-success d-flex align-items-center gap-1">
-                                                                <i class="fas fa-check-circle"></i> Approve
-                                                            </button>
-                                                        </form> --}}
+                                                                
                                                                 <!-- Delete Button -->
                                                                 <form method="POST"
-                                                                    action="{{ route('vendor.category.delete', $category->id) }}"
+                                                                    action="<?php echo e(route('vendor.category.delete', $category->id)); ?>"
                                                                     style="display:inline;">
-                                                                    @csrf
-                                                                    @method('DELETE')
+                                                                    <?php echo csrf_field(); ?>
+                                                                    <?php echo method_field('DELETE'); ?>
                                                                     <button type="submit"
                                                                         class="btn btn-outline-danger d-flex align-items-center gap-1">
                                                                         <i class="fa-solid fa-trash"></i> Delete
@@ -85,9 +78,9 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                @endforeach
-                                            @else
-                                            @endif
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                            <?php endif; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -108,4 +101,6 @@
             text-align: center !important;
         }
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('vendor.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/vendor/category/category-list.blade.php ENDPATH**/ ?>

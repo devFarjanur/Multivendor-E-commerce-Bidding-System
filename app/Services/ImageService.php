@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ImageService
 {
@@ -19,11 +20,13 @@ class ImageService
         if ($request->hasFile('image')) {
             $photo = $request->file('image');
             $photoName = now()->format('YmdHi') . $photo->getClientOriginalName();
-            $photo->storeAs('public/admin_images', $photoName);
-
+            $path = public_path('upload/admin_images');
+            if (!File::exists($path)) {
+                File::makeDirectory($path, 0775, true);
+            }
+            $photo->move($path, $photoName);
             return $photoName;
         }
         return null;
     }
-
 }
