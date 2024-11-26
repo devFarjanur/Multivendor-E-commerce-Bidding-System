@@ -1,5 +1,5 @@
-
-<?php $__env->startSection('vendor'); ?>
+@extends('vendor.index')
+@section('vendor')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
@@ -12,24 +12,33 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="sherah-breadcrumb mg-top-30">
-                                        <h2 class="sherah-breadcrumb__title">Add Category</h2>
+                                        <h2 class="sherah-breadcrumb__title">Add SubCategory</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="<?php echo e(route('vendor.dashboard')); ?>">Home</a></li>
-                                            <li class="active"><a href="<?php echo e(route('vendor.add.category')); ?>">Add Category</a>
+                                            <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
+                                            <li class="active"><a href="{{ route('vendor.add.subcategory') }}">Add
+                                                    Subcategory</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="sherah-page-inner sherah-border sherah-basic-page sherah-default-bg mg-top-25 p-0">
-                                <form class="sherah-wc__form-main" action="<?php echo e(route('vendor.category.store')); ?>"
+                                <form class="sherah-wc__form-main" action="{{ route('vendor.Subcategory.store') }}"
                                     method="POST" enctype="multipart/form-data">
-                                    <?php echo csrf_field(); ?>
+                                    @csrf
                                     <div class="row">
-                                        <!-- Category Name -->
+                                        <!-- Select Category -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="form-label">Category Name</label>
+                                                <label class="form-label">Subcategory Name</label>
+                                                <input class="form-control" placeholder="Enter category name" type="text"
+                                                    name="name" required>
+                                            </div>
+                                        </div>
+                                        <!-- Subcategory Name -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Subcategory Name</label>
                                                 <input class="form-control" placeholder="Enter category name" type="text"
                                                     name="name" required>
                                             </div>
@@ -37,20 +46,21 @@
                                         <!-- Category Image -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="form-label">Category Image</label>
+                                                <label class="form-label">Subcategory Image</label>
                                                 <div class="product-form-box sherah-border">
                                                     <div class="form-group">
                                                         <div class="image-upload-group">
                                                             <div class="image-upload-group__single">
-                                                                <img id="showImage"
-                                                                    src="<?php echo e(url('upload/no_image.jpg')); ?>" class="img-fluid"
-                                                                    alt="Category Image" style="max-width: 200px;">
+                                                                <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
+                                                                    class="img-fluid" alt="Category Image"
+                                                                    style="max-width: 200px;">
                                                             </div>
                                                             <div
                                                                 class="image-upload-group__single image-upload-group__single--upload">
                                                                 <input type="file" class="btn-check" name="image"
                                                                     id="image" accept="image/*"
-                                                                    onchange="previewImage(event)" autocomplete="off" required>
+                                                                    onchange="previewImage(event)" autocomplete="off"
+                                                                    required>
                                                                 <label class="image-upload-label" for="image">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="91.787"
                                                                         height="84.116" viewBox="0 0 91.787 84.116">
@@ -77,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex gap-3 justify-content-center">
-                                        <button type="submit" class="btn btn-primary">Save Category</button>
+                                        <button type="submit" class="btn btn-primary">Save Subcategory</button>
                                         <button type="reset" class="btn btn-secondary">Cancel</button>
                                     </div>
                                 </form>
@@ -104,6 +114,4 @@
             });
         });
     </script>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('vendor.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/vendor/category/add-category.blade.php ENDPATH**/ ?>
+@endsection

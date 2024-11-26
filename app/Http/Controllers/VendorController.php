@@ -115,42 +115,43 @@ class VendorController extends Controller
     public function vendorCategoryList()
     {
         $categories = $this->vendorCategoryService->CategoryList();
-        return view('vendor.category.category-list', compact('categories'));
+        return view('vendor.category.category-subcategory-list', compact('categories'));
     }
 
-    public function vendorAddCategory()
+    public function vendorAddSubcategory()
     {
-        return view('vendor.category.add-category');
+        $categories = $this->vendorCategoryService->categoryList();
+        $subcategories = $this->vendorCategoryService->subcategoryList();
+        return view('vendor.category.add-category-subcategory', compact('categories', 'subcategories'));
     }
 
-    public function vendorCategoryStore(Request $request)
+    public function vendorSubcategoryStore(Request $request)
     {
-        // dd($request->all());
-        $this->vendorCategoryService->CategoryStore($request);
+        $this->vendorCategoryService->subcategoryStore($request);
         return redirect()->route('vendor.category.list');
     }
 
-    public function vendorCategoryEdit($id)
+    public function vendorSubcategoryEdit($id)
     {
         $category = $this->vendorCategoryService->findCategory($id);
-        return view('vendor.category.edit-category', compact('category'));
+        return view('vendor.category.edit-subcategory', compact('category'));
     }
 
     public function vendorCategoryUpdate(Request $request, $id)
     {
-        $this->vendorCategoryService->categoryUpdate($request, $id);
+        $this->vendorCategoryService->subcategoryUpdate($request, $id);
         return redirect()->route('vendor.category.list');
     }
 
-    public function vendorCategoryUpdateStatus($request, $id)
+    public function vendorSubcategoryUpdateStatus($request, $id)
     {
-        $this->vendorCategoryService->categoryUpdateStatus($request, $id);
+        $this->vendorCategoryService->subcategoryUpdateStatus($request, $id);
         return redirect()->back();
     }
 
     public function vendorCategoryDelete(Request $request, $id)
     {
-        $this->vendorCategoryService->categoryDelete($request,$id);
+        $this->vendorCategoryService->subcategoryDelete($request, $id);
         return redirect()->back();
     }
 
@@ -160,7 +161,7 @@ class VendorController extends Controller
         return view('vendor.product.product-list');
     }
 
-    public function VendorProductUpload()
+    public function vendorProductStore()
     {
         return view('vendor.product.product-upload');
     }
