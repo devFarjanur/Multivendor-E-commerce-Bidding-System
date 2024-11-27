@@ -4,6 +4,7 @@ namespace App\Services\VendorService;
 
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Services\HelperService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Exception;
@@ -11,10 +12,12 @@ use Exception;
 class VendorCategoryService
 {
     protected $imageService;
+    protected $helperService;
 
-    public function __construct(ImageService $imageService)
+    public function __construct(ImageService $imageService, HelperService $helperService)
     {
         $this->imageService = $imageService;
+        $this->helperService = $helperService;
     }
     public function categoryList()
     {
@@ -25,8 +28,8 @@ class VendorCategoryService
     public function categoryListWithActiveStatus()
     {
         return Category::where('status', 'active')
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
     }
 
     public function findCategory($id)
@@ -44,9 +47,9 @@ class VendorCategoryService
     public function subcategoryListWithActiveStatus()
     {
         return Subcategory::with('vendor', 'category')
-        ->where('status', 'active')
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
+            ->where('status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
     }
 
     public function subcategoryFind($id)
@@ -64,13 +67,11 @@ class VendorCategoryService
                 'name' => $request->name,
                 'image' => $imageName,
             ]);
-            $request->session()->flash('message', 'Subcategory added successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Subcategory added successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to add subcategory: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to add subcategory.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to add subcategory.', 'error');
             return false;
         }
     }
@@ -85,13 +86,11 @@ class VendorCategoryService
                 'name' => $request->name,
                 'image' => $imageName,
             ]);
-            $request->session()->flash('message', 'Subcategory updated successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Subcategory updated successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to updated subcategory: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to updated subcategory.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to updated subcategory.', 'error');
             return false;
         }
 
@@ -104,13 +103,11 @@ class VendorCategoryService
             $subcategory->update([
                 'status' => $request->status,
             ]);
-            $request->session()->flash('message', 'Subcategory status updated successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Subcategory status updated successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to update subcategory status.: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to update subcategory status.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to update subcategory status.', 'error');
             return false;
         }
     }
@@ -120,13 +117,11 @@ class VendorCategoryService
         try {
             $subcategory = $this->subcategoryFind($id);
             $subcategory->delete();
-            $request->session()->flash('message', 'Subcategory deleted successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Subcategory deleted successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to delete subcategory: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to delete subcategory.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to delete subcategory.', 'error');
             return false;
         }
     }

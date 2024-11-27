@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="sherah-page-inner sherah-border sherah-basic-page sherah-default-bg mg-top-25 p-0">
-                                <form class="sherah-wc__form-main" action="{{ route('vendor.Subcategory.store') }}"
+                                <form class="sherah-wc__form-main" action="{{ route('vendor.subcategory.store') }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">

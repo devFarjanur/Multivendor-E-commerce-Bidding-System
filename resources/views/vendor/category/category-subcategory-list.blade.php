@@ -15,7 +15,8 @@
                                         <h2 class="sherah-breadcrumb__title">Categories & Subcategories</h2>
                                         <ul class="sherah-breadcrumb__list">
                                             <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('vendor.category.list') }}">Category & Subcategory
+                                            <li class="active"><a href="{{ route('vendor.category.list') }}">Category &
+                                                    Subcategory
                                                     List</a></li>
                                         </ul>
                                     </div>
@@ -60,8 +61,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="sherah-table__body">
-                                                    @if (count($categories) > 0)
-                                                        @foreach ($categories as $category)
+                                                    @if (count($subcategories) > 0)
+                                                        @foreach ($subcategories as $subcategory)
                                                             <tr>
                                                                 {{-- <td class="sherah-table__column-1 sherah-table__data-1">
                                                                     <div
@@ -76,7 +77,7 @@
                                                                     <div
                                                                         class="d-flex justify-content-center align-items-center">
                                                                         <div class="sherah-table__vendor-img">
-                                                                            <img src="{{ asset('upload/admin_images/' . $category->image) }}"
+                                                                            <img src="{{ asset('upload/admin_images/' . $subcategory->image) }}"
                                                                                 alt="Category Image" class="img-fluid">
                                                                         </div>
                                                                     </div>
@@ -84,7 +85,7 @@
                                                                 <td class="sherah-table__column-2 sherah-table__data-2">
                                                                     <div class="sherah-table__vendor">
                                                                         <h4 class="sherah-table__vendor--title">
-                                                                            {{ $category->name }}
+                                                                            {{ $subcategory->name }}
                                                                         </h4>
                                                                     </div>
                                                                 </td>
@@ -92,15 +93,15 @@
                                                                     <div
                                                                         class="d-flex justify-content-center align-items-center gap-2">
                                                                         <!-- Approve Button -->
-                                                                        {{-- <form method="POST"
-                                                                    action="{{ route('vendor.approve.request', $vendor->user_id) }}"
-                                                                    style="display:inline;">
-                                                                    @csrf
-                                                                    <button type="submit"
-                                                                        class="btn btn-outline-success d-flex align-items-center gap-1">
-                                                                        <i class="fas fa-check-circle"></i> Approve
-                                                                    </button>
-                                                                </form> --}}
+                                                                        <form method="POST"
+                                                                            action="{{ route('vendor.edit.subcategory', $subcategory->id) }}"
+                                                                            style="display:inline;">
+                                                                            @csrf
+                                                                            <button type="submit"
+                                                                                class="btn btn-outline-success d-flex align-items-center gap-1">
+                                                                                <i class="fas fa-check-circle"></i> Edit
+                                                                            </button>
+                                                                        </form>
                                                                         <!-- Delete Button -->
                                                                         <form method="POST"
                                                                             action="{{ route('vendor.subcategory.delete', $category->id) }}"

@@ -1,8 +1,10 @@
 <?php
 
+namespace App\Services;
 use Illuminate\Http\Request;
 
-if (!function_exists('setFlashMessage')) {
+class HelperService
+{
     /**
      * Set a flash message for the session.
      *
@@ -10,7 +12,7 @@ if (!function_exists('setFlashMessage')) {
      * @param string $message
      * @param string $type
      */
-    function setFlashMessage(Request $request, $message, $type)
+    public function setFlashMessage(Request $request, $message, $type)
     {
         $request->session()->flash('message', $message);
         $request->session()->flash('alert-type', $type);

@@ -2,18 +2,22 @@
 
 namespace App\Services\VendorService;
 use App\Models\Product;
+use App\Services\HelperService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Pagination\Paginator;
+use App\Providers\HelperServiceProvider;
+
 
 class VendorProductService
 {
     protected $imageService;
+    protected $helperService;
 
-    public function __construct(ImageService $imageService)
+    public function __construct(ImageService $imageService, HelperService $helperService)
     {
         $this->imageService = $imageService;
+        $this->helperService = $helperService;
     }
 
     public function productList()
@@ -57,13 +61,11 @@ class VendorProductService
                 'price' => $request->price,
                 'image' => $imageName,
             ]);
-            $request->session()->flash('message', 'Product added successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Product added successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to add product: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to add product.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to add product.', 'error');
             return false;
         }
     }
@@ -82,13 +84,11 @@ class VendorProductService
                 'price' => $request->price,
                 'image' => $imageName,
             ]);
-            $request->session()->flash('message', 'Product updated successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Product updated successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to update product: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to update product.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to update product.', 'error');
             return false;
         }
     }
@@ -100,13 +100,11 @@ class VendorProductService
             $product->update([
                 'status' => $request->status,
             ]);
-            $request->session()->flash('message', 'Prodcut status updated successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Prodcut status updated successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to update prodcut status: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to update prodcut status.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to update prodcut status.', 'error');
             return false;
         }
     }
@@ -116,28 +114,12 @@ class VendorProductService
         try {
             $product = $this->findProductById($id);
             $product->delete();
-            $request->session()->flash('message', 'Prodcut deleted successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'Product deleted successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to delete prodcut: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to delete prodcut.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to delete prodcut.', 'error');
             return false;
         }
     }
-
-    // public function deleteProduct(Request $request, $id)
-    // {
-    //     try {
-    //         $product = $this->findProductById($id);
-    //         $product->delete();
-    //         $this->setFlashMessage($request, 'Product deleted successfully.', 'success');
-    //         return true;
-    //     } catch (Exception $e) {
-    //         \Log::error("Failed to delete product: " . $e->getMessage());
-    //         $this->setFlashMessage($request, 'Failed to delete product.', 'error');
-    //         return false;
-    //     }
-    // }
 }

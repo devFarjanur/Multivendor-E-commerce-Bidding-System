@@ -56,6 +56,7 @@ return array(
     'App\\Services\\AdminService\\AdminVendorService' => $baseDir . '/app/Services/AdminService/AdminVendorService.php',
     'App\\Services\\CustomerService\\CustomerCategoryService' => $baseDir . '/app/Services/CustomerService/CustomerCategoryService.php',
     'App\\Services\\CustomerService\\CustomerProductService' => $baseDir . '/app/Services/CustomerService/CustomerProductService.php',
+    'App\\Services\\HelperService' => $baseDir . '/app/Services/HelperService.php',
     'App\\Services\\ImageService' => $baseDir . '/app/Services/ImageService.php',
     'App\\Services\\VendorService\\VendorCategoryService' => $baseDir . '/app/Services/VendorService/VendorCategoryService.php',
     'App\\Services\\VendorService\\VendorProductService' => $baseDir . '/app/Services/VendorService/VendorProductService.php',

@@ -115,14 +115,14 @@ class VendorController extends Controller
     public function vendorCategoryList()
     {
         $categories = $this->vendorCategoryService->CategoryList();
-        return view('vendor.category.category-subcategory-list', compact('categories'));
+        $subcategories = $this->vendorCategoryService->subcategoryList();
+        return view('vendor.category.category-subcategory-list', compact('categories', 'subcategories'));
     }
 
     public function vendorAddSubcategory()
     {
         $categories = $this->vendorCategoryService->categoryList();
-        $subcategories = $this->vendorCategoryService->subcategoryList();
-        return view('vendor.category.add-category-subcategory', compact('categories', 'subcategories'));
+        return view('vendor.category.add-category-subcategory', compact('categories'));
     }
 
     public function vendorSubcategoryStore(Request $request)
@@ -131,10 +131,10 @@ class VendorController extends Controller
         return redirect()->route('vendor.category.list');
     }
 
-    public function vendorSubcategoryEdit($id)
+    public function vendorEditSubcategory($id)
     {
-        $category = $this->vendorCategoryService->findCategory($id);
-        return view('vendor.category.edit-subcategory', compact('category'));
+        $subcategory = $this->vendorCategoryService->subcategoryFind($id);
+        return view('vendor.category.edit-subcategory', compact('subcategory'));
     }
 
     public function vendorCategoryUpdate(Request $request, $id)

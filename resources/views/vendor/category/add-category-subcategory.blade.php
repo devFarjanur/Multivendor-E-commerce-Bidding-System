@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="sherah-page-inner sherah-border sherah-basic-page sherah-default-bg mg-top-25 p-0">
-                                <form class="sherah-wc__form-main" action="{{ route('vendor.Subcategory.store') }}"
+                                <form class="sherah-wc__form-main" action="{{ route('vendor.subcategory.store') }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -33,7 +33,7 @@
                                                 <label class="sherah-wc__form-label">Category</label>
                                                 <select class="form-group__input" aria-label="Default select example">
                                                     @foreach ($categories as $category)
-                                                        <option selected="">Select Category</option>
+                                                        <option select="">Select Category</option>
                                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                     @endforeach
                                                 </select>

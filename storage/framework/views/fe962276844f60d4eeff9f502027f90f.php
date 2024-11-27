@@ -15,7 +15,8 @@
                                         <h2 class="sherah-breadcrumb__title">Categories & Subcategories</h2>
                                         <ul class="sherah-breadcrumb__list">
                                             <li><a href="<?php echo e(route('vendor.dashboard')); ?>">Home</a></li>
-                                            <li class="active"><a href="<?php echo e(route('vendor.category.list')); ?>">Category & Subcategory
+                                            <li class="active"><a href="<?php echo e(route('vendor.category.list')); ?>">Category &
+                                                    Subcategory
                                                     List</a></li>
                                         </ul>
                                     </div>
@@ -60,15 +61,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="sherah-table__body">
-                                                    <?php if(count($categories) > 0): ?>
-                                                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(count($subcategories) > 0): ?>
+                                                        <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <tr>
                                                                 
                                                                 <td class="sherah-table__column-1 sherah-table__data-1">
                                                                     <div
                                                                         class="d-flex justify-content-center align-items-center">
                                                                         <div class="sherah-table__vendor-img">
-                                                                            <img src="<?php echo e(asset('upload/admin_images/' . $category->image)); ?>"
+                                                                            <img src="<?php echo e(asset('upload/admin_images/' . $subcategory->image)); ?>"
                                                                                 alt="Category Image" class="img-fluid">
                                                                         </div>
                                                                     </div>
@@ -76,7 +77,7 @@
                                                                 <td class="sherah-table__column-2 sherah-table__data-2">
                                                                     <div class="sherah-table__vendor">
                                                                         <h4 class="sherah-table__vendor--title">
-                                                                            <?php echo e($category->name); ?>
+                                                                            <?php echo e($subcategory->name); ?>
 
                                                                         </h4>
                                                                     </div>
@@ -85,7 +86,15 @@
                                                                     <div
                                                                         class="d-flex justify-content-center align-items-center gap-2">
                                                                         <!-- Approve Button -->
-                                                                        
+                                                                        <form method="POST"
+                                                                            action="<?php echo e(route('vendor.edit.subcategory', $subcategory->id)); ?>"
+                                                                            style="display:inline;">
+                                                                            <?php echo csrf_field(); ?>
+                                                                            <button type="submit"
+                                                                                class="btn btn-outline-success d-flex align-items-center gap-1">
+                                                                                <i class="fas fa-check-circle"></i> Edit
+                                                                            </button>
+                                                                        </form>
                                                                         <!-- Delete Button -->
                                                                         <form method="POST"
                                                                             action="<?php echo e(route('vendor.subcategory.delete', $category->id)); ?>"

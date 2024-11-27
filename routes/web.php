@@ -76,7 +76,8 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
     Route::post('/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
     Route::get('/category-subcategory-list', [VendorController::class, 'vendorCategoryList'])->name('vendor.category.list');
     Route::get('/add-subcategory', [VendorController::class, 'vendorAddSubcategory'])->name('vendor.add.subcategory');
-    Route::post('/subcategory-store', [VendorController::class, 'vendorSubcategoryStore'])->name('vendor.Subcategory.store');
+    Route::post('/subcategory-store', [VendorController::class, 'vendorSubcategoryStore'])->name('vendor.subcategory.store');
+    Route::get('/edit-subcategory', [VendorController::class, 'vendorEditSubcategory'])->name('vendor.edit.subcategory');
     Route::delete('/subcategory-delete/{id}', [VendorController::class, 'vendorSubcategoryDelete'])->name('vendor.subcategory.delete');
     Route::get('/product-list', [VendorController::class, 'vendorProductList'])->name('vendor.product.list');
     Route::get('/upload/products', [VendorController::class, 'VendorProductUpload'])->name('vendor.upload.products');

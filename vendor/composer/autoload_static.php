@@ -39,7 +39,6 @@ class ComposerStaticInit85309d4524da1baae35ac151622b248f
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '017b24472353920ed42bb364f7653c43' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/helpers.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
-        'd21d43db5f6e840ee7b10744ec7fdf66' => __DIR__ . '/../..' . '/app/Helpers/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -629,6 +628,7 @@ class ComposerStaticInit85309d4524da1baae35ac151622b248f
         'App\\Services\\AdminService\\AdminVendorService' => __DIR__ . '/../..' . '/app/Services/AdminService/AdminVendorService.php',
         'App\\Services\\CustomerService\\CustomerCategoryService' => __DIR__ . '/../..' . '/app/Services/CustomerService/CustomerCategoryService.php',
         'App\\Services\\CustomerService\\CustomerProductService' => __DIR__ . '/../..' . '/app/Services/CustomerService/CustomerProductService.php',
+        'App\\Services\\HelperService' => __DIR__ . '/../..' . '/app/Services/HelperService.php',
         'App\\Services\\ImageService' => __DIR__ . '/../..' . '/app/Services/ImageService.php',
         'App\\Services\\VendorService\\VendorCategoryService' => __DIR__ . '/../..' . '/app/Services/VendorService/VendorCategoryService.php',
         'App\\Services\\VendorService\\VendorProductService' => __DIR__ . '/../..' . '/app/Services/VendorService/VendorProductService.php',

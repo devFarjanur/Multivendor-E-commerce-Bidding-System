@@ -23,27 +23,29 @@
                                 </div>
                             </div>
                             <div class="sherah-page-inner sherah-border sherah-basic-page sherah-default-bg mg-top-25 p-0">
-                                <form class="sherah-wc__form-main" action="<?php echo e(route('vendor.Subcategory.store')); ?>"
+                                <form class="sherah-wc__form-main" action="<?php echo e(route('vendor.subcategory.store')); ?>"
                                     method="POST" enctype="multipart/form-data">
                                     <?php echo csrf_field(); ?>
                                     <div class="row">
                                         <!-- Select Category -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="sherah-wc__form-label">Category*</label>
+                                                <label class="sherah-wc__form-label">Category</label>
                                                 <select class="form-group__input" aria-label="Default select example">
-                                                    <option selected="">Men</option>
-                                                    <option value="1">Women</option>
-                                                    <option value="2">Clock</option>
+                                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option select="">Select Category</option>
+                                                        <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <!-- Subcategory Name -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="sherah-wc__form-label">Subcategory Name*</label>
+                                                <label class="sherah-wc__form-label">Subcategory Name</label>
                                                 <div class="form-group__input">
-                                                    <input class="sherah-wc__form-input" placeholder="Name" type="text" name="name">
+                                                    <input class="sherah-wc__form-input" placeholder="Name" type="text"
+                                                        name="name">
                                                 </div>
                                             </div>
                                         </div>
