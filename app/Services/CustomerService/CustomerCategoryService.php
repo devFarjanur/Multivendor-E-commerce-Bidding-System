@@ -18,16 +18,16 @@ class CustomerCategoryService
         $this->imageService = $imageService;
     }
 
-    public function customerCategoryList()
+    public function getActiveCategories()
     {
         return Category::where('status', 'active')->get();
     }
 
-    public function customerSubcategoryList()
+    public function getActiveSubcategoriesWithRelations()
     {
-        return Subcategory::with('vendor', 'category')
-        ->where('status', 'active')
-        ->get();
+        return Subcategory::with(['vendor', 'category'])
+            ->where('status', 'active')
+            ->get();
     }
 
     public function trycatch($request)

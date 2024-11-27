@@ -39,9 +39,9 @@ class VendorProductService
             ->paginate(10);
     }
 
-    public function productFind($id)
+    public function findProductById($id)
     {
-        return Product::with('vendor', 'category', 'subcategory')->findOrFail($id);
+        return Product::with(['vendor', 'category', 'subcategory'])->findOrFail($id);
     }
 
     public function productStore(Request $request)
@@ -72,7 +72,7 @@ class VendorProductService
     {
         try {
             $imageName = $this->imageService->uploadImage($request);
-            $product = $this->productFind($id);
+            $product = $this->findProductById($id);
             $product->update([
                 'vendor_id' => $request->vendor_id,
                 'category_id' => $request->category_id,
@@ -96,7 +96,7 @@ class VendorProductService
     public function updateProductStatus(Request $request, $id)
     {
         try {
-            $product = $this->productFind($id);
+            $product = $this->findProductById($id);
             $product->update([
                 'status' => $request->status,
             ]);
@@ -114,7 +114,7 @@ class VendorProductService
     public function deteteProduct($request, $id)
     {
         try {
-            $product = $this->productFind($id);
+            $product = $this->findProductById($id);
             $product->delete();
             $request->session()->flash('message', 'Prodcut deleted successfully.');
             $request->session()->flash('alert-type', 'success');
@@ -127,89 +127,16 @@ class VendorProductService
         }
     }
 
-    //     try {
-
-    //         $request->session()->flash('message', 'Category added successfully.');
-    //         $request->session()->flash('alert-type', 'success');
-    //         return true;
-    //     } catch (Exception $e) {
-    //         \Log::error("Failed to add category: " . $e->getMessage());
-    //         $request->session()->flash('message', 'Failed to add category.');
-    //         $request->session()->flash('alert-type', 'error');
-    //         return false;
-    //     }
-
-    // public function categoryStore(Request $request)
+    // public function deleteProduct(Request $request, $id)
     // {
     //     try {
-    //         $imageName = $this->imageService->uploadImage($request);
-    //         Category::create([
-    //             'vendor_id' => auth()->user()->id, 
-    //             'name' => $request->name,
-    //             'image' => $imageName,
-    //             'status' => 'active',
-    //         ]);
-    //         $request->session()->flash('message', 'Category added successfully.');
-    //         $request->session()->flash('alert-type', 'success');
+    //         $product = $this->findProductById($id);
+    //         $product->delete();
+    //         $this->setFlashMessage($request, 'Product deleted successfully.', 'success');
     //         return true;
     //     } catch (Exception $e) {
-    //         \Log::error("Failed to add category: " . $e->getMessage());
-    //         $request->session()->flash('message', 'Failed to add category.');
-    //         $request->session()->flash('alert-type', 'error');
-    //         return false;
-    //     }
-    // }
-
-    // public function categoryUpdateStatus(Request $request, $id)
-    // {
-    //     try {
-    //         $category = $this->findCategory($id);
-    //         $category->update([
-    //             'status' => $request->status,
-    //         ]);
-    //         $request->session()->flash('message', 'Category status updated successfully.');
-    //         $request->session()->flash('alert-type', 'success');
-    //         return true;
-    //     } catch (Exception $e) {
-    //         \Log::error("Failed to update category status: " . $e->getMessage());
-    //         $request->session()->flash('message', 'Failed to update category status.');
-    //         $request->session()->flash('alert-type', 'error');
-    //         return false;
-    //     }
-    // }
-
-    // public function categoryUpdate(Request $request, $id)
-    // {
-    //     try {
-    //         $category = $this->findCategory($id);
-    //         $photoName = $this->imageService->uploadImage($request);
-    //         $category->update([
-    //             'name' => $request->name,
-    //             'image' => $photoName
-    //         ]);
-    //         $request->session()->flash('message', 'Category updated successfully.');
-    //         $request->session()->flash('alert-type', 'success');
-    //         return true;
-    //     } catch (Exception $e) {
-    //         \Log::error("Failed to update category: " . $e->getMessage());
-    //         $request->session()->flash('message', 'Failed to update category.');
-    //         $request->session()->flash('alert-type', 'error');
-    //         return false;
-    //     }
-    // }
-
-    // public function categoryDelete($request, $id)
-    // {
-    //     try {
-    //         $category = $this->findCategory($id);
-    //         $category->delete();
-    //         $request->session()->flash('message', 'Category deleted successfully.');
-    //         $request->session()->flash('alert-type', 'success');
-    //         return true;
-    //     } catch (Exception $e) {
-    //         \Log::error("Failed to delete category: " . $e->getMessage());
-    //         $request->session()->flash('message', 'Failed to delete category.');
-    //         $request->session()->flash('alert-type', 'error');
+    //         \Log::error("Failed to delete product: " . $e->getMessage());
+    //         $this->setFlashMessage($request, 'Failed to delete product.', 'error');
     //         return false;
     //     }
     // }
