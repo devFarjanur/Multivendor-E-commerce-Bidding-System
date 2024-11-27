@@ -60,7 +60,7 @@ class VendorCategoryService
             $imageName = $this->imageService->uploadImage($request);
             Subcategory::create([
                 'vendor_id' => auth()->user()->id,
-                'category_id' => $request->category->id,
+                'category_id' => $request->category_id,
                 'name' => $request->name,
                 'image' => $imageName,
             ]);
@@ -81,7 +81,7 @@ class VendorCategoryService
             $subcategory = $this->subcategoryFind($id);
             $imageName = $this->imageService->uploadImage($request);
             $subcategory->update([
-                'category_id' => $request->category->id,
+                'category_id' => $request->category_id,
                 'name' => $request->name,
                 'image' => $imageName,
             ]);

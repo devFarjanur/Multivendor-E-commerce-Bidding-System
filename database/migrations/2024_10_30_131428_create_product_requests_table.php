@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('subcategory_id');
+            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
             $table->enum('status', ['open', 'closed'])->default('open');
             $table->timestamps();
         });
