@@ -1,5 +1,5 @@
-@extends('vendor.index')
-@section('vendor')
+
+<?php $__env->startSection('vendor'); ?>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -11,8 +11,8 @@
                             <div class="sherah-breadcrumb mg-top-30">
                                 <h2 class="sherah-breadcrumb__title">Message</h2>
                                 <ul class="sherah-breadcrumb__list">
-                                    <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
-                                    <li class="active"><a href="{{ route('vendor.chat.message') }}">Message</a></li>
+                                    <li><a href="<?php echo e(route('vendor.dashboard')); ?>">Home</a></li>
+                                    <li class="active"><a href="<?php echo e(route('vendor.chat.message')); ?>">Message</a></li>
                                 </ul>
                             </div>
                             <div class="sherah-chatbox__main">
@@ -28,7 +28,7 @@
                                                         <div class="sherah-chatbox__author">
                                                             <div
                                                                 class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                                <img src="{{ asset('backend/assets/img/chat-author10.png') }}"
+                                                                <img src="<?php echo e(asset('backend/assets/img/chat-author10.png')); ?>"
                                                                     alt="#">
                                                                 <span class="sherah-chatbox__author-online"></span>
                                                             </div>
@@ -60,7 +60,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author1.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author1.png')); ?>"
                                                                         alt="#">
                                                                     <span class="sherah-chatbox__author-online"></span>
                                                                 </div>
@@ -79,7 +79,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author2.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author2.png')); ?>"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-not-online"></span>
@@ -102,7 +102,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author3.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author3.png')); ?>"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-not-online"></span>
@@ -120,7 +120,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author4.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author4.png')); ?>"
                                                                         alt="#">
                                                                     <span class="sherah-chatbox__author-online"></span>
                                                                 </div>
@@ -139,7 +139,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author5.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author5.png')); ?>"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-is-busy"></span>
@@ -162,7 +162,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author6.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author6.png')); ?>"
                                                                         alt="#">
                                                                     <span class="sherah-chatbox__author-online"></span>
                                                                 </div>
@@ -180,7 +180,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author7.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author7.png')); ?>"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-not-online"></span>
@@ -200,7 +200,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author8.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author8.png')); ?>"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-is-busy"></span>
@@ -219,7 +219,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="{{ asset('backend/assets/img/chat-author9.png') }}"
+                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author9.png')); ?>"
                                                                         alt="#">
                                                                     <span class="sherah-chatbox__author-online"></span>
                                                                 </div>
@@ -242,7 +242,7 @@
                                                     <div class="sherah-chatbox__author">
                                                         <div
                                                             class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                            <img src="{{ asset('backend/assets/img/chat-top-ms.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/chat-top-ms.png')); ?>"
                                                                 alt="#">
                                                             <span class="sherah-chatbox__author-online"></span>
                                                         </div>
@@ -264,7 +264,7 @@
                                                                 <div class="sherah-chatbox__chat">
                                                                     <div
                                                                         class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                                        <img src="{{ asset('backend/assets/img/chat-author10.png') }}"
+                                                                        <img src="<?php echo e(asset('backend/assets/img/chat-author10.png')); ?>"
                                                                             alt="#">
                                                                         <span class="sherah-chatbox__author-online"></span>
                                                                     </div>
@@ -299,7 +299,7 @@
                                                                     </div>
                                                                     <div
                                                                         class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                                        <img src="{{ asset('backend/assets/img/chat-top-ms.png') }}"
+                                                                        <img src="<?php echo e(asset('backend/assets/img/chat-top-ms.png')); ?>"
                                                                             alt="#">
                                                                         <span class="sherah-chatbox__author-online"></span>
                                                                     </div>
@@ -318,7 +318,7 @@
                                                                     </div>
                                                                     <div
                                                                         class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                                        <img src="{{ asset('backend/assets/img/chat-top-ms.png') }}"
+                                                                        <img src="<?php echo e(asset('backend/assets/img/chat-top-ms.png')); ?>"
                                                                             alt="#">
                                                                         <span class="sherah-chatbox__author-online"></span>
                                                                     </div>
@@ -337,7 +337,7 @@
                                                                 <div class="sherah-chatbox__chat">
                                                                     <div
                                                                         class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                                        <img src="{{ asset('backend/assets/img/chat-author10.png') }}"
+                                                                        <img src="<?php echo e(asset('backend/assets/img/chat-author10.png')); ?>"
                                                                             alt="#">
                                                                         <span class="sherah-chatbox__author-online"></span>
                                                                     </div>
@@ -363,7 +363,7 @@
                                                                 <div class="sherah-chatbox__chat">
                                                                     <div
                                                                         class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                                        <img src="{{ asset('backend/assets/img/chat-author10.png') }}"
+                                                                        <img src="<?php echo e(asset('backend/assets/img/chat-author10.png')); ?>"
                                                                             alt="#">
                                                                         <span class="sherah-chatbox__author-online"></span>
                                                                     </div>
@@ -393,16 +393,16 @@
                                                                             <p class="sherah-chatbox__incoming-text">
                                                                                 Mention of something that deserves</p>
                                                                             <ul class="sherah-chatbox__imoji">
-                                                                                <li><img src="{{ asset('backend/assets/img/imoji.png') }}"
+                                                                                <li><img src="<?php echo e(asset('backend/assets/img/imoji.png')); ?>"
                                                                                         alt="#"></li>
-                                                                                <li><img src="{{ asset('backend/assets/img/imoji.png') }}"
+                                                                                <li><img src="<?php echo e(asset('backend/assets/img/imoji.png')); ?>"
                                                                                         alt="#"></li>
                                                                             </ul>
                                                                         </div>
                                                                     </div>
                                                                     <div
                                                                         class="sherah-chatbox__author-img sherah-chatbox__author-img-sticky">
-                                                                        <img src="{{ asset('backend/assets/img/chat-top-ms.png') }}"
+                                                                        <img src="<?php echo e(asset('backend/assets/img/chat-top-ms.png')); ?>"
                                                                             alt="#">
                                                                         <span class="sherah-chatbox__author-online"></span>
                                                                     </div>
@@ -581,4 +581,6 @@
         </div>
     </section>
     <!-- End sherah Dashboard -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('vendor.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/vendor/chat/chat-message.blade.php ENDPATH**/ ?>

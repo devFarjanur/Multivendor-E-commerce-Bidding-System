@@ -201,19 +201,17 @@ class VendorController extends Controller
     {
         return view('vendor.product.product-details');
     }
-    public function VendorCustomer()
-    {
-        return view('vendor.customer.customer');
-    }
 
-    public function VendorOrderDetails()
-    {
-        return view('vendor.order.order-details');
-    }
-    public function VendorOrderList()
+    public function vendorOrderList()
     {
         return view('vendor.order.order-list');
     }
+
+    public function vendorInvoice()
+    {
+        return view('vendor.invoice.invoice');
+    }
+
     public function VendorChatMessage()
     {
         return view('vendor.chat.chat-message');
@@ -226,10 +224,7 @@ class VendorController extends Controller
     {
         return view('vendor.history.history');
     }
-    public function VendorInvoice()
-    {
-        return view('vendor.invoice.invoice');
-    }
+
     public function VendorInvoicePrint()
     {
         return view('vendor.invoice.invoice-print');

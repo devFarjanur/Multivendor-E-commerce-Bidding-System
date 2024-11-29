@@ -92,12 +92,12 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
     Route::get('/product/details', [VendorController::class, 'VendorDetailsProduct'])->name('vendor.product.details');
     Route::get('/get-subcategories/{categoryId}', [VendorController::class, 'getVensorSubcategories']);
 
-    Route::get('/order/details', [VendorController::class, 'VendorOrderDetails'])->name('vendor.order.details');
-    Route::get('/order/list', [VendorController::class, 'VendorOrderList'])->name('vendor.order.list');
+    Route::get('/order-list', [VendorController::class, 'vendorOrderList'])->name('vendor.order.list');
+    Route::get('/invoice', [VendorController::class, 'vendorInvoice'])->name('vendor.invoice');
+
     Route::get('/chat/message', [VendorController::class, 'VendorChatMessage'])->name('vendor.chat.message');
     Route::get('/pages/faqs', [VendorController::class, 'VendorPagesFaqs'])->name('vendor.pages.faqs');
     Route::get('/history', [VendorController::class, 'VendorHistory'])->name('vendor.history');
-    Route::get('/invoice', [VendorController::class, 'VendorInvoice'])->name('vendor.invoice');
     Route::get('/invoice/print', [VendorController::class, 'VendorInvoicePrint'])->name('vendor.invoice.print');
     Route::get('/language', [VendorController::class, 'VendorLanguage'])->name('vendor.language');
     Route::get('/pages/notifications', [VendorController::class, 'VendorNotification'])->name('vendor.pages.notifications');

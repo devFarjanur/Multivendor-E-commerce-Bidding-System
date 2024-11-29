@@ -1,5 +1,5 @@
-@extends('vendor.index')
-@section('vendor')
+
+<?php $__env->startSection('vendor'); ?>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -14,8 +14,8 @@
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Invoice</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('vendor.invoice') }}">Invoice</a></li>
+                                            <li><a href="#">Home</a></li>
+                                            <li class="active"><a href="<?php echo e(route('admin.invoice')); ?>">Invoice</a></li>
                                         </ul>
                                     </div>
                                     <!-- End Sherah Breadcrumb -->
@@ -26,7 +26,7 @@
 
                                 <div class="sherah-invoice-header">
                                     <a href="index.html"> <img class="sherah-logo__main"
-                                            src="{{ asset('backend/assets/img/logo.png') }}" alt="#"></a>
+                                            src="<?php echo e(asset('backend/assets/img/logo.png')); ?>" alt="#"></a>
                                     <p class="sherah-invoice-header__id sherah-color1">Order #BD80288</p>
                                 </div>
 
@@ -199,7 +199,7 @@
                                     <div class="col-12">
                                         <div
                                             class="form-group mg-top-30 sherah-dflex sherah-dflex-gap-30 justify-content-end">
-                                            <a href="{{ route('admin.invoice.print') }}"
+                                            <a href="<?php echo e(route('admin.invoice.print')); ?>"
                                                 class="sherah-btn sherah-btn__secondary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24.123" height="24.122"
                                                     viewBox="0 0 24.123 24.122">
@@ -239,4 +239,6 @@
         </div>
     </section>
     <!-- End sherah Dashboard -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('vendor.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/vendor/invoice/invoice.blade.php ENDPATH**/ ?>
