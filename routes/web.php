@@ -103,3 +103,46 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
     Route::get('/pages/notifications', [VendorController::class, 'VendorNotification'])->name('vendor.pages.notifications');
     Route::get('/pages/terms-conditions', [VendorController::class, 'VendorTermsCondition'])->name('vendor.pages.terms-conditions');
 });
+
+// Route::get('/login', [VendorController::class, 'VendorLogin'])->name('vendor.login');
+// Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('vendor.login.post');
+// Route::get('/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
+// Route::post('/register', [RegisteredUserController::class, 'VendorRegister'])->name('vendor.register.store');
+
+// // Vendor Routes (only accessible by users with 'vendor' role)
+// Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function () {
+
+//     Route::get('/dashboard', [VendorController::class, 'VendorDashboard'])->name('vendor.dashboard');
+//     Route::get('/logout', [VendorController::class, 'VendorLogout'])->name('vendor.logout');
+//     Route::get('/Profile', [VendorController::class, 'VendorProfile'])->name('vendor.profile');
+//     Route::post('/Profile/store', [VendorController::class, 'VendorProfileStore'])->name('vendor.profile.store');
+//     Route::get('/change/password', [VendorController::class, 'VendorChangePassword'])->name('vendor.change.password');
+//     Route::post('/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
+
+//     Route::get('/category-subcategory-list', [VendorController::class, 'vendorCategoryList'])->name('vendor.category.list');
+//     Route::get('/add-subcategory', [VendorController::class, 'vendorAddSubcategory'])->name('vendor.add.subcategory');
+//     Route::post('/subcategory-store', [VendorController::class, 'vendorSubcategoryStore'])->name('vendor.subcategory.store');
+//     Route::get('/edit-subcategory/{id}', [VendorController::class, 'vendorEditSubcategory'])->name('vendor.edit.subcategory');
+//     Route::post('/update-subcategory/{id}', [VendorController::class, 'vendorUpdateSubcategory'])->name('vendor.update.subcategory');
+//     Route::delete('/subcategory-delete/{id}', [VendorController::class, 'vendorSubcategoryDelete'])->name('vendor.subcategory.delete');
+
+//     Route::get('/customer-list', [VendorController::class, 'vendorCustomerList'])->name('vendor.customer.list');
+//     Route::get('/customer-profile', [VendorController::class, 'vendorCustomerProfile'])->name('vendor.customer.profile');
+
+//     Route::get('/product-list', [VendorController::class, 'vendorProductList'])->name('vendor.product.list');
+//     Route::get('/upload-product', [VendorController::class, 'vendorProductUpload'])->name('vendor.upload.product');
+//     Route::post('/product-store', [VendorController::class, 'vendorProductStore'])->name('vendor.product.store');
+//     Route::get('/product/details', [VendorController::class, 'VendorDetailsProduct'])->name('vendor.product.details');
+//     Route::get('/get-subcategories/{categoryId}', [VendorController::class, 'getVensorSubcategories']);
+
+//     Route::get('/order-list', [VendorController::class, 'vendorOrderList'])->name('vendor.order.list');
+//     Route::get('/invoice', [VendorController::class, 'vendorInvoice'])->name('vendor.invoice');
+
+//     Route::get('/chat/message', [VendorController::class, 'VendorChatMessage'])->name('vendor.chat.message');
+//     Route::get('/pages/faqs', [VendorController::class, 'VendorPagesFaqs'])->name('vendor.pages.faqs');
+//     Route::get('/history', [VendorController::class, 'VendorHistory'])->name('vendor.history');
+//     Route::get('/invoice/print', [VendorController::class, 'VendorInvoicePrint'])->name('vendor.invoice.print');
+//     Route::get('/language', [VendorController::class, 'VendorLanguage'])->name('vendor.language');
+//     Route::get('/pages/notifications', [VendorController::class, 'VendorNotification'])->name('vendor.pages.notifications');
+//     Route::get('/pages/terms-conditions', [VendorController::class, 'VendorTermsCondition'])->name('vendor.pages.terms-conditions');
+// });
