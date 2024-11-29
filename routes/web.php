@@ -68,22 +68,30 @@ Route::post('/vendor-register', [RegisteredUserController::class, 'VendorRegiste
 
 // Vendor Routes (only accessible by users with 'vendor' role)
 Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () {
+
     Route::get('/dashboard', [VendorController::class, 'VendorDashboard'])->name('vendor.dashboard');
     Route::get('/logout', [VendorController::class, 'VendorLogout'])->name('vendor.logout');
     Route::get('/Profile', [VendorController::class, 'VendorProfile'])->name('vendor.profile');
     Route::post('/Profile/store', [VendorController::class, 'VendorProfileStore'])->name('vendor.profile.store');
     Route::get('/change/password', [VendorController::class, 'VendorChangePassword'])->name('vendor.change.password');
     Route::post('/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
+
     Route::get('/category-subcategory-list', [VendorController::class, 'vendorCategoryList'])->name('vendor.category.list');
     Route::get('/add-subcategory', [VendorController::class, 'vendorAddSubcategory'])->name('vendor.add.subcategory');
     Route::post('/subcategory-store', [VendorController::class, 'vendorSubcategoryStore'])->name('vendor.subcategory.store');
-    Route::get('/edit-subcategory', [VendorController::class, 'vendorEditSubcategory'])->name('vendor.edit.subcategory');
+    Route::get('/edit-subcategory/{id}', [VendorController::class, 'vendorEditSubcategory'])->name('vendor.edit.subcategory');
+    Route::post('/update-subcategory/{id}', [VendorController::class, 'vendorUpdateSubcategory'])->name('vendor.update.subcategory');
     Route::delete('/subcategory-delete/{id}', [VendorController::class, 'vendorSubcategoryDelete'])->name('vendor.subcategory.delete');
+
+    Route::get('/customer-list', [VendorController::class, 'vendorCustomerList'])->name('vendor.customer.list');
+    Route::get('/customer-profile', [VendorController::class, 'vendorCustomerProfile'])->name('vendor.customer.profile');
+
     Route::get('/product-list', [VendorController::class, 'vendorProductList'])->name('vendor.product.list');
-    Route::get('/upload/products', [VendorController::class, 'VendorProductUpload'])->name('vendor.upload.products');
+    Route::get('/upload-product', [VendorController::class, 'vendorProductUpload'])->name('vendor.upload.product');
+    Route::post('/product-store', [VendorController::class, 'vendorProductStore'])->name('vendor.product.store');
     Route::get('/product/details', [VendorController::class, 'VendorDetailsProduct'])->name('vendor.product.details');
-    Route::get('/customer/page', [VendorController::class, 'VendorCustomer'])->name('vendor.customer.page');
-    Route::get('/customer/list', [VendorController::class, 'VendorCustomerList'])->name('vendor.customer.list');
+    Route::get('/get-subcategories/{categoryId}', [VendorController::class, 'getVensorSubcategories']);
+
     Route::get('/order/details', [VendorController::class, 'VendorOrderDetails'])->name('vendor.order.details');
     Route::get('/order/list', [VendorController::class, 'VendorOrderList'])->name('vendor.order.list');
     Route::get('/chat/message', [VendorController::class, 'VendorChatMessage'])->name('vendor.chat.message');

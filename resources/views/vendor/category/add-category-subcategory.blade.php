@@ -1,6 +1,5 @@
 @extends('vendor.index')
 @section('vendor')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -31,9 +30,10 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="sherah-wc__form-label">Category</label>
-                                                <select class="form-group__input" aria-label="Default select example">
+                                                <select name="category_id" class="form-group__input"
+                                                    aria-label="Default select example" required>
+                                                    <option value="" disabled selected>Select Category</option>
                                                     @foreach ($categories as $category)
-                                                        <option select="">Select Category</option>
                                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -44,8 +44,8 @@
                                             <div class="form-group">
                                                 <label class="sherah-wc__form-label">Subcategory Name</label>
                                                 <div class="form-group__input">
-                                                    <input class="sherah-wc__form-input" placeholder="Name" type="text"
-                                                        name="name">
+                                                    <input class="sherah-wc__form-input text-dark" placeholder="Name"
+                                                        type="text" name="name">
                                                 </div>
                                             </div>
                                         </div>
@@ -107,17 +107,4 @@
         </div>
     </section>
     <!-- End sherah Dashboard -->
-
-    <!-- Add JavaScript for Preview -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#image').change(function(e) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            });
-        });
-    </script>
 @endsection

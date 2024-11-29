@@ -61,7 +61,7 @@
                                 <div class="form-group">
                                     <label class="sherah-wc__form-label">Email Address</label>
                                     <div class="form-group__input">
-                                        <input class="sherah-wc__form-input" type="email" name="email" placeholder="Email"
+                                        <input class="sherah-wc__form-input text-dark" type="email" name="email" placeholder="Email"
                                             required="required">
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                     <label class="sherah-wc__form-label">Password</label>
                                     <div class="form-group__input">
-                                        <input class="sherah-wc__form-input" id="password-field" type="password"
+                                        <input class="sherah-wc__form-input text-dark" id="password-field" type="password"
                                             name="password" placeholder="Password" required="required">
                                     </div>
                                 </div>

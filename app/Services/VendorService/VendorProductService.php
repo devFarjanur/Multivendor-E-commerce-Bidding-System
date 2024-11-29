@@ -53,7 +53,7 @@ class VendorProductService
         try {
             $imageName = $this->imageService->uploadImage($request);
             Product::create([
-                'vendor_id' => $request->vendor_id,
+                'vendor_id' => auth()->user()->id,
                 'category_id' => $request->category_id,
                 'subcategory_id' => $request->subcategory_id,
                 'name' => $request->name,

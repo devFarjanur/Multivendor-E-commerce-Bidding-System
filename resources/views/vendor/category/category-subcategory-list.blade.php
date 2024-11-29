@@ -56,7 +56,8 @@
                                                 <thead class="sherah-table__head">
                                                     <tr>
                                                         <th class="sherah-table__column-1 sherah-table__h1">Image</th>
-                                                        <th class="sherah-table__column-2 sherah-table__h2">Name</th>
+                                                        <th class="sherah-table__column-2 sherah-table__h2">Subcategory</th>
+                                                        <th class="sherah-table__column-2 sherah-table__h2">Category</th>
                                                         <th class="sherah-table__column-7 sherah-table__h6">Action</th>
                                                     </tr>
                                                 </thead>
@@ -89,11 +90,18 @@
                                                                         </h4>
                                                                     </div>
                                                                 </td>
+                                                                <td class="sherah-table__column-2 sherah-table__data-2">
+                                                                    <div class="sherah-table__vendor">
+                                                                        <h4 class="sherah-table__vendor--title">
+                                                                            {{ $subcategory->category->name }}
+                                                                        </h4>
+                                                                    </div>
+                                                                </td>
                                                                 <td class="sherah-table__column-8 sherah-table__data-8">
                                                                     <div
                                                                         class="d-flex justify-content-center align-items-center gap-2">
                                                                         <!-- Approve Button -->
-                                                                        <form method="POST"
+                                                                        {{-- <form method="POST"
                                                                             action="{{ route('vendor.edit.subcategory', $subcategory->id) }}"
                                                                             style="display:inline;">
                                                                             @csrf
@@ -101,10 +109,14 @@
                                                                                 class="btn btn-outline-success d-flex align-items-center gap-1">
                                                                                 <i class="fas fa-check-circle"></i> Edit
                                                                             </button>
-                                                                        </form>
+                                                                        </form> --}}
+                                                                        <a href="{{ route('vendor.edit.subcategory', $subcategory->id) }}"
+                                                                            class="btn btn-outline-success d-flex align-items-center gap-1">
+                                                                            <i class="fas fa-edit"></i> Edit
+                                                                        </a>
                                                                         <!-- Delete Button -->
                                                                         <form method="POST"
-                                                                            action="{{ route('vendor.subcategory.delete', $category->id) }}"
+                                                                            action="{{ route('vendor.subcategory.delete', $subcategory->id) }}"
                                                                             style="display:inline;">
                                                                             @csrf
                                                                             @method('DELETE')

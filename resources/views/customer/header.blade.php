@@ -108,7 +108,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author1.png')); ?>"
+                                                                    <img src="{{ asset('backend/assets/img/chat-author1.png') }}"
                                                                         alt="#">
                                                                     <span class="sherah-chatbox__author-online"></span>
                                                                 </div>
@@ -127,7 +127,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author2.png')); ?>"
+                                                                    <img src="{{ asset('backend/assets/img/chat-author2.png') }}"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-not-online"></span>
@@ -152,7 +152,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author3.png')); ?>"
+                                                                    <img src="{{ asset('backend/assets/img/chat-author3.png') }}"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-not-online"></span>
@@ -170,7 +170,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author4.png')); ?>"
+                                                                    <img src="{{ asset('backend/assets/img/chat-author4.png') }}"
                                                                         alt="#">
                                                                     <span class="sherah-chatbox__author-online"></span>
                                                                 </div>
@@ -189,7 +189,7 @@
                                                         <div class="sherah-chatbox__inner">
                                                             <div class="sherah-chatbox__author">
                                                                 <div class="sherah-chatbox__author-img">
-                                                                    <img src="<?php echo e(asset('backend/assets/img/chat-author5.png')); ?>"
+                                                                    <img src="{{ asset('backend/assets/img/chat-author5.png') }}"
                                                                         alt="#">
                                                                     <span
                                                                         class="sherah-chatbox__author-online author-is-busy"></span>
@@ -407,7 +407,7 @@
                                         <!-- Header Author -->
                                         <div class="sherah-header__author sherah-flex__center--top">
                                             <div class="sherah-header__author-img">
-                                                <img src="<?php echo e(asset('backend/assets/img/profile-pic.png')); ?>"
+                                                <img src="{{ asset('backend/assets/img/profile-pic.png') }}"
                                                     alt="#">
                                             </div>
                                             <div class="sherah-header__author--info sherah-dflex sherah-dflex__base">
@@ -526,7 +526,19 @@
                                                                     href="profile-info.html">Settings</a></h4>
                                                         </div>
                                                     </li>
-                                                    
+                                                    {{-- <li>
+                            <div class="sherah-dropdown-card-info">
+                              <div class="sherah-dropdown-card__img sherah-color1__bg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="17.5"
+                                  viewBox="0 0 17.5 17.5">
+                                  <path id="path52"
+                                    d="M9.27,291.179a.877.877,0,0,0-.867.889V299.1a.876.876,0,1,0,1.752,0v-7.033a.877.877,0,0,0-.885-.889Zm5.105,1.763c-.028,0-.057,0-.085,0A.88.88,0,0,0,13.8,294.5a7,7,0,1,1-9.076.026.882.882,0,0,0,.1-1.239.873.873,0,0,0-1.234-.1,8.815,8.815,0,0,0,5.691,15.495,8.815,8.815,0,0,0,5.652-15.521.873.873,0,0,0-.561-.216Z"
+                                    transform="translate(-0.529 -291.179)" fill="#fff" />
+                                </svg>
+                              </div>
+                              <h4 class="sherah-dropdown-card-name"><a href="#">Logout</a></h4>
+                            </div>
+                          </li> --}}
 
                                                     <li>
                                                         <div class="sherah-dropdown-card-info">
@@ -540,12 +552,12 @@
                                                                 </svg>
                                                             </div>
                                                             <h4 class="sherah-dropdown-card-name">
-                                                                <a href="<?php echo e(route('logout')); ?>"
+                                                                <a href="{{ route('logout') }}"
                                                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                                             </h4>
-                                                            <form id="logout-form" action="<?php echo e(route('logout')); ?>"
+                                                            <form id="logout-form" action="{{ route('logout') }}"
                                                                 method="POST" style="display: none;">
-                                                                <?php echo csrf_field(); ?>
+                                                                @csrf
                                                             </form>
                                                         </div>
                                                     </li>
@@ -566,4 +578,3 @@
     </div>
 </header>
 <!-- End Header -->
-<?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/vendor/header.blade.php ENDPATH**/ ?>

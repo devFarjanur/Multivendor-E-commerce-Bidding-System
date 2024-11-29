@@ -5,8 +5,8 @@
 
         <!-- Logo -->
         <div class="logo sherah-sidebar-padding">
-            <a href="<?php echo e(route('vendor.dashboard')); ?>">
-                <img class="sherah-logo__main" src="<?php echo e(asset('backend/assets/img/logo.png')); ?>" alt="#">
+            <a href="{{ route('vendor.dashboard') }}">
+                <img class="sherah-logo__main" src="{{ asset('backend/assets/img/logo.png') }}" alt="#">
             </a>
             <div class="sherah__sicon close-icon d-xl-none">
                 <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,9 +70,9 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__customers" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="<?php echo e(route('vendor.customer.list')); ?>"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('vendor.customer.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Customer List</span></span></a></li>
-                                <li><a href="<?php echo e(route('vendor.customer.page')); ?>"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('vendor.customer.page') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Customers</span></span></a></li>
                             </ul>
                         </div>
@@ -92,12 +92,12 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item_categories" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="<?php echo e(route('vendor.category.list')); ?>"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('vendor.category.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Category List</span></span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="<?php echo e(route('vendor.product.details')); ?>" class="collapsed" data-bs-toggle="collapse"
+                    <li><a href="{{ route('vendor.product.details') }}" class="collapsed" data-bs-toggle="collapse"
                             data-bs-target="#menu-item_products"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="21.136"
@@ -112,12 +112,12 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item_products" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="<?php echo e(route('vendor.product.list')); ?>"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('vendor.product.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Products</span></span></a></li>
-                                <li><a href="<?php echo e(route('vendor.product.details')); ?>"><span
+                                <li><a href="{{ route('vendor.product.details') }}"><span
                                             class="menu-bar__text"><span class="menu-bar__name">Product
                                                 Details</span></span></a></li>
-                                <li><a href="<?php echo e(route('vendor.upload.products')); ?>"><span
+                                <li><a href="{{ route('vendor.upload.products') }}"><span
                                             class="menu-bar__text"><span class="menu-bar__name">Upload
                                                 Product</span></span></a></li>
                             </ul>
@@ -143,14 +143,14 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__orders" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="<?php echo e(route('vendor.order.list')); ?>"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('vendor.order.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Order List</span></span></a></li>
-                                <li><a href="<?php echo e(route('vendor.order.details')); ?>"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('vendor.order.details') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Order Details</span></span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="<?php echo e(route('vendor.invoice')); ?>" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="{{ route('vendor.invoice') }}" class="collapsed"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="19.434"
                                         height="19.432" viewBox="0 0 19.434 19.432">
@@ -174,7 +174,7 @@
                                 </span>
                                 <span class="menu-bar__name">Invoice</span></span></a></span>
                     </li>
-                    <li><a href="<?php echo e(route('vendor.history')); ?>" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="{{ route('vendor.history') }}" class="collapsed"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="19.527"
                                         height="19.582" viewBox="0 0 19.527 19.582">
@@ -193,7 +193,7 @@
                                 </span>
                                 <span class="menu-bar__name">History</span></span></a></span>
                     </li>
-                    <li><a href="<?php echo e(route('vendor.chat.message')); ?>" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="{{ route('vendor.chat.message') }}" class="collapsed"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="22.029"
                                         height="22.368" viewBox="0 0 22.029 22.368">
@@ -224,4 +224,3 @@
     <!-- End Admin Menu -->
 </div>
 <!-- End sherah Admin Menu -->
-<?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/vendor/sidebar.blade.php ENDPATH**/ ?>

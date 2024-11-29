@@ -72,8 +72,8 @@
                             <ul class="menu-bar__one-dropdown">
                                 <li><a href="{{ route('vendor.customer.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Customer List</span></span></a></li>
-                                <li><a href="{{ route('vendor.customer.page') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Customers</span></span></a></li>
+                                {{-- <li><a href="{{ route('vendor.customer.page') }}"><span class="menu-bar__text"><span
+                                                class="menu-bar__name">Customers</span></span></a></li> --}}
                             </ul>
                         </div>
                     </li>
@@ -114,12 +114,12 @@
                             <ul class="menu-bar__one-dropdown">
                                 <li><a href="{{ route('vendor.product.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Products</span></span></a></li>
-                                <li><a href="{{ route('vendor.product.details') }}"><span
+                                {{-- <li><a href="{{ route('vendor.product.details') }}"><span
                                             class="menu-bar__text"><span class="menu-bar__name">Product
-                                                Details</span></span></a></li>
-                                <li><a href="{{ route('vendor.upload.products') }}"><span
+                                                Details</span></span></a></li> --}}
+                                {{-- <li><a href="{{ route('vendor.upload.products') }}"><span
                                             class="menu-bar__text"><span class="menu-bar__name">Upload
-                                                Product</span></span></a></li>
+                                                Product</span></span></a></li> --}}
                             </ul>
                         </div>
                     </li>

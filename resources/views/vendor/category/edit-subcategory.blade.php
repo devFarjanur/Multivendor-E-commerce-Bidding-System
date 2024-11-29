@@ -15,7 +15,8 @@
                                         <h2 class="sherah-breadcrumb__title">Add SubCategory</h2>
                                         <ul class="sherah-breadcrumb__list">
                                             <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('vendor.add.subcategory') }}">Add
+                                            <li class="active"><a
+                                                    href="{{ route('vendor.edit.subcategory', $subcategory->id) }}">Edit
                                                     Subcategory</a>
                                             </li>
                                         </ul>
@@ -23,24 +24,34 @@
                                 </div>
                             </div>
                             <div class="sherah-page-inner sherah-border sherah-basic-page sherah-default-bg mg-top-25 p-0">
-                                <form class="sherah-wc__form-main" action="{{ route('vendor.subcategory.store') }}"
-                                    method="POST" enctype="multipart/form-data">
+                                <form class="sherah-wc__form-main"
+                                    action="{{ route('vendor.update.subcategory', $subcategory->id) }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <!-- Select Category -->
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="form-label">Subcategory Name</label>
-                                                <input class="form-control" placeholder="Enter category name" type="text"
-                                                    name="name" required>
+                                                <label class="sherah-wc__form-label">Category</label>
+                                                <select name="category_id" class="form-group__input"
+                                                    aria-label="Default select example" required>
+                                                    <option value="" disabled>Select Category</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}"
+                                                            {{ $subcategory->category_id == $category->id ? 'selected' : '' }}>
+                                                            {{ $category->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+
                                             </div>
                                         </div>
                                         <!-- Subcategory Name -->
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="form-label">Subcategory Name</label>
-                                                <input class="form-control" placeholder="Enter category name" type="text"
-                                                    name="name" required>
+                                                <input class="form-control text-dark" placeholder="Enter category name"
+                                                    type="text" name="name" value="{{ $subcategory->name }}" required>
                                             </div>
                                         </div>
                                         <!-- Category Image -->
@@ -51,7 +62,8 @@
                                                     <div class="form-group">
                                                         <div class="image-upload-group">
                                                             <div class="image-upload-group__single">
-                                                                <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
+                                                                <img id="showImage"
+                                                                    src="{{ $subcategory->image ? asset('upload/admin_images/' . $subcategory->image) : asset('upload/no_image.jpg') }}"
                                                                     class="img-fluid" alt="Category Image"
                                                                     style="max-width: 200px;">
                                                             </div>
@@ -59,8 +71,7 @@
                                                                 class="image-upload-group__single image-upload-group__single--upload">
                                                                 <input type="file" class="btn-check" name="image"
                                                                     id="image" accept="image/*"
-                                                                    onchange="previewImage(event)" autocomplete="off"
-                                                                    required>
+                                                                    onchange="previewImage(event)" autocomplete="off">
                                                                 <label class="image-upload-label" for="image">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="91.787"
                                                                         height="84.116" viewBox="0 0 91.787 84.116">
@@ -87,7 +98,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-4 d-flex gap-3 justify-content-center">
-                                        <button type="submit" class="btn btn-primary">Save Subcategory</button>
+                                        <button type="submit" class="btn btn-primary">Update Subcategory</button>
                                         <button type="reset" class="btn btn-secondary">Cancel</button>
                                     </div>
                                 </form>
@@ -101,17 +112,5 @@
         </div>
     </section>
     <!-- End sherah Dashboard -->
-
-    <!-- Add JavaScript for Preview -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#image').change(function(e) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            });
-        });
-    </script>
 @endsection
+

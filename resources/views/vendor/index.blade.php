@@ -11,8 +11,6 @@
     <!-- Site Title -->
     <title>Sherah - HTML eCommerce Dashboard Template</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
     <!-- Font -->
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
@@ -21,10 +19,14 @@
     <link rel="icon" href="{{ asset('backend/assets/img/favicon.png') }}">
     <!-- sherah Stylesheet -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/font-awesome-all.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('backend/assets/css/font-awesome-all.min.css') }}"> --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/charts.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/jvector-map.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/slickslider.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/reset.css') }}">
@@ -52,12 +54,27 @@
     <script src="{{ asset('backend/assets/js/charts.js') }}"></script>
     <script src="{{ asset('backend/assets/js/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/circle-progress.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.2/dist/jquery.vmap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.2/dist/maps/jquery.vmap.world.js"></script>
     <script src="{{ asset('backend/assets/js/jquery-jvectormap.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script> --}}
     <script src="{{ asset('backend/assets/js/jvector-map.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{{ asset('backend/assets/js/slickslider.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+    </script>
     <script>
         @if (Session::has('message'))
             var type = "{{ Session::get('alert-type', 'info') }}"
@@ -80,6 +97,8 @@
             }
         @endif
     </script>
+
+
     <script>
         $(document).ready(function() {
             $('#sherah-map').vectorMap({
@@ -99,53 +118,53 @@
 
             });
         });
-        $(".sherah-product-slider").slick({
-            autoplay: false,
-            speed: 800,
-            autoplaySpeed: 3500,
-            slidesToShow: 4,
-            pauseOnHover: true,
-            dots: false,
-            center: true,
-            arrows: true,
-            cssEase: 'ease',
-            margin: 30,
-            speed: 700,
-            draggable: true,
-            prevArrow: '<button class="Prev"><i class="fa-solid fa-angle-left"></i></button>',
-            nextArrow: '<button class="Next"><i class="fa-solid fa-angle-right"></i></button>',
-            responsive: [{
-                    breakpoint: 2000,
-                    settings: {
-                        slidesToShow: 6,
-                    }
-                },
-                {
-                    breakpoint: 1600,
-                    settings: {
-                        slidesToShow: 4,
-                    }
-                },
-                {
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 3,
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 3,
-                    }
-                },
-                {
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 2,
-                    }
-                },
-            ]
-        });
+        // $(".sherah-product-slider").slick({
+        //     autoplay: false,
+        //     speed: 800,
+        //     autoplaySpeed: 3500,
+        //     slidesToShow: 4,
+        //     pauseOnHover: true,
+        //     dots: false,
+        //     center: true,
+        //     arrows: true,
+        //     cssEase: 'ease',
+        //     margin: 30,
+        //     speed: 700,
+        //     draggable: true,
+        //     prevArrow: '<button class="Prev"><i class="fa-solid fa-angle-left"></i></button>',
+        //     nextArrow: '<button class="Next"><i class="fa-solid fa-angle-right"></i></button>',
+        //     responsive: [{
+        //             breakpoint: 2000,
+        //             settings: {
+        //                 slidesToShow: 6,
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 1600,
+        //             settings: {
+        //                 slidesToShow: 4,
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 800,
+        //             settings: {
+        //                 slidesToShow: 3,
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 600,
+        //             settings: {
+        //                 slidesToShow: 3,
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 500,
+        //             settings: {
+        //                 slidesToShow: 2,
+        //             }
+        //         },
+        //     ]
+        // });
     </script>
     <script>
         new CircleProgress('.circle__one', {
@@ -586,6 +605,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

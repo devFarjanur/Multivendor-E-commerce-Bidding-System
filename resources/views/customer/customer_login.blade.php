@@ -9,7 +9,7 @@
     <meta name="description" content="#">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Site Title -->
-    <title>Add Family - Vendor Registration</title>
+    <title>Add Family - Vendor Login</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
@@ -44,8 +44,7 @@
                         <!-- Logo -->
                         <!-- Middle Image -->
                         <div class="sherah-wc__middle">
-                            <a href=""><img src="{{ asset('backend/assets/img/welcome-vector.png') }}"
-                                    alt="#"></a>
+                            <a href=""><img src="{{ asset('backend/assets/img/welcome-vector.png') }}" alt="#"></a>
                         </div>
                         <!-- Welcome Heading -->
                         <h2 class="sherah-wc__title">Welcome to Add Family <br> Vendor Panel</h2>
@@ -57,82 +56,47 @@
                             <h3 class="sherah-wc__form-title sherah-wc__form-title__one">Login Your Account <span>Please
                                     enter your email and password to continue</span></h3>
                             <!-- Sign in Form -->
-                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('vendor.register.store') }}">
+                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('vendor.login.post') }}">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label class="sherah-wc__form-label">Name</label>
-                                            <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" type="text" name="name"
-                                                    placeholder="Name" required="required">
-                                            </div>
+                                <div class="form-group">
+                                    <label class="sherah-wc__form-label">Email Address</label>
+                                    <div class="form-group__input">
+                                        <input class="sherah-wc__form-input" type="email" name="email" placeholder="Email"
+                                            required="required">
+                                    </div>
+                                </div>
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <label class="sherah-wc__form-label">Password</label>
+                                    <div class="form-group__input">
+                                        <input class="sherah-wc__form-input" id="password-field" type="password"
+                                            name="password" placeholder="Password" required="required">
+                                    </div>
+                                </div>
+                                <!-- Form Group -->
+                                <div class="form-group">
+                                    <div class="sherah-wc__check-inline">
+                                        <div class="sherah-wc__checkbox">
+                                            <input class="sherah-wc__form-check" id="checkbox" name="checkbox"
+                                                type="checkbox">
+                                            <label for="checkbox">Remember me later</label>
+                                        </div>
+                                        <div class="sherah-wc__forgot">
+                                            <a href="#" class="forgot-pass">Forget Password?</a>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label class="sherah-wc__form-label">Last Name *</label>
-                                            <div class="form-group__input">
-                                                <input class="sherah-wc__form-input" type="text" name="email"
-                                                    placeholder="Tegforor" required="required">
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label class="sherah-wc__form-label">Email Address</label>
-                                            <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" type="email" name="email"
-                                                    placeholder="Email" required="required">
-                                            </div>
-                                        </div>
+                                </div>
+                                <!-- Form Group -->
+                                <div class="form-group form-mg-top25">
+                                    <div class="sherah-wc__button sherah-wc__button--bottom">
+                                        <button class="ntfmax-wc__btn" type="submit">Login</button>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label class="sherah-wc__form-label">Phone</label>
-                                            <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" type="text" name="phone"
-                                                    placeholder="Phone" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <!-- Form Group -->
-                                        <div class="form-group">
-                                            <label class="sherah-wc__form-label">Password</label>
-                                            <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" placeholder="Password"
-                                                    type="password" name="password" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <!-- Form Group -->
-                                        <div class="form-group">
-                                            <label class="sherah-wc__form-label">Confirm Password</label>
-                                            <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark"
-                                                    placeholder="Confrim Password" type="password" name="password"
-                                                    required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group mg-top-20">
-                                            <div class="sherah-wc__bottom">
-                                                <p class="sherah-wc__text">Already have an account? <a
-                                                        href="{{ route('vendor.login') }}">Log in</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <!-- Form Group -->
-                                        <div class="form-group form-mg-top25">
-                                            <div class="sherah-wc__button sherah-wc__button--bottom">
-                                                <button class="ntfmax-wc__btn" type="submit">SignUp</button>
-                                            </div>
-                                        </div>
-                                        <!-- Form Group -->
+                                </div>
+                                <!-- Form Group -->
+                                <div class="form-group mg-top-20">
+                                    <div class="sherah-wc__bottom">
+                                        <p class="sherah-wc__text">Dont’t have an account ? <a
+                                                href="{{ route('vendor.register') }}">Sign up free</a></p>
                                     </div>
                                 </div>
                             </form>
@@ -184,7 +148,7 @@
         @endif
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#sherah-map').vectorMap({
                 map: 'world_mill_en',
                 backgroundColor: 'transparent',
@@ -218,35 +182,35 @@
             prevArrow: '<button class="Prev"><i class="fa-solid fa-angle-left"></i></button>',
             nextArrow: '<button class="Next"><i class="fa-solid fa-angle-right"></i></button>',
             responsive: [{
-                    breakpoint: 2000,
-                    settings: {
-                        slidesToShow: 6,
-                    }
-                },
-                {
-                    breakpoint: 1600,
-                    settings: {
-                        slidesToShow: 4,
-                    }
-                },
-                {
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 3,
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 3,
-                    }
-                },
-                {
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 2,
-                    }
-                },
+                breakpoint: 2000,
+                settings: {
+                    slidesToShow: 6,
+                }
+            },
+            {
+                breakpoint: 1600,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 500,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
             ]
         });
     </script>
@@ -354,7 +318,7 @@
                     borderRadius: 4,
                     barPercentage: 0.7,
                     categoryPercentage: 0.5,
-                }, ]
+                },]
             },
             options: {
                 intersect: false,
@@ -369,7 +333,7 @@
                     },
                     y: {
                         ticks: {
-                            callback: function(value, index, values) {
+                            callback: function (value, index, values) {
                                 return value + '%';
                             }
                         },
@@ -493,40 +457,40 @@
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
-                        label: 'Visitor',
-                        data: [10, 15, 15, 90, 90, 45, 45, 45, 70, 70, 45, 45],
-                        backgroundColor: 'transparent',
-                        borderColor: '#F2C94C',
-                        borderWidth: 5,
-                        fill: true,
-                        fillColor: '#fff',
-                        tension: 0.5,
-                        pointRadius: 0,
-                    },
-                    {
-                        label: 'Sells',
-                        data: [20, 86, 79, 30, 60, 45, 70, 50, 70, 30, 44, 50],
-                        backgroundColor: 'transparent',
-                        borderColor: '#09AD95',
-                        borderWidth: 5,
-                        fill: true,
-                        tension: 0.5,
-                        fillColor: '#fff',
-                        fill: 'start',
-                        pointRadius: 0,
-                    },
-                    {
-                        label: 'Profit',
-                        data: [20, 20, 79, 80, 60, 45, 70, 30, 20, 90, 44, 50],
-                        backgroundColor: 'transparent',
-                        borderColor: '#6176FE',
-                        borderWidth: 5,
-                        fill: true,
-                        tension: 0.5,
-                        fillColor: '#fff',
-                        fill: 'start',
-                        pointRadius: 0,
-                    }
+                    label: 'Visitor',
+                    data: [10, 15, 15, 90, 90, 45, 45, 45, 70, 70, 45, 45],
+                    backgroundColor: 'transparent',
+                    borderColor: '#F2C94C',
+                    borderWidth: 5,
+                    fill: true,
+                    fillColor: '#fff',
+                    tension: 0.5,
+                    pointRadius: 0,
+                },
+                {
+                    label: 'Sells',
+                    data: [20, 86, 79, 30, 60, 45, 70, 50, 70, 30, 44, 50],
+                    backgroundColor: 'transparent',
+                    borderColor: '#09AD95',
+                    borderWidth: 5,
+                    fill: true,
+                    tension: 0.5,
+                    fillColor: '#fff',
+                    fill: 'start',
+                    pointRadius: 0,
+                },
+                {
+                    label: 'Profit',
+                    data: [20, 20, 79, 80, 60, 45, 70, 30, 20, 90, 44, 50],
+                    backgroundColor: 'transparent',
+                    borderColor: '#6176FE',
+                    borderWidth: 5,
+                    fill: true,
+                    tension: 0.5,
+                    fillColor: '#fff',
+                    fill: 'start',
+                    pointRadius: 0,
+                }
                 ]
             },
             options: {

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subcategory;
 use App\Services\VendorService\VendorCategoryService;
+use App\Services\VendorService\VendorProductService;
 use Illuminate\Http\Request;
 use Hash;
 use Illuminate\Http\RedirectResponse;
@@ -13,10 +15,12 @@ use App\Models\User;
 class VendorController extends Controller
 {
     protected $vendorCategoryService;
+    protected $vendorProductService;
 
-    public function __construct(VendorCategoryService $vendorCategoryService)
+    public function __construct(VendorCategoryService $vendorCategoryService, VendorProductService $vendorProductService)
     {
         $this->vendorCategoryService = $vendorCategoryService;
+        $this->vendorProductService = $vendorProductService;
     }
 
     public function VendorLogin()
@@ -111,6 +115,15 @@ class VendorController extends Controller
         return back()->with($notification);
     }  // end method
 
+    public function vendorCustomerList()
+    {
+        return view('vendor.customer.customer-list');
+    }
+
+    public function vendorCustomerProfile()
+    {
+        return view('vendor.customer.customer-profile');
+    }
 
     public function vendorCategoryList()
     {
@@ -133,11 +146,12 @@ class VendorController extends Controller
 
     public function vendorEditSubcategory($id)
     {
+        $categories = $this->vendorCategoryService->categoryList();
         $subcategory = $this->vendorCategoryService->subcategoryFind($id);
-        return view('vendor.category.edit-subcategory', compact('subcategory'));
+        return view('vendor.category.edit-subcategory', compact('subcategory', 'categories'));
     }
 
-    public function vendorCategoryUpdate(Request $request, $id)
+    public function vendorUpdateSubcategory(Request $request, $id)
     {
         $this->vendorCategoryService->subcategoryUpdate($request, $id);
         return redirect()->route('vendor.category.list');
@@ -149,7 +163,7 @@ class VendorController extends Controller
         return redirect()->back();
     }
 
-    public function vendorCategoryDelete(Request $request, $id)
+    public function vendorSubcategoryDelete(Request $request, $id)
     {
         $this->vendorCategoryService->subcategoryDelete($request, $id);
         return redirect()->back();
@@ -158,13 +172,31 @@ class VendorController extends Controller
     //products page
     public function vendorProductList()
     {
-        return view('vendor.product.product-list');
+        $categories = $this->vendorCategoryService->categoryList();
+        $products = $this->vendorProductService->productList();
+        return view('vendor.product.product-list', compact('categories', 'products'));
     }
 
-    public function vendorProductStore()
+    public function vendorProductUpload()
     {
-        return view('vendor.product.product-upload');
+        $categories = $this->vendorCategoryService->getCategoryWithSubcategory();
+        return view('vendor.product.product-upload', compact('categories'));
     }
+
+    public function getVensorSubcategories($categoryId)
+    {
+        $subcategories = Subcategory::where('category_id', $categoryId)->get();
+        return response()->json([
+            'subcategories' => $subcategories
+        ]);
+    }
+
+    public function vendorProductStore(Request $request)
+    {
+        $this->vendorProductService->productStore($request);
+        return redirect()->route('vendor.product.list');
+    }
+
     public function VendorDetailsProduct()
     {
         return view('vendor.product.product-details');
@@ -173,10 +205,7 @@ class VendorController extends Controller
     {
         return view('vendor.customer.customer');
     }
-    public function VendorCustomerList()
-    {
-        return view('vendor.customer.customer-list');
-    }
+
     public function VendorOrderDetails()
     {
         return view('vendor.order.order-details');

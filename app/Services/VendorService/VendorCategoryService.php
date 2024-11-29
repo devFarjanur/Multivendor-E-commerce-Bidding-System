@@ -21,15 +21,7 @@ class VendorCategoryService
     }
     public function categoryList()
     {
-        return Category::orderBy('created_at', 'desc')
-            ->paginate(10);
-    }
-
-    public function categoryListWithActiveStatus()
-    {
-        return Category::where('status', 'active')
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+        return Category::get();
     }
 
     public function findCategory($id)
@@ -37,10 +29,23 @@ class VendorCategoryService
         return Category::where('status', 'active')->findOrFail($id);
     }
 
+    public function getCategoryWithSubcategory()
+    {
+        return Category::with('subcategories')
+            ->where('status', 'active')
+            ->get();
+    }
+
+    public function getSubcategories($categoryId)
+    {
+        $subcategories = Subcategory::where('category_id', $categoryId)->get();
+        return $subcategories;
+    }
+    
     public function subcategoryList()
     {
         return Subcategory::with('vendor', 'category')
-            ->orderBy('create_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
     }
 
@@ -60,6 +65,7 @@ class VendorCategoryService
     public function subcategoryStore(Request $request)
     {
         try {
+            // dd($request->all());
             $imageName = $this->imageService->uploadImage($request);
             Subcategory::create([
                 'vendor_id' => auth()->user()->id,

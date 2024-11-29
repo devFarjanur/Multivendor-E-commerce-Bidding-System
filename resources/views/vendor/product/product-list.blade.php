@@ -15,8 +15,9 @@
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Products</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="#">Home</a></li>
-                                            <li class="active"><a href="products.html">Shop</a></li>
+                                            <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
+                                            <li class="active"><a href="{{ route('vendor.product.list') }}">Product List</a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <!-- End Sherah Breadcrumb -->
@@ -29,70 +30,16 @@
                                     <div class="sherah-product-sidebar sherah-default-bg mg-top-30">
                                         <h4 class="sherah-product-sidebar__title sherah-border-btm">Product Categories</h4>
                                         <ul class="sherah-product-sidebar__list">
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>Women’s
-                                                        Bag</span><span class="count">15</span></a></li>
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>Men’s
-                                                        Accessories</span><span class="count">20</span></a></li>
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>School
-                                                        Bag</span><span class="count">33</span></a></li>
-                                            <li><a href="#"><span><i
-                                                            class="fa-solid fa-chevron-right"></i>Boots</span><span
-                                                        class="count">40</span></a></li>
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>Boy’s
-                                                        Dress</span><span class="count">44</span></a></li>
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>Women’s
-                                                        Fashion</span><span class="count">50</span></a></li>
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>Fashion
-                                                        Accessories</span><span class="count">33</span></a></li>
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>Leather
-                                                        Bags</span><span class="count">31</span></a></li>
-                                            <li><a href="#"><span><i class="fa-solid fa-chevron-right"></i>Makeup
-                                                        Corner</span><span class="count">25</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End Product Category Sidebar -->
-                                    <!-- Product Price Range Sidebar -->
-                                    <div class="sherah-product-sidebar sherah-default-bg mg-top-30">
-                                        <h4 class="sherah-product-sidebar__title sherah-border-btm">Price Range</h4>
-                                        <div class="price-filter">
-                                            <div class="price-filter-inner">
-                                                <div id="slider-range"></div>
-                                                <div class="price_slider_amount">
-                                                    <div class="label-input">
-                                                        <span>Range:</span><input type="text" id="amount"
-                                                            name="price" placeholder="Add Your Price" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Product Price Range Sidebar -->
-                                    <!-- Product Brand Sidebar -->
-                                    <div class="sherah-product-sidebar sherah-default-bg mg-top-30">
-                                        <h4 class="sherah-product-sidebar__title sherah-border-btm">Product Brands</h4>
-                                        <ul class="sherah-product-sidebar__list">
-                                            <li><a href="#"><span><i
-                                                            class="fa-solid fa-chevron-right"></i>Nike</span></a></li>
-                                            <li><a href="#"><span><i
-                                                            class="fa-solid fa-chevron-right"></i>Zara</span></a></li>
-                                            <li><a href="#"><span><i
-                                                            class="fa-solid fa-chevron-right"></i>Denim</span></a></li>
-                                            <li><a href="#"><span><i
-                                                            class="fa-solid fa-chevron-right"></i>Madame</span></a></li>
-                                            <li><a href="#"><span><i
-                                                            class="fa-solid fa-chevron-right"></i>Arong</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End Product Brand Sidebar -->
-                                    <!-- Product Category Sidebar -->
-                                    <div class="sherah-product-sidebar sherah-default-bg mg-top-30">
-                                        <h4 class="sherah-product-sidebar__title sherah-border-btm">Size</h4>
-                                        <ul class="sherah-product-sidebar__size">
-                                            <li><a class="sherah-border" href="#">XL</a></li>
-                                            <li><a class="sherah-border" href="#">X</a></li>
-                                            <li><a class="sherah-border" href="#">L</a></li>
-                                            <li><a class="sherah-border" href="#">M</a></li>
-                                            <li><a class="sherah-border" href="#">Slim Fit</a></li>
+
+                                            @if (count($categories) > 0)
+                                                @foreach ($categories as $category)
+                                                    <li><a href="#"><span><i
+                                                                    class="fa-solid fa-chevron-right"></i>{{ $category->name }}</span><span
+                                                                class="count">15</span></a></li>
+                                                @endforeach
+                                            @else
+                                            @endif
+
                                         </ul>
                                     </div>
                                     <!-- End Product Category Sidebar -->
@@ -125,7 +72,7 @@
                                                 <a class="list-group-item" data-bs-toggle="list" href="#tab_1"
                                                     role="tab"><span>Newest</span></a>
                                             </div>
-                                            <a href="{{ route('admin.upload.products') }}"
+                                            <a href="{{ route('vendor.upload.product') }}"
                                                 class="sherah-btn sherah-gbcolor">Upload Product</a>
                                         </div>
                                     </div>
@@ -133,812 +80,183 @@
                                         <div class="tab-pane fade show active" id="tab_1" role="tabpanel"
                                             aria-labelledby="nav-home-tab">
                                             <div class="row">
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img1.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html" class="sherah-pcolor">Polka
-                                                                    Dots Woman Dress</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">
-                                                                        <del>$155</del>$135</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
+
+                                                @if (count($products) > 0)
+                                                    @foreach ($products as $product)
+                                                        <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
+                                                            <!-- Single Product -->
+                                                            <div
+                                                                class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
+                                                                <!-- Card Image -->
+                                                                <div class="sherah-product-card__img">
+                                                                    {{-- {{ asset('backend/assets/img/product-detail.png') }} --}}
+                                                                    <img
+                                                                        src="{{ asset('backend/assets/img/product-detail.png') }}">
+                                                                    {{-- <img
+                                                                        src="{{ asset('upload/admin_images/' . $product->image) }}"> --}}
+                                                                    <div class="sherah-product-card__buttons">
+                                                                        <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
+                                                                            href="#">
+                                                                            <svg class="sherah-default__fill sherah-default__heart"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="21.559" height="19.349"
+                                                                                viewBox="0 0 21.559 19.349">
+                                                                                <path id="Path_533" data-name="Path 533"
+                                                                                    d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
+                                                                                    transform="translate(-90.794 -8.871)"
+                                                                                    stroke-width="1" />
+                                                                            </svg>
+                                                                        </a>
+                                                                        <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
+                                                                            href="#">
+                                                                            <svg class="sherah-default__fill"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="15.671" height="15.67"
+                                                                                viewBox="0 0 15.671 15.67">
+                                                                                <g id="View_full" data-name="View full"
+                                                                                    transform="translate(0 -0.33)">
+                                                                                    <path id="Path_529"
+                                                                                        data-name="Path 529"
+                                                                                        d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
+                                                                                    <path id="Path_530"
+                                                                                        data-name="Path 530"
+                                                                                        d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
+                                                                                    <path id="Path_531"
+                                                                                        data-name="Path 531"
+                                                                                        d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
+                                                                                    <path id="Path_532"
+                                                                                        data-name="Path 532"
+                                                                                        d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
+                                                                                </g>
+                                                                            </svg>
+                                                                        </a>
+                                                                        <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
+                                                                            href="#">
+                                                                            <svg class="sherah-default__fill"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="18" height="20"
+                                                                                viewBox="0 0 18 20">
+                                                                                <g id="Com"
+                                                                                    transform="translate(-0.268 0)">
+                                                                                    <path id="Path_527"
+                                                                                        data-name="Path 527"
+                                                                                        d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
+                                                                                        transform="translate(0 0)" />
+                                                                                    <path id="Path_528"
+                                                                                        data-name="Path 528"
+                                                                                        d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
+                                                                                        transform="translate(0.206)" />
+                                                                                </g>
+                                                                            </svg>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img2.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html" class="sherah-pcolor">Double
-                                                                    breasted suit</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">$160</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
+                                                                <!-- Card Content -->
+                                                                <div
+                                                                    class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
+                                                                    <h4 class="sherah-product-card__title">
+                                                                        <a href="product-detail.html"
+                                                                            class="sherah-pcolor">{{ $product->name }}</a>
+                                                                    </h4>
+                                                                    <div class="sherah-product__bottom">
+                                                                        <div class="sherah-product__bottom--single">
+                                                                            {{-- <h5 class="sherah-product-card__price">
+                                                                        <del>$155</del>$135</h5> --}}
+                                                                            <h5 class="sherah-product-card__price">
+                                                                                {{ $product->price }}
+                                                                            </h5>
+                                                                            <div
+                                                                                class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
+                                                                                <div
+                                                                                    class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
+                                                                                    <span class="sherah-color4"><i
+                                                                                            class="fa fa-star"></i></span>
+                                                                                    <span class="sherah-color4"><i
+                                                                                            class="fa fa-star"></i></span>
+                                                                                    <span class="sherah-color4"><i
+                                                                                            class="fa fa-star"></i></span>
+                                                                                    <span class="sherah-color4"><i
+                                                                                            class="fa fa-star"></i></span>
+                                                                                    <span class="sherah-color4"><i
+                                                                                            class="fa fa-star"></i></span>
+                                                                                    (33)
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img3.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-pcolor">Sweater For Women</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">
-                                                                        <del>$130</del>$120</h5>
                                                                     <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
+                                                                        class="d-flex justify-content-center align-items-center gap-2">
+                                                                        <a href="#"
+                                                                            class="btn btn-outline-success d-flex align-items-center gap-1">
+                                                                            <i class="fas fa-edit"></i> Edit
+                                                                        </a>
+                                                                        <form method="POST" action="#"
+                                                                            style="display:inline;">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit"
+                                                                                class="btn btn-outline-danger d-flex align-items-center gap-1">
+                                                                                <i class="fa-solid fa-trash"></i> Delete
+                                                                            </button>
+                                                                        </form>
+                                                                        <a href="#"
+                                                                            class="btn btn-outline-success d-flex align-items-center gap-1"
+                                                                            data-bs-toggle="dropdown"
+                                                                            aria-expanded="false">
+                                                                            <i class="fas fa-flag"></i>
+                                                                            Status:
+                                                                            @if ($product->status == 'active')
+                                                                                <span class="text-outline-success ">Active</span>
+                                                                            @else
+                                                                                <span class="text-outline-danger">Inactive</span>
+                                                                            @endif
+                                                                        </a>
+
+                                                                        <!-- Dropdown Menu -->
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a class="dropdown-item" href="#"
+                                                                                    onclick="updateStatus({{ $product->id }}, 'active')">Active</a>
+                                                                            </li>
+                                                                            <li><a class="dropdown-item" href="#"
+                                                                                    onclick="updateStatus({{ $product->id }}, 'inactive')">Inactive</a>
+                                                                            </li>
+                                                                        </ul>
+
+                                                                        <script>
+                                                                            function updateStatus(productId, status) {
+                                                                                $.ajax({
+                                                                                    url: '/product/status/' + productId,
+                                                                                    type: 'POST',
+                                                                                    data: {
+                                                                                        _token: '{{ csrf_token() }}',
+                                                                                        status: status
+                                                                                    },
+                                                                                    success: function(response) {
+                                                                                        alert('Product status updated to ' + status);
+                                                                                        if (status == 'active') {
+                                                                                            $('a.btn-outline-success span').text('Active').removeClass('text-danger').addClass(
+                                                                                                'text-success');
+                                                                                        } else {
+                                                                                            $('a.btn-outline-success span').text('Inactive').removeClass('text-success').addClass(
+                                                                                                'text-danger');
+                                                                                        }
+                                                                                    },
+                                                                                    error: function(xhr, status, error) {
+                                                                                        console.error('Error updating status: ' + error);
+                                                                                        alert('Error updating product status.');
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        </script>
                                                                     </div>
                                                                 </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
                                                             </div>
+                                                            <!-- End Single Product -->
                                                         </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img4.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html" class="sherah-pcolor">Luxury
-                                                                    T-shirt For men</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">$180</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img5.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html" class="sherah-pcolor">Silver
-                                                                    Silk Shirt + Tie Mens</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">
-                                                                        <del>$280</del>$250</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img6.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-pcolor">Convert for man shoe</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">$200</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img7.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html" class="sherah-pcolor">Luxury
-                                                                    Woman Leather Hand Bag</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">
-                                                                        <del>$155</del>$135</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img8.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html" class="sherah-pcolor">Summer
-                                                                    Tank Top Vest</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">
-                                                                        <del>$140</del>$120</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
-                                                <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                    <!-- Single Product -->
-                                                    <div
-                                                        class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                        <!-- Card Image -->
-                                                        <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img9.png') }}">
-                                                            <div class="sherah-product-card__buttons">
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill sherah-default__heart"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="21.559"
-                                                                        height="19.349" viewBox="0 0 21.559 19.349">
-                                                                        <path id="Path_533" data-name="Path 533"
-                                                                            d="M111.852,15.093v.924a1.034,1.034,0,0,0-.03.135,7.2,7.2,0,0,1-1.211,3.339,14.326,14.326,0,0,1-2.5,2.868c-1.887,1.684-3.8,3.337-5.713,4.994a1.2,1.2,0,0,1-1.7-.04q-2.192-1.885-4.378-3.777a22.751,22.751,0,0,1-3.411-3.5,7.509,7.509,0,0,1-1.514-3.347,6.362,6.362,0,0,1,1.4-5.335,5.368,5.368,0,0,1,5.028-1.9,5.245,5.245,0,0,1,3.221,1.768c.184.2.352.414.539.635.092-.119.171-.225.255-.327s.18-.216.277-.318a5.235,5.235,0,0,1,5.72-1.543,5.583,5.583,0,0,1,3.813,4.222C111.746,14.284,111.784,14.692,111.852,15.093Z"
-                                                                            transform="translate(-90.794 -8.871)"
-                                                                            stroke-width="1" />
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="15.671"
-                                                                        height="15.67" viewBox="0 0 15.671 15.67">
-                                                                        <g id="View_full" data-name="View full"
-                                                                            transform="translate(0 -0.33)">
-                                                                            <path id="Path_529" data-name="Path 529"
-                                                                                d="M0,2.448V4.566H1.093V2.221L3.621,4.749,6.15,7.277l.4-.4.4-.4L4.419,3.952,1.89,1.423H4.236V.33H0Z" />
-                                                                            <path id="Path_530" data-name="Path 530"
-                                                                                d="M11.435.877v.547h2.346L11.253,3.952,8.725,6.48l.4.4.4.4L12.05,4.749l2.528-2.528V4.566h1.093V.33H11.435Z" />
-                                                                            <path id="Path_531" data-name="Path 531"
-                                                                                d="M3.608,11.59,1.093,14.11V11.764H0V16H4.236V14.907H1.89l2.528-2.528L6.947,9.85,6.56,9.463a4.274,4.274,0,0,0-.41-.387C6.136,9.076,4.993,10.21,3.608,11.59Z" />
-                                                                            <path id="Path_532" data-name="Path 532"
-                                                                                d="M9.112,9.463l-.387.387,2.528,2.528,2.528,2.528H11.435V16h4.236V11.764H14.578V14.11L12.059,11.59c-1.38-1.38-2.524-2.514-2.537-2.514A4.273,4.273,0,0,0,9.112,9.463Z" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                                <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
-                                                                    href="#">
-                                                                    <svg class="sherah-default__fill"
-                                                                        xmlns="http://www.w3.org/2000/svg" width="18"
-                                                                        height="20" viewBox="0 0 18 20">
-                                                                        <g id="Com" transform="translate(-0.268 0)">
-                                                                            <path id="Path_527" data-name="Path 527"
-                                                                                d="M7.895.663a4.9,4.9,0,0,1-.024.662c-.012,0-.206.035-.425.082A8.8,8.8,0,0,0,.334,8.8,9.839,9.839,0,0,0,.45,11.808a8.86,8.86,0,0,0,3.875,5.507l.226.14.56-.413a6.464,6.464,0,0,0,.56-.436.953.953,0,0,0-.218-.136,7.762,7.762,0,0,1-1.934-1.524,7.446,7.446,0,0,1-1.878-3.917,9.631,9.631,0,0,1,0-2.085,7.5,7.5,0,0,1,1.116-2.95A7.776,7.776,0,0,1,5.751,3.352a8.609,8.609,0,0,1,2.017-.678l.127-.023V3.2a3.624,3.624,0,0,0,.02.546c.04,0,2.521-1.843,2.521-1.871S7.954,0,7.915,0A5.311,5.311,0,0,0,7.895.663Z"
-                                                                                transform="translate(0 0)" />
-                                                                            <path id="Path_528" data-name="Path 528"
-                                                                                d="M13.219,2.958a3.6,3.6,0,0,0-.54.44,1.467,1.467,0,0,0,.27.168,7.818,7.818,0,0,1,2.918,2.95,7.809,7.809,0,0,1,.842,2.615,8.959,8.959,0,0,1-.1,2.362,7.546,7.546,0,0,1-4.848,5.514,10.126,10.126,0,0,1-1.275.343c-.044,0-.056-.1-.056-.546a3.622,3.622,0,0,0-.02-.546c-.04,0-2.521,1.843-2.521,1.871S10.376,20,10.416,20a5.307,5.307,0,0,0,.02-.662v-.659l.151-.023a14,14,0,0,0,1.755-.468A8.765,8.765,0,0,0,18,11.154a9.922,9.922,0,0,0-.119-2.962,8.86,8.86,0,0,0-3.875-5.507l-.226-.14Z"
-                                                                                transform="translate(0.206)" />
-                                                                        </g>
-                                                                    </svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Card Content -->
-                                                        <div
-                                                            class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
-                                                            <h4 class="sherah-product-card__title">
-                                                                <a href="product-detail.html" class="sherah-pcolor">Luxury
-                                                                    T-shirt For men</a>
-                                                            </h4>
-                                                            <div class="sherah-product__bottom">
-                                                                <div class="sherah-product__bottom--single">
-                                                                    <h5 class="sherah-product-card__price">$120</h5>
-                                                                    <div
-                                                                        class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
-                                                                        <div
-                                                                            class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            <span class="sherah-color4"><i
-                                                                                    class="fa fa-star"></i></span>
-                                                                            (33)
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="product-detail.html"
-                                                                    class="sherah-btn default">Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Product -->
-                                                </div>
+                                                    @endforeach
+                                                @else
+                                                @endif
+
                                             </div>
                                             <div class="row mg-top-40">
                                                 <div class="sherah-pagination">
@@ -1024,7 +342,8 @@
                                                             <div class="sherah-product__bottom">
                                                                 <div class="sherah-product__bottom--single">
                                                                     <h5 class="sherah-product-card__price">
-                                                                        <del>$155</del>$135</h5>
+                                                                        <del>$155</del>$135
+                                                                    </h5>
                                                                     <div
                                                                         class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
                                                                         <div
@@ -1114,7 +433,8 @@
                                                             <div class="sherah-product__bottom">
                                                                 <div class="sherah-product__bottom--single">
                                                                     <h5 class="sherah-product-card__price">
-                                                                        <del>$140</del>$120</h5>
+                                                                        <del>$140</del>$120
+                                                                    </h5>
                                                                     <div
                                                                         class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
                                                                         <div

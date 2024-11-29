@@ -64,7 +64,7 @@
                                         <div class="form-group">
                                             <label class="sherah-wc__form-label">Name</label>
                                             <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" type="text" name="name"
+                                                <input class="sherah-wc__form-input" type="text" name="name"
                                                     placeholder="Name" required="required">
                                             </div>
                                         </div>
@@ -82,7 +82,7 @@
                                         <div class="form-group">
                                             <label class="sherah-wc__form-label">Email Address</label>
                                             <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" type="email" name="email"
+                                                <input class="sherah-wc__form-input" type="email" name="email"
                                                     placeholder="Email" required="required">
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label class="sherah-wc__form-label">Phone</label>
                                             <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" type="text" name="phone"
+                                                <input class="sherah-wc__form-input" type="text" name="phone"
                                                     placeholder="Phone" required="required">
                                             </div>
                                         </div>
@@ -101,7 +101,7 @@
                                         <div class="form-group">
                                             <label class="sherah-wc__form-label">Password</label>
                                             <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark" placeholder="Password"
+                                                <input class="sherah-wc__form-input" placeholder="Password"
                                                     type="password" name="password" required="required">
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@
                                         <div class="form-group">
                                             <label class="sherah-wc__form-label">Confirm Password</label>
                                             <div class="form-group__input">
-                                                <input class="sherah-wc__form-input text-dark"
+                                                <input class="sherah-wc__form-input"
                                                     placeholder="Confrim Password" type="password" name="password"
                                                     required="required">
                                             </div>
