@@ -5,7 +5,7 @@
 
         <!-- Logo -->
         <div class="logo sherah-sidebar-padding">
-            <a href="{{ route('customer.dashboard') }}">
+            <a href="{{ route('customer.product.list') }}">
                 <img class="sherah-logo__main" src="{{ asset('backend/assets/img/logo.png') }}" alt="#">
             </a>
             <div class="sherah__sicon close-icon d-xl-none">
@@ -21,7 +21,7 @@
             <!-- Nav Menu -->
             <div class="menu-bar">
                 <ul class="menu-bar__one sherah-dashboard-menu" id="sherahMenu">
-                    <li><a href="#!" data-bs-toggle="collapse" data-bs-target="#menu-item_home"><span
+                    <li><a href="{{ route('customer.product.list') }}" data-bs-toggle="collapse" data-bs-target="#menu-item_home"><span
                                 class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18.075"
@@ -41,10 +41,10 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="menu-bar__name">Dashboard</span></span></a></span>
+                                <span class="menu-bar__name">Product</span></span></a></span>
 
                     </li>
-                    <li><a href="#!" class="collapsed" data-bs-toggle="collapse"
+                    {{-- <li><a href="#!" class="collapsed" data-bs-toggle="collapse"
                             data-bs-target="#menu-item__customers"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="21.732"
@@ -74,7 +74,7 @@
                                                 class="menu-bar__name">Products</span></span></a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
                     <li><a href="#!" class="collapsed" data-bs-toggle="collapse"
                             data-bs-target="#menu-item__orders"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">

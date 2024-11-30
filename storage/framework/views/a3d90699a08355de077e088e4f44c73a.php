@@ -1,5 +1,5 @@
-@extends('customer.index')
-@section('customer')
+
+<?php $__env->startSection('customer'); ?>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -15,8 +15,8 @@
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Products</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('customer.product.list') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('customer.product.list') }}">Product
+                                            <li><a href="<?php echo e(route('customer.product.list')); ?>">Home</a></li>
+                                            <li class="active"><a href="<?php echo e(route('customer.product.list')); ?>">Product
                                                     List</a>
                                             </li>
                                         </ul>
@@ -32,55 +32,58 @@
                                         <h4 class="sherah-product-sidebar__title sherah-border-btm">Product Categories</h4>
 
                                         <ul class="sherah-product-sidebar__list">
-                                            @if (count($categories) > 0)
-                                                @foreach ($categories as $category)
+                                            <?php if(count($categories) > 0): ?>
+                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <li>
                                                         <a href="#" class="collapsed" data-bs-toggle="collapse"
-                                                            data-bs-target="#category-{{ $category->id }}" role="button"
+                                                            data-bs-target="#category-<?php echo e($category->id); ?>" role="button"
                                                             aria-expanded="false"
-                                                            aria-controls="category-{{ $category->id }}"
-                                                            data-category-id="{{ $category->id }}">
+                                                            aria-controls="category-<?php echo e($category->id); ?>"
+                                                            data-category-id="<?php echo e($category->id); ?>">
                                                             <span>
                                                                 <i class="fa-solid fa-chevron-right"
-                                                                    id="arrow-{{ $category->id }}"></i>
-                                                                {{ $category->name }}
+                                                                    id="arrow-<?php echo e($category->id); ?>"></i>
+                                                                <?php echo e($category->name); ?>
+
                                                             </span>
                                                             <span class="count">
-                                                                @isset($categoryProductCount[$category->id])
-                                                                    {{ $categoryProductCount[$category->id] }}
-                                                                @else
+                                                                <?php if(isset($categoryProductCount[$category->id])): ?>
+                                                                    <?php echo e($categoryProductCount[$category->id]); ?>
+
+                                                                <?php else: ?>
                                                                     0
-                                                                @endisset
+                                                                <?php endif; ?>
                                                             </span>
                                                         </a>
 
                                                         <!-- Subcategory Dropdown (Collapsible) -->
-                                                        @if (isset($subcategoriesGrouped[$category->id]) && count($subcategoriesGrouped[$category->id]) > 0)
-                                                            <div class="collapse" id="category-{{ $category->id }}">
+                                                        <?php if(isset($subcategoriesGrouped[$category->id]) && count($subcategoriesGrouped[$category->id]) > 0): ?>
+                                                            <div class="collapse" id="category-<?php echo e($category->id); ?>">
                                                                 <ul class="pt-2 ps-4">
-                                                                    @foreach ($subcategoriesGrouped[$category->id] as $subcategory)
+                                                                    <?php $__currentLoopData = $subcategoriesGrouped[$category->id]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <li>
                                                                             <a href="#"
                                                                                 class="d-flex justify-content-between pt-1">
-                                                                                <span>{{ $subcategory->name }}</span>
+                                                                                <span><?php echo e($subcategory->name); ?></span>
                                                                                 <span class="count">
-                                                                                    @isset($subcategoryProductCount[$subcategory->id])
-                                                                                        {{ $subcategoryProductCount[$subcategory->id] }}
-                                                                                    @else
+                                                                                    <?php if(isset($subcategoryProductCount[$subcategory->id])): ?>
+                                                                                        <?php echo e($subcategoryProductCount[$subcategory->id]); ?>
+
+                                                                                    <?php else: ?>
                                                                                         0
-                                                                                    @endisset
+                                                                                    <?php endif; ?>
                                                                                 </span>
                                                                             </a>
                                                                         </li>
-                                                                    @endforeach
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 </ul>
                                                             </div>
-                                                        @endif
+                                                        <?php endif; ?>
                                                     </li>
-                                                @endforeach
-                                            @else
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
                                                 <p>No categories found.</p>
-                                            @endif
+                                            <?php endif; ?>
                                         </ul>
 
 
@@ -143,8 +146,7 @@
                                                 <a class="list-group-item" data-bs-toggle="list" href="#tab_1"
                                                     role="tab"><span>Newest</span></a>
                                             </div>
-                                            {{-- <a href="{{ route('vendor.upload.product') }}"
-                                                class="sherah-btn sherah-gbcolor">Upload Product</a> --}}
+                                            
                                         </div>
                                     </div>
                                     <div class="tab-content" id="nav-tabContent">
@@ -152,19 +154,18 @@
                                             aria-labelledby="nav-home-tab">
                                             <div class="row">
 
-                                                @if (count($products) > 0)
-                                                    @foreach ($products as $product)
+                                                <?php if(count($products) > 0): ?>
+                                                    <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
                                                             <!-- Single Product -->
                                                             <div
                                                                 class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
                                                                 <!-- Card Image -->
                                                                 <div class="sherah-product-card__img">
-                                                                    {{-- {{ asset('backend/assets/img/product-detail.png') }} --}}
+                                                                    
                                                                     <img
-                                                                        src="{{ asset('backend/assets/img/product-detail.png') }}">
-                                                                    {{-- <img
-                                                                        src="{{ asset('upload/admin_images/' . $product->image) }}"> --}}
+                                                                        src="<?php echo e(asset('backend/assets/img/product-detail.png')); ?>">
+                                                                    
                                                                     <div class="sherah-product-card__buttons">
                                                                         <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                             href="#">
@@ -227,109 +228,33 @@
                                                                     class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
                                                                     <h4 class="sherah-product-card__title">
                                                                         <a href="product-detail.html"
-                                                                            class="sherah-pcolor">{{ $product->name }}</a>
+                                                                            class="sherah-pcolor"><?php echo e($product->name); ?></a>
                                                                     </h4>
                                                                     <div class="sherah-product__bottom">
                                                                         <div class="sherah-product__bottom--single">
-                                                                            {{-- <h5 class="sherah-product-card__price">
-                                                                        <del>$155</del>$135</h5> --}}
+                                                                            
                                                                             <h5 class="sherah-product-card__price">
-                                                                                TK. {{ $product->price }}
+                                                                                TK. <?php echo e($product->price); ?>
+
                                                                             </h5>
                                                                             <div
                                                                                 class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
                                                                                 <div
                                                                                     class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                                    {{-- <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    (33) --}}
+                                                                                    
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <a href="#" class="sherah-btn default">Bid Now</a>
                                                                     </div>
-                                                                    {{-- <div
-                                                                        class="d-flex justify-content-center align-items-center gap-2">
-                                                                        <a href="#"
-                                                                            class="btn btn-outline-success d-flex align-items-center gap-1">
-                                                                            <i class="fas fa-edit"></i> Edit
-                                                                        </a>
-                                                                        <form method="POST" action="#"
-                                                                            style="display:inline;">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button type="submit"
-                                                                                class="btn btn-outline-danger d-flex align-items-center gap-1">
-                                                                                <i class="fa-solid fa-trash"></i> Delete
-                                                                            </button>
-                                                                        </form>
-                                                                        <a href="#"
-                                                                            class="btn btn-outline-success d-flex align-items-center gap-1"
-                                                                            data-bs-toggle="dropdown"
-                                                                            aria-expanded="false">
-                                                                            <i class="fas fa-flag"></i>
-                                                                            Status:
-                                                                            @if ($product->status == 'active')
-                                                                                <span
-                                                                                    class="text-outline-success ">Active</span>
-                                                                            @else
-                                                                                <span
-                                                                                    class="text-outline-danger">Inactive</span>
-                                                                            @endif
-                                                                        </a>
-
-                                                                        <!-- Dropdown Menu -->
-                                                                        <ul class="dropdown-menu">
-                                                                            <li><a class="dropdown-item" href="#"
-                                                                                    onclick="updateStatus({{ $product->id }}, 'active')">Active</a>
-                                                                            </li>
-                                                                            <li><a class="dropdown-item" href="#"
-                                                                                    onclick="updateStatus({{ $product->id }}, 'inactive')">Inactive</a>
-                                                                            </li>
-                                                                        </ul>
-
-                                                                        <script>
-                                                                            function updateStatus(productId, status) {
-                                                                                $.ajax({
-                                                                                    url: '/product/status/' + productId,
-                                                                                    type: 'POST',
-                                                                                    data: {
-                                                                                        _token: '{{ csrf_token() }}',
-                                                                                        status: status
-                                                                                    },
-                                                                                    success: function(response) {
-                                                                                        alert('Product status updated to ' + status);
-                                                                                        if (status == 'active') {
-                                                                                            $('a.btn-outline-success span').text('Active').removeClass('text-danger').addClass(
-                                                                                                'text-success');
-                                                                                        } else {
-                                                                                            $('a.btn-outline-success span').text('Inactive').removeClass('text-success').addClass(
-                                                                                                'text-danger');
-                                                                                        }
-                                                                                    },
-                                                                                    error: function(xhr, status, error) {
-                                                                                        console.error('Error updating status: ' + error);
-                                                                                        alert('Error updating product status.');
-                                                                                    }
-                                                                                });
-                                                                            }
-                                                                        </script>
-                                                                    </div> --}}
+                                                                    
                                                                 </div>
                                                             </div>
                                                             <!-- End Single Product -->
                                                         </div>
-                                                    @endforeach
-                                                @else
-                                                @endif
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php else: ?>
+                                                <?php endif; ?>
 
                                             </div>
                                             <div class="row mg-top-40">
@@ -358,7 +283,7 @@
                                                         class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
                                                         <!-- Card Image -->
                                                         <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img7.png') }}">
+                                                            <img src="<?php echo e(asset('backend/assets/img/product-img7.png')); ?>">
                                                             <div class="sherah-product-card__buttons">
                                                                 <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                     href="#">
@@ -449,7 +374,7 @@
                                                         class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
                                                         <!-- Card Image -->
                                                         <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img8.png') }}">
+                                                            <img src="<?php echo e(asset('backend/assets/img/product-img8.png')); ?>">
                                                             <div class="sherah-product-card__buttons">
                                                                 <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                     href="#">
@@ -540,7 +465,7 @@
                                                         class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
                                                         <!-- Card Image -->
                                                         <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img9.png') }}">
+                                                            <img src="<?php echo e(asset('backend/assets/img/product-img9.png')); ?>">
                                                             <div class="sherah-product-card__buttons">
                                                                 <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                     href="#">
@@ -651,4 +576,6 @@
         </div>
     </section>
     <!-- End sherah Dashboard -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/customer/product/product-list.blade.php ENDPATH**/ ?>

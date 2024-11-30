@@ -18,67 +18,67 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <!-- Fav Icon -->
-    <link rel="icon" href="{{ asset('backend/assets/img/favicon.png') }}">
+    <link rel="icon" href="<?php echo e(asset('backend/assets/img/favicon.png')); ?>">
     <!-- sherah Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/font-awesome-all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/charts.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/jvector-map.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/slickslider.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/bootstrap.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/font-awesome-all.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/charts.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/datatables.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/jvector-map.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/slickslider.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/jquery-ui.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/reset.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('backend/assets/css/style.css')); ?>">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body id="sherah-dark-light">
     <div class="sherah-body-area">
         <!-- sidebar -->
-        @include('customer.sidebar')
+        <?php echo $__env->make('customer.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!--navbar.html -->
-        @include('customer.header')
+        <?php echo $__env->make('customer.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- admin index -->
-        @yield('customer')
+        <?php echo $__env->yieldContent('customer'); ?>
         <!-- footer -->
-        {{-- @include('vendor.footer') --}}
+        
     </div>
     <!-- Sherah Scripts -->
-    <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/jquery-migrate.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/charts.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/circle-progress.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/jquery-jvectormap.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/jvector-map.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/slickslider.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/main.js') }}"></script>
+    <script src="<?php echo e(asset('backend/assets/js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/jquery-migrate.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/jquery-ui.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/charts.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/datatables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/circle-progress.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/jquery-jvectormap.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/dashboard-dark.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/jvector-map.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/slickslider.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('backend/assets/js/main.js')); ?>"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
-        @if (Session::has('message'))
-            var type = "{{ Session::get('alert-type', 'info') }}"
+        <?php if(Session::has('message')): ?>
+            var type = "<?php echo e(Session::get('alert-type', 'info')); ?>"
             switch (type) {
                 case 'info':
-                    toastr.info(" {{ Session::get('message') }} ");
+                    toastr.info(" <?php echo e(Session::get('message')); ?> ");
                     break;
 
                 case 'success':
-                    toastr.success(" {{ Session::get('message') }} ");
+                    toastr.success(" <?php echo e(Session::get('message')); ?> ");
                     break;
 
                 case 'warning':
-                    toastr.warning(" {{ Session::get('message') }} ");
+                    toastr.warning(" <?php echo e(Session::get('message')); ?> ");
                     break;
 
                 case 'error':
-                    toastr.error(" {{ Session::get('message') }} ");
+                    toastr.error(" <?php echo e(Session::get('message')); ?> ");
                     break;
             }
-        @endif
+        <?php endif; ?>
     </script>
     <script>
         $(document).ready(function() {
@@ -589,3 +589,4 @@
 </body>
 
 </html>
+<?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/customer/index.blade.php ENDPATH**/ ?>

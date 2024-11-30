@@ -54,7 +54,7 @@ class AuthenticatedSessionController extends Controller
                 case 'customer':
                     $request->session()->flash('message', 'Welcome! You are successfully logged in.');
                     $request->session()->flash('alert-type', 'success');
-                    return redirect()->route('home');
+                    return redirect()->route('customer.product.list');
 
                 default:
                     $request->session()->flash('message', 'Access Denied. Invalid role.');
@@ -63,8 +63,6 @@ class AuthenticatedSessionController extends Controller
                     return redirect()->back();
             }
         }
-
-        // Failed authentication
         $request->session()->flash('message', 'These credentials do not match our records.');
         $request->session()->flash('alert-type', 'error');
 
@@ -82,7 +80,7 @@ class AuthenticatedSessionController extends Controller
         if ($request->routeIs('vendor.login') && $user->role !== 'vendor') {
             return false;
         }
-        if ($request->routeIs('login') && $user->role !== 'customer') {
+        if ($request->routeIs('customer.login') && $user->role !== 'customer') {
             return false;
         }
 
@@ -110,7 +108,7 @@ class AuthenticatedSessionController extends Controller
             case 'vendor':
                 return redirect()->route('vendor.login');
             case 'customer':
-                return redirect()->route('login');
+                return redirect()->route('customer.login');
             default:
                 return redirect('/');
         }

@@ -5,8 +5,8 @@
 
         <!-- Logo -->
         <div class="logo sherah-sidebar-padding">
-            <a href="{{ route('vendor.dashboard') }}">
-                <img class="sherah-logo__main" src="{{ asset('backend/assets/img/logo.png') }}" alt="#">
+            <a href="<?php echo e(route('customer.product.list')); ?>">
+                <img class="sherah-logo__main" src="<?php echo e(asset('backend/assets/img/logo.png')); ?>" alt="#">
             </a>
             <div class="sherah__sicon close-icon d-xl-none">
                 <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +21,7 @@
             <!-- Nav Menu -->
             <div class="menu-bar">
                 <ul class="menu-bar__one sherah-dashboard-menu" id="sherahMenu">
-                    <li><a href="#!" data-bs-toggle="collapse" data-bs-target="#menu-item_home"><span
+                    <li><a href="<?php echo e(route('customer.product.list')); ?>" data-bs-toggle="collapse" data-bs-target="#menu-item_home"><span
                                 class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18.075"
@@ -41,88 +41,10 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="menu-bar__name">Dashboard</span></span></a></span>
+                                <span class="menu-bar__name">Product</span></span></a></span>
 
                     </li>
-                    <li><a href="#!" class="collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#menu-item__customers"><span class="menu-bar__text">
-                                <span class="sherah-menu-icon sherah-svg-icon__v1">
-                                    <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="21.732"
-                                        height="18" viewBox="0 0 21.732 18">
-                                        <g id="Icon" transform="translate(-525.662 -352.927)">
-                                            <path id="Path_208" data-name="Path 208"
-                                                d="M536.507,455.982q-4.327,0-8.654,0a1.953,1.953,0,0,1-2.188-2.2c0-.99-.005-1.979,0-2.969a3.176,3.176,0,0,1,3.309-3.315c.875,0,1.749.052,2.624.062a.451.451,0,0,0,.33-.168,3.237,3.237,0,0,1,2.94-1.527q1.654.024,3.309,0a3.262,3.262,0,0,1,2.947,1.52.621.621,0,0,0,.449.153,30.091,30.091,0,0,1,3.212.044,3.044,3.044,0,0,1,2.594,3.014c.021,1.117.014,2.234.005,3.351a1.909,1.909,0,0,1-2.054,2.032Q540.919,455.989,536.507,455.982Zm3.812-1.288c0-.187,0-.326,0-.465-.008-1.781.026-3.564-.042-5.342a1.8,1.8,0,0,0-1.929-1.74c-1.131-.012-2.263,0-3.394,0a1.961,1.961,0,0,0-2.22,2.212q0,2.439,0,4.878v.46Zm-8.89.011c.013-.11.026-.165.026-.22,0-1.781-.006-3.562.009-5.343,0-.337-.178-.37-.422-.37-.749,0-1.5-.024-2.248.006a1.849,1.849,0,0,0-1.837,1.763c-.044,1.172-.022,2.346-.013,3.519a.581.581,0,0,0,.6.639C528.826,454.716,530.111,454.705,531.429,454.705Zm10.165-.005c1.354,0,2.664.018,3.974-.011.377-.008.544-.315.544-.688,0-1.117.017-2.234-.007-3.35a1.867,1.867,0,0,0-1.823-1.87c-.762-.035-1.526,0-2.29-.01-.3,0-.41.114-.406.431.017,1.4.007,2.8.007,4.2Z"
-                                                transform="translate(0 -85.056)" />
-                                            <path id="Path_209" data-name="Path 209"
-                                                d="M609.243,356.712a3.775,3.775,0,1,1,3.788,3.764A3.775,3.775,0,0,1,609.243,356.712Zm1.279-.076a2.5,2.5,0,1,0,2.611-2.434A2.5,2.5,0,0,0,610.523,356.636Z"
-                                                transform="translate(-76.492)" />
-                                            <path id="Path_210" data-name="Path 210"
-                                                d="M548.151,397.022a2.819,2.819,0,1,1-2.842-2.82A2.827,2.827,0,0,1,548.151,397.022Zm-1.278.023a1.542,1.542,0,1,0-1.531,1.542A1.548,1.548,0,0,0,546.873,397.045Z"
-                                                transform="translate(-15.421 -37.775)" />
-                                            <path id="Path_211" data-name="Path 211"
-                                                d="M698.51,397.045a2.819,2.819,0,1,1,2.839,2.819A2.831,2.831,0,0,1,698.51,397.045Zm4.361.032a1.542,1.542,0,1,0-1.56,1.512A1.55,1.55,0,0,0,702.871,397.076Z"
-                                                transform="translate(-158.187 -37.776)" />
-                                        </g>
-                                    </svg>
-                                </span>
-                                <span class="menu-bar__name">Customers</span></span> <span
-                                class="sherah__toggle"></span></a></span>
-                        <!-- Dropdown Menu -->
-                        <div class="collapse sherah__dropdown" id="menu-item__customers" data-bs-parent="#sherahMenu">
-                            <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.customer.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Customer List</span></span></a></li>
-                                {{-- <li><a href="{{ route('vendor.customer.page') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Customers</span></span></a></li> --}}
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#" class="collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#menu-item_categories"><span class="menu-bar__text">
-                                <span class="sherah-menu-icon sherah-svg-icon__v1">
-                                    <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="21.136"
-                                        height="17.873" viewBox="0 0 21.136 17.873">
-                                        <path id="Path_218" data-name="Path 218"
-                                            d="M558.766,384.526c.177-.092.32-.164.46-.24l6.468-3.491a1.9,1.9,0,0,1,.368-.179.506.506,0,0,1,.632.248.487.487,0,0,1-.127.656,1.743,1.743,0,0,1-.315.191c-2.517,1.359-5.038,2.712-7.549,4.083a.98.98,0,0,1-1.036.012q-3.781-1.986-7.582-3.934a.811.811,0,0,1-.505-.831c.02-1.3,0-2.6.014-3.9a.486.486,0,0,0-.3-.508c-.45-.232-.889-.486-1.326-.742a.539.539,0,0,1-.221-.877c.62-.926,1.244-1.849,1.883-2.762a1.17,1.17,0,0,1,.442-.344c2.561-1.246,5.127-2.482,7.688-3.728a.879.879,0,0,1,.822-.01c2.568,1.2,5.143,2.387,7.709,3.591a1.24,1.24,0,0,1,.478.42c.61.916,1.2,1.844,1.794,2.771.3.463.23.71-.265.989q-3.631,2.046-7.265,4.086c-.454.255-.643.212-.981-.2-.412-.5-.823-1.011-1.292-1.587Zm-7.409-12.033c.133.076.214.126.3.17,2.065,1.073,4.133,2.141,6.191,3.225a.625.625,0,0,0,.674-.018c2.031-1.106,4.069-2.2,6.1-3.3.118-.064.232-.133.367-.21a1.6,1.6,0,0,0-.164-.106c-2.124-.986-4.246-1.977-6.378-2.945a.814.814,0,0,0-.6.038c-2.04.971-4.071,1.96-6.1,2.945C551.626,372.349,551.511,372.412,551.357,372.492Zm-.688,4.945c0,1.092.01,2.129-.007,3.165a.5.5,0,0,0,.321.528c2.093,1.074,4.179,2.162,6.267,3.245.1.054.216.1.344.152v-6.293l-1.263,1.551c-.386.473-.552.507-1.076.212q-2.074-1.166-4.147-2.334C550.982,377.593,550.85,377.53,550.668,377.438Zm10.08,1.529,6.694-3.769-1.4-2.171-7.033,3.792Zm-3.4-2.142-7.037-3.652-1.38,2.033,6.683,3.76Z"
-                                            transform="translate(-547.61 -368.076)" />
-                                    </svg>
-                                </span>
-                                <span class="menu-bar__name">Category</span></span> <span
-                                class="sherah__toggle"></span></a></span>
-                        <!-- Dropdown Menu -->
-                        <div class="collapse sherah__dropdown" id="menu-item_categories" data-bs-parent="#sherahMenu">
-                            <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.category.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Category List</span></span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="{{ route('vendor.product.details') }}" class="collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#menu-item_products"><span class="menu-bar__text">
-                                <span class="sherah-menu-icon sherah-svg-icon__v1">
-                                    <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="21.136"
-                                        height="17.873" viewBox="0 0 21.136 17.873">
-                                        <path id="Path_218" data-name="Path 218"
-                                            d="M558.766,384.526c.177-.092.32-.164.46-.24l6.468-3.491a1.9,1.9,0,0,1,.368-.179.506.506,0,0,1,.632.248.487.487,0,0,1-.127.656,1.743,1.743,0,0,1-.315.191c-2.517,1.359-5.038,2.712-7.549,4.083a.98.98,0,0,1-1.036.012q-3.781-1.986-7.582-3.934a.811.811,0,0,1-.505-.831c.02-1.3,0-2.6.014-3.9a.486.486,0,0,0-.3-.508c-.45-.232-.889-.486-1.326-.742a.539.539,0,0,1-.221-.877c.62-.926,1.244-1.849,1.883-2.762a1.17,1.17,0,0,1,.442-.344c2.561-1.246,5.127-2.482,7.688-3.728a.879.879,0,0,1,.822-.01c2.568,1.2,5.143,2.387,7.709,3.591a1.24,1.24,0,0,1,.478.42c.61.916,1.2,1.844,1.794,2.771.3.463.23.71-.265.989q-3.631,2.046-7.265,4.086c-.454.255-.643.212-.981-.2-.412-.5-.823-1.011-1.292-1.587Zm-7.409-12.033c.133.076.214.126.3.17,2.065,1.073,4.133,2.141,6.191,3.225a.625.625,0,0,0,.674-.018c2.031-1.106,4.069-2.2,6.1-3.3.118-.064.232-.133.367-.21a1.6,1.6,0,0,0-.164-.106c-2.124-.986-4.246-1.977-6.378-2.945a.814.814,0,0,0-.6.038c-2.04.971-4.071,1.96-6.1,2.945C551.626,372.349,551.511,372.412,551.357,372.492Zm-.688,4.945c0,1.092.01,2.129-.007,3.165a.5.5,0,0,0,.321.528c2.093,1.074,4.179,2.162,6.267,3.245.1.054.216.1.344.152v-6.293l-1.263,1.551c-.386.473-.552.507-1.076.212q-2.074-1.166-4.147-2.334C550.982,377.593,550.85,377.53,550.668,377.438Zm10.08,1.529,6.694-3.769-1.4-2.171-7.033,3.792Zm-3.4-2.142-7.037-3.652-1.38,2.033,6.683,3.76Z"
-                                            transform="translate(-547.61 -368.076)" />
-                                    </svg>
-                                </span>
-                                <span class="menu-bar__name">Products</span></span> <span
-                                class="sherah__toggle"></span></a></span>
-                        <!-- Dropdown Menu -->
-                        <div class="collapse sherah__dropdown" id="menu-item_products" data-bs-parent="#sherahMenu">
-                            <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.product.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Products</span></span></a></li>
-                                {{-- <li><a href="{{ route('vendor.product.details') }}"><span
-                                            class="menu-bar__text"><span class="menu-bar__name">Product
-                                                Details</span></span></a></li> --}}
-                                {{-- <li><a href="{{ route('vendor.upload.products') }}"><span
-                                            class="menu-bar__text"><span class="menu-bar__name">Upload
-                                                Product</span></span></a></li> --}}
-                            </ul>
-                        </div>
-                    </li>
+                    
                     <li><a href="#!" class="collapsed" data-bs-toggle="collapse"
                             data-bs-target="#menu-item__orders"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
@@ -143,31 +65,12 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__orders" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.order.list') }}"><span class="menu-bar__text"><span
+                                <li><a href="<?php echo e(route('customer.order.list')); ?>"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Order List</span></span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="{{ route('vendor.history') }}" class="collapsed"><span class="menu-bar__text">
-                                <span class="sherah-menu-icon sherah-svg-icon__v1">
-                                    <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="19.527"
-                                        height="19.582" viewBox="0 0 19.527 19.582">
-                                        <g id="Icon" transform="translate(-115.401 35.25)">
-                                            <path id="Path_1026" data-name="Path 1026"
-                                                d="M133.432-15.668h-13.28c-.137-.024-.274-.048-.412-.071a5.177,5.177,0,0,1-4.285-4.372,5.176,5.176,0,0,1,2.84-5.353,5.455,5.455,0,0,1,1.7-.5V-26.2q0-3.631,0-7.263a1.665,1.665,0,0,1,.776-1.489,4.105,4.105,0,0,1,.717-.295h9.185a5.733,5.733,0,0,1,.452.369c1.18,1.172,2.353,2.351,3.533,3.523a.846.846,0,0,1,.267.645q-.008,3.918,0,7.835c0,1.815,0,3.631,0,5.446a1.68,1.68,0,0,1-1.056,1.627A3.581,3.581,0,0,1,133.432-15.668ZM129.949-34.1h-8.134a.591.591,0,0,0-.669.669q0,3.633,0,7.265v.2a5.282,5.282,0,0,1,2.534,1.006.59.59,0,0,0,.326.107q3.75.009,7.5,0c.064,0,.128,0,.191,0a.579.579,0,0,1,.546.541.579.579,0,0,1-.484.6,1.439,1.439,0,0,1-.229.008h-6.663a5.29,5.29,0,0,1,.841,2.295h.32q2.784,0,5.567,0a.591.591,0,0,1,.6.353.574.574,0,0,1-.583.8q-2.841,0-5.682,0h-.223a5.257,5.257,0,0,1-1.884,3.442h9.254c.485,0,.7-.213.7-.7q0-6.271,0-12.542v-.22H130.6a.585.585,0,0,1-.654-.646c0-.452,0-.9,0-1.357Zm-5.358,13.269a4.023,4.023,0,0,0-4.016-4.013,4.023,4.023,0,0,0-4.021,4.008,4.024,4.024,0,0,0,4.025,4.023A4.024,4.024,0,0,0,124.591-20.834Zm8.268-10.6-1.747-1.748v1.748Z"
-                                                transform="translate(0 0)" />
-                                            <path id="Path_1027" data-name="Path 1027"
-                                                d="M262.772,101.242q2.084,0,4.168,0a.572.572,0,0,1,.572.789.554.554,0,0,1-.539.357c-.376,0-.752,0-1.128,0h-7.151a1.177,1.177,0,0,1-.247-.014.572.572,0,0,1,.138-1.132q1.941,0,3.881,0Z"
-                                                transform="translate(-135.313 -129.532)" />
-                                            <path id="Path_1028" data-name="Path 1028"
-                                                d="M206.635,193.557c.317,0,.609,0,.9,0a.576.576,0,1,1,0,1.147q-.708,0-1.415,0a.58.58,0,0,1-.631-.63q0-1.09,0-2.181a.576.576,0,1,1,1.147-.006C206.636,192.435,206.635,192.983,206.635,193.557Z"
-                                                transform="translate(-85.488 -214.962)" />
-                                        </g>
-                                    </svg>
-                                </span>
-                                <span class="menu-bar__name">History</span></span></a></span>
-                    </li>
-                    <li><a href="{{ route('vendor.invoice') }}" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="<?php echo e(route('customer.invoice')); ?>" class="collapsed"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="19.434"
                                         height="19.432" viewBox="0 0 19.434 19.432">
@@ -191,7 +94,27 @@
                                 </span>
                                 <span class="menu-bar__name">Invoice</span></span></a></span>
                     </li>
-                    <li><a href="{{ route('vendor.chat.message') }}" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="<?php echo e(route('customer.history')); ?>" class="collapsed"><span class="menu-bar__text">
+                                <span class="sherah-menu-icon sherah-svg-icon__v1">
+                                    <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="19.527"
+                                        height="19.582" viewBox="0 0 19.527 19.582">
+                                        <g id="Icon" transform="translate(-115.401 35.25)">
+                                            <path id="Path_1026" data-name="Path 1026"
+                                                d="M133.432-15.668h-13.28c-.137-.024-.274-.048-.412-.071a5.177,5.177,0,0,1-4.285-4.372,5.176,5.176,0,0,1,2.84-5.353,5.455,5.455,0,0,1,1.7-.5V-26.2q0-3.631,0-7.263a1.665,1.665,0,0,1,.776-1.489,4.105,4.105,0,0,1,.717-.295h9.185a5.733,5.733,0,0,1,.452.369c1.18,1.172,2.353,2.351,3.533,3.523a.846.846,0,0,1,.267.645q-.008,3.918,0,7.835c0,1.815,0,3.631,0,5.446a1.68,1.68,0,0,1-1.056,1.627A3.581,3.581,0,0,1,133.432-15.668ZM129.949-34.1h-8.134a.591.591,0,0,0-.669.669q0,3.633,0,7.265v.2a5.282,5.282,0,0,1,2.534,1.006.59.59,0,0,0,.326.107q3.75.009,7.5,0c.064,0,.128,0,.191,0a.579.579,0,0,1,.546.541.579.579,0,0,1-.484.6,1.439,1.439,0,0,1-.229.008h-6.663a5.29,5.29,0,0,1,.841,2.295h.32q2.784,0,5.567,0a.591.591,0,0,1,.6.353.574.574,0,0,1-.583.8q-2.841,0-5.682,0h-.223a5.257,5.257,0,0,1-1.884,3.442h9.254c.485,0,.7-.213.7-.7q0-6.271,0-12.542v-.22H130.6a.585.585,0,0,1-.654-.646c0-.452,0-.9,0-1.357Zm-5.358,13.269a4.023,4.023,0,0,0-4.016-4.013,4.023,4.023,0,0,0-4.021,4.008,4.024,4.024,0,0,0,4.025,4.023A4.024,4.024,0,0,0,124.591-20.834Zm8.268-10.6-1.747-1.748v1.748Z"
+                                                transform="translate(0 0)" />
+                                            <path id="Path_1027" data-name="Path 1027"
+                                                d="M262.772,101.242q2.084,0,4.168,0a.572.572,0,0,1,.572.789.554.554,0,0,1-.539.357c-.376,0-.752,0-1.128,0h-7.151a1.177,1.177,0,0,1-.247-.014.572.572,0,0,1,.138-1.132q1.941,0,3.881,0Z"
+                                                transform="translate(-135.313 -129.532)" />
+                                            <path id="Path_1028" data-name="Path 1028"
+                                                d="M206.635,193.557c.317,0,.609,0,.9,0a.576.576,0,1,1,0,1.147q-.708,0-1.415,0a.58.58,0,0,1-.631-.63q0-1.09,0-2.181a.576.576,0,1,1,1.147-.006C206.636,192.435,206.635,192.983,206.635,193.557Z"
+                                                transform="translate(-85.488 -214.962)" />
+                                        </g>
+                                    </svg>
+                                </span>
+                                <span class="menu-bar__name">History</span></span></a></span>
+                    </li>
+                    <li><a href="<?php echo e(route('customer.chat.message')); ?>" class="collapsed"><span
+                                class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="22.029"
                                         height="22.368" viewBox="0 0 22.029 22.368">
@@ -222,3 +145,4 @@
     <!-- End Admin Menu -->
 </div>
 <!-- End sherah Admin Menu -->
+<?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/customer/sidebar.blade.php ENDPATH**/ ?>

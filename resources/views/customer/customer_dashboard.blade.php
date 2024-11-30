@@ -1,5 +1,4 @@
 @extends('customer.index')
-
 @section('customer')
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">

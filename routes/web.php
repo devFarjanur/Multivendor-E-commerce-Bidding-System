@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -105,23 +105,23 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
     Route::get('/pages/terms-conditions', [VendorController::class, 'VendorTermsCondition'])->name('vendor.pages.terms-conditions');
 });
 
-Route::get('/login', [VendorController::class, 'VendorLogin'])->name('vendor.login');
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('vendor.login.post');
-Route::get('/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');
-Route::post('/register', [RegisteredUserController::class, 'VendorRegister'])->name('vendor.register.store');
+Route::get('/login', [CustomerController::class, 'customerLogin'])->name('customer.login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('customer.login.post');
+Route::get('/register', [CustomerController::class, 'customerRegister'])->name('customer.register');
+Route::post('/register', [RegisteredUserController::class, 'customerRegister'])->name('customer.register.store');
 
-// Vendor Routes (only accessible by users with 'vendor' role)
+// Route::get('/', [CustomerController::class, 'customerDashboard'])->name('customer.dashboard');
+Route::get('/', [CustomerController::class, 'customerProductList'])->name('customer.product.list');
+Route::get('/product-details', [CustomerController::class, 'customerDetailsProduct'])->name('customer.product.details');
+
+
+// Customer Routes (only accessible by users with 'customer' role)
 Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function () {
-
-    Route::get('/dashboard', [CustomerController::class, 'customerDashboard'])->name('customer.dashboard');
     Route::get('/logout', [CustomerController::class, 'customerLogout'])->name('customer.logout');
     Route::get('/Profile', [CustomerController::class, 'customerProfile'])->name('customer.profile');
     Route::post('/Profile/store', [CustomerController::class, 'customerProfileStore'])->name('customer.profile.store');
     Route::get('/change/password', [CustomerController::class, 'customerChangePassword'])->name('customer.change.password');
     Route::post('/update/password', [CustomerController::class, 'customerUpdatePassword'])->name('customer.update.password');
-
-    Route::get('/products', [CustomerController::class, 'customerProductList'])->name('customer.product.list');
-    Route::get('/product-details', [CustomerController::class, 'customerDetailsProduct'])->name('customer.product.details');
 
     Route::get('/order-list', [CustomerController::class, 'customerOrderList'])->name('customer.order.list');
     Route::get('/invoice', [CustomerController::class, 'customerInvoice'])->name('customer.invoice');
