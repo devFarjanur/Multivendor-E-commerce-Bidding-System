@@ -9,7 +9,7 @@
     <meta name="description" content="#">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Site Title -->
-    <title>Add Family - Vendor Login</title>
+    <title>Add Family - Login</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
                             <a href=""><img src="{{ asset('backend/assets/img/welcome-vector.png') }}" alt="#"></a>
                         </div>
                         <!-- Welcome Heading -->
-                        <h2 class="sherah-wc__title">Welcome to Add Family <br> Vendor Panel</h2>
+                        <h2 class="sherah-wc__title">Welcome to Add Family <br> Customer Panel</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 sherah-wc-col-two">
@@ -56,7 +56,7 @@
                             <h3 class="sherah-wc__form-title sherah-wc__form-title__one">Login Your Account <span>Please
                                     enter your email and password to continue</span></h3>
                             <!-- Sign in Form -->
-                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('vendor.login.post') }}">
+                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('customer.login.post') }}">
                                 @csrf
                                 <div class="form-group">
                                     <label class="sherah-wc__form-label">Email Address</label>
@@ -96,7 +96,7 @@
                                 <div class="form-group mg-top-20">
                                     <div class="sherah-wc__bottom">
                                         <p class="sherah-wc__text">Dont’t have an account ? <a
-                                                href="{{ route('vendor.register') }}">Sign up free</a></p>
+                                                href="{{ route('customer.register') }}">Sign up free</a></p>
                                     </div>
                                 </div>
                             </form>

@@ -5,7 +5,7 @@
 
         <!-- Logo -->
         <div class="logo sherah-sidebar-padding">
-            <a href="{{ route('vendor.dashboard') }}">
+            <a href="{{ route('customer.dashboard') }}">
                 <img class="sherah-logo__main" src="{{ asset('backend/assets/img/logo.png') }}" alt="#">
             </a>
             <div class="sherah__sicon close-icon d-xl-none">
@@ -65,61 +65,13 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="menu-bar__name">Customers</span></span> <span
+                                <span class="menu-bar__name">Products</span></span> <span
                                 class="sherah__toggle"></span></a></span>
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__customers" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.customer.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Customer List</span></span></a></li>
-                                <li><a href="{{ route('vendor.customer.page') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Customers</span></span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#" class="collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#menu-item_categories"><span class="menu-bar__text">
-                                <span class="sherah-menu-icon sherah-svg-icon__v1">
-                                    <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="21.136"
-                                        height="17.873" viewBox="0 0 21.136 17.873">
-                                        <path id="Path_218" data-name="Path 218"
-                                            d="M558.766,384.526c.177-.092.32-.164.46-.24l6.468-3.491a1.9,1.9,0,0,1,.368-.179.506.506,0,0,1,.632.248.487.487,0,0,1-.127.656,1.743,1.743,0,0,1-.315.191c-2.517,1.359-5.038,2.712-7.549,4.083a.98.98,0,0,1-1.036.012q-3.781-1.986-7.582-3.934a.811.811,0,0,1-.505-.831c.02-1.3,0-2.6.014-3.9a.486.486,0,0,0-.3-.508c-.45-.232-.889-.486-1.326-.742a.539.539,0,0,1-.221-.877c.62-.926,1.244-1.849,1.883-2.762a1.17,1.17,0,0,1,.442-.344c2.561-1.246,5.127-2.482,7.688-3.728a.879.879,0,0,1,.822-.01c2.568,1.2,5.143,2.387,7.709,3.591a1.24,1.24,0,0,1,.478.42c.61.916,1.2,1.844,1.794,2.771.3.463.23.71-.265.989q-3.631,2.046-7.265,4.086c-.454.255-.643.212-.981-.2-.412-.5-.823-1.011-1.292-1.587Zm-7.409-12.033c.133.076.214.126.3.17,2.065,1.073,4.133,2.141,6.191,3.225a.625.625,0,0,0,.674-.018c2.031-1.106,4.069-2.2,6.1-3.3.118-.064.232-.133.367-.21a1.6,1.6,0,0,0-.164-.106c-2.124-.986-4.246-1.977-6.378-2.945a.814.814,0,0,0-.6.038c-2.04.971-4.071,1.96-6.1,2.945C551.626,372.349,551.511,372.412,551.357,372.492Zm-.688,4.945c0,1.092.01,2.129-.007,3.165a.5.5,0,0,0,.321.528c2.093,1.074,4.179,2.162,6.267,3.245.1.054.216.1.344.152v-6.293l-1.263,1.551c-.386.473-.552.507-1.076.212q-2.074-1.166-4.147-2.334C550.982,377.593,550.85,377.53,550.668,377.438Zm10.08,1.529,6.694-3.769-1.4-2.171-7.033,3.792Zm-3.4-2.142-7.037-3.652-1.38,2.033,6.683,3.76Z"
-                                            transform="translate(-547.61 -368.076)" />
-                                    </svg>
-                                </span>
-                                <span class="menu-bar__name">Category</span></span> <span
-                                class="sherah__toggle"></span></a></span>
-                        <!-- Dropdown Menu -->
-                        <div class="collapse sherah__dropdown" id="menu-item_categories" data-bs-parent="#sherahMenu">
-                            <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.category.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Category List</span></span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="{{ route('vendor.product.details') }}" class="collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#menu-item_products"><span class="menu-bar__text">
-                                <span class="sherah-menu-icon sherah-svg-icon__v1">
-                                    <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="21.136"
-                                        height="17.873" viewBox="0 0 21.136 17.873">
-                                        <path id="Path_218" data-name="Path 218"
-                                            d="M558.766,384.526c.177-.092.32-.164.46-.24l6.468-3.491a1.9,1.9,0,0,1,.368-.179.506.506,0,0,1,.632.248.487.487,0,0,1-.127.656,1.743,1.743,0,0,1-.315.191c-2.517,1.359-5.038,2.712-7.549,4.083a.98.98,0,0,1-1.036.012q-3.781-1.986-7.582-3.934a.811.811,0,0,1-.505-.831c.02-1.3,0-2.6.014-3.9a.486.486,0,0,0-.3-.508c-.45-.232-.889-.486-1.326-.742a.539.539,0,0,1-.221-.877c.62-.926,1.244-1.849,1.883-2.762a1.17,1.17,0,0,1,.442-.344c2.561-1.246,5.127-2.482,7.688-3.728a.879.879,0,0,1,.822-.01c2.568,1.2,5.143,2.387,7.709,3.591a1.24,1.24,0,0,1,.478.42c.61.916,1.2,1.844,1.794,2.771.3.463.23.71-.265.989q-3.631,2.046-7.265,4.086c-.454.255-.643.212-.981-.2-.412-.5-.823-1.011-1.292-1.587Zm-7.409-12.033c.133.076.214.126.3.17,2.065,1.073,4.133,2.141,6.191,3.225a.625.625,0,0,0,.674-.018c2.031-1.106,4.069-2.2,6.1-3.3.118-.064.232-.133.367-.21a1.6,1.6,0,0,0-.164-.106c-2.124-.986-4.246-1.977-6.378-2.945a.814.814,0,0,0-.6.038c-2.04.971-4.071,1.96-6.1,2.945C551.626,372.349,551.511,372.412,551.357,372.492Zm-.688,4.945c0,1.092.01,2.129-.007,3.165a.5.5,0,0,0,.321.528c2.093,1.074,4.179,2.162,6.267,3.245.1.054.216.1.344.152v-6.293l-1.263,1.551c-.386.473-.552.507-1.076.212q-2.074-1.166-4.147-2.334C550.982,377.593,550.85,377.53,550.668,377.438Zm10.08,1.529,6.694-3.769-1.4-2.171-7.033,3.792Zm-3.4-2.142-7.037-3.652-1.38,2.033,6.683,3.76Z"
-                                            transform="translate(-547.61 -368.076)" />
-                                    </svg>
-                                </span>
-                                <span class="menu-bar__name">Products</span></span> <span
-                                class="sherah__toggle"></span></a></span>
-                        <!-- Dropdown Menu -->
-                        <div class="collapse sherah__dropdown" id="menu-item_products" data-bs-parent="#sherahMenu">
-                            <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.product.list') }}"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('customer.product.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Products</span></span></a></li>
-                                <li><a href="{{ route('vendor.product.details') }}"><span
-                                            class="menu-bar__text"><span class="menu-bar__name">Product
-                                                Details</span></span></a></li>
-                                <li><a href="{{ route('vendor.upload.products') }}"><span
-                                            class="menu-bar__text"><span class="menu-bar__name">Upload
-                                                Product</span></span></a></li>
                             </ul>
                         </div>
                     </li>
@@ -143,14 +95,12 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__orders" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.order.list') }}"><span class="menu-bar__text"><span
+                                <li><a href="{{ route('customer.order.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Order List</span></span></a></li>
-                                <li><a href="{{ route('vendor.order.details') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Order Details</span></span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="{{ route('vendor.invoice') }}" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="{{ route('customer.invoice') }}" class="collapsed"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="19.434"
                                         height="19.432" viewBox="0 0 19.434 19.432">
@@ -174,7 +124,7 @@
                                 </span>
                                 <span class="menu-bar__name">Invoice</span></span></a></span>
                     </li>
-                    <li><a href="{{ route('vendor.history') }}" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="{{ route('customer.history') }}" class="collapsed"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="19.527"
                                         height="19.582" viewBox="0 0 19.527 19.582">
@@ -193,7 +143,8 @@
                                 </span>
                                 <span class="menu-bar__name">History</span></span></a></span>
                     </li>
-                    <li><a href="{{ route('vendor.chat.message') }}" class="collapsed"><span class="menu-bar__text">
+                    <li><a href="{{ route('customer.chat.message') }}" class="collapsed"><span
+                                class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="22.029"
                                         height="22.368" viewBox="0 0 22.029 22.368">

@@ -48,7 +48,7 @@
                                     alt="#"></a>
                         </div>
                         <!-- Welcome Heading -->
-                        <h2 class="sherah-wc__title">Welcome to Add Family <br> Vendor Panel</h2>
+                        <h2 class="sherah-wc__title">Welcome to Add Family <br> Customer Panel</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 sherah-wc-col-two">
@@ -57,7 +57,7 @@
                             <h3 class="sherah-wc__form-title sherah-wc__form-title__one">Login Your Account <span>Please
                                     enter your email and password to continue</span></h3>
                             <!-- Sign in Form -->
-                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('vendor.register.store') }}">
+                            <form class="sherah-wc__form-main p-0" method="post" action="{{ route('customer.register.store') }}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -69,15 +69,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label class="sherah-wc__form-label">Last Name *</label>
-                                            <div class="form-group__input">
-                                                <input class="sherah-wc__form-input" type="text" name="email"
-                                                    placeholder="Tegforor" required="required">
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="sherah-wc__form-label">Email Address</label>
@@ -121,7 +112,7 @@
                                         <div class="form-group mg-top-20">
                                             <div class="sherah-wc__bottom">
                                                 <p class="sherah-wc__text">Already have an account? <a
-                                                        href="{{ route('vendor.login') }}">Log in</a></p>
+                                                        href="{{ route('customer.login') }}">Log in</a></p>
                                             </div>
                                         </div>
                                     </div>

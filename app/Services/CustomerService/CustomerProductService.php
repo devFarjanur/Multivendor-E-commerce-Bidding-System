@@ -4,6 +4,7 @@ namespace App\Services\CustomerService;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Subcategory;
+use App\Services\HelperService;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Exception;
@@ -11,10 +12,12 @@ use Illuminate\Pagination\Paginator;
 
 class CustomerProductService
 {
+    protected $helperService;
     protected $imageService;
 
-    public function __construct(ImageService $imageService)
+    public function __construct(HelperService $helperService, ImageService $imageService)
     {
+        $this->helperService = $helperService;
         $this->imageService = $imageService;
     }
 
@@ -38,14 +41,11 @@ class CustomerProductService
     public function trycatch($request)
     {
         try {
-
-            $request->session()->flash('message', 'successfully.');
-            $request->session()->flash('alert-type', 'success');
+            $this->helperService->setFlashMessage($request, 'successfully.', 'success');
             return true;
         } catch (Exception $e) {
             \Log::error("Failed to: " . $e->getMessage());
-            $request->session()->flash('message', 'Failed to.');
-            $request->session()->flash('alert-type', 'error');
+            $this->helperService->setFlashMessage($request, 'Failed to.', 'error');
             return false;
         }
     }

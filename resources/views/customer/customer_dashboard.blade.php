@@ -1,6 +1,6 @@
-@extends('vendor.index')
+@extends('customer.index')
 
-@section('vendor')
+@section('customer')
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">

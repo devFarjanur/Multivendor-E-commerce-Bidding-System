@@ -275,3 +275,9 @@ Stores notifications for users.
 
 
 
+# Customer places a bid request on a product.
+# All vendors can view the customer’s bid request and submit their own bids for the product.
+# Vendors provide their own pricing for the product in response to the customer's bid request.
+# The customer then chooses the best offer from the vendors.
+
+
