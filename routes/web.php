@@ -123,7 +123,7 @@ Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function
     Route::get('/change/password', [CustomerController::class, 'customerChangePassword'])->name('customer.change.password');
     Route::post('/update/password', [CustomerController::class, 'customerUpdatePassword'])->name('customer.update.password');
 
-    Route::get('/order-list', [CustomerController::class, 'customerOrderList'])->name('customer.order.list');
+    Route::get('/order-list', [CustomerController::class, 'customerBidList'])->name('customer.bid.list');
     Route::get('/invoice', [CustomerController::class, 'customerInvoice'])->name('customer.invoice');
     Route::get('/chat/message', [CustomerController::class, 'customerChatMessage'])->name('customer.chat.message');
     Route::get('/faqs', [CustomerController::class, 'customerPagesFaqs'])->name('customer.pages.faqs');

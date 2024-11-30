@@ -95,8 +95,8 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__orders" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('customer.order.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Order List</span></span></a></li>
+                                <li><a href="{{ route('customer.bid.list') }}"><span class="menu-bar__text"><span
+                                                class="menu-bar__name">Bid List</span></span></a></li>
                             </ul>
                         </div>
                     </li>

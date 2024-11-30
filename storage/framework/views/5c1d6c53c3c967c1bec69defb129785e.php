@@ -1,5 +1,5 @@
-@extends('customer.index')
-@section('customer')
+
+<?php $__env->startSection('customer'); ?>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -13,8 +13,8 @@
                                     <div class="sherah-breadcrumb mg-top-30">
                                         <h2 class="sherah-breadcrumb__title">Bid List</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('customer.product.list') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('customer.bid.list') }}">Order List</a></li>
+                                            <li><a href="<?php echo e(route('customer.product.list')); ?>">Home</a></li>
+                                            <li class="active"><a href="<?php echo e(route('customer.bid.list')); ?>">Order List</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-1.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-1.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -134,7 +134,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-2.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-2.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -224,7 +224,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-3.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-3.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -314,7 +314,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-4.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-4.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -404,7 +404,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-5.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-5.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -494,7 +494,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-6.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-6.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -584,7 +584,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-7.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-7.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -674,7 +674,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-8.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-8.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -764,7 +764,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-9.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-9.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -854,7 +854,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-10.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-10.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -944,7 +944,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-11.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-11.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -1034,7 +1034,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-12.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-12.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -1124,7 +1124,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-13.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-13.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -1214,7 +1214,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-14.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-14.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -1307,7 +1307,7 @@
                                                                 name="checkbox" type="checkbox">
                                                         </div>
                                                         <div class="sherah-table__vendor-img">
-                                                            <img src="{{ asset('backend/assets/img/vendor-15.png') }}"
+                                                            <img src="<?php echo e(asset('backend/assets/img/vendor-15.png')); ?>"
                                                                 alt="#">
                                                         </div>
                                                     </div>
@@ -1406,4 +1406,6 @@
         </div>
     </section>
     <!-- End sherah Dashboard -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/customer/bid/bid-list.blade.php ENDPATH**/ ?>

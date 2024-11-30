@@ -122,15 +122,12 @@ class CustomerController extends Controller
         $subcategories = $this->customerCategoryService->getActiveSubcategoriesWithRelations();
         $subcategoriesGrouped = $subcategories->groupBy('category_id');
 
-        // Get all active products
         $products = $this->customerProductService->getActiveProducts();
 
-        // Count products per category
         $categoryProductCount = $products->groupBy('category_id')->map(function ($products) {
             return $products->count();
         });
 
-        // Count products per subcategory
         $subcategoryProductCount = $products->groupBy('subcategory_id')->map(function ($products) {
             return $products->count();
         });
@@ -145,8 +142,8 @@ class CustomerController extends Controller
         ));
     }
 
-    public function customerOrderList()
+    public function customerBidList()
     {
-        return view('customer.product.order-list');
+        return view('customer.bid.bid-list');
     }
 }
