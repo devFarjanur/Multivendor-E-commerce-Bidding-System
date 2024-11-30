@@ -558,64 +558,114 @@
 
                                         <!-- Check if user is logged in -->
                                         @auth
-                                            <!-- Header Author (Visible to logged-in users) -->
-                                            <div class="sherah-header__author sherah-flex__center--top">
-                                                <div class="sherah-header__author-img">
-                                                    <img src="{{ asset('backend/assets/img/profile-pic.png') }}"
-                                                        alt="#">
-                                                </div>
-                                                <div class="sherah-header__author--info sherah-dflex sherah-dflex__base">
-                                                    <h4
-                                                        class="sherah-header__author--title  sherah-dflex sherah-dflex__column">
-                                                        {{ Auth::user()->name }} <span
-                                                            class="sherah-header__author--text">{{ Auth::user()->location }}</span>
-                                                    </h4>
-                                                    <svg class="sherah-default__fill sherah-default__arrow"
-                                                        xmlns="http://www.w3.org/2000/svg" width="10.621" height="5.836"
-                                                        viewBox="0 0 10.621 5.836">
-                                                        <!-- SVG Arrow -->
-                                                    </svg>
-                                                </div>
-                                                <!-- Profile Dropdown (Visible to logged-in users) -->
-                                                <div
-                                                    class="sherah-dropdown-card sherah-dropdown-card__profile sherah-border">
-                                                    <!-- Dropdown options like Profile, Message, Settings -->
-                                                    <ul class="sherah-dropdown-card_list">
-                                                        <li>
-                                                            <div class="sherah-dropdown-card-info">
-                                                                <div class="sherah-dropdown-card__img sherah-color1__bg">
-                                                                    <!-- SVG Icon -->
-                                                                </div>
-                                                                <h4 class="sherah-dropdown-card-name"><a
-                                                                        href="profile-info.html">My Profile</a></h4>
+                                            <div class="sherah-dropdown-card sherah-dropdown-card__profile sherah-border">
+                                                <svg class="sherah-dropdown-arrow" xmlns="http://www.w3.org/2000/svg"
+                                                    width="43.488" height="22.207" viewBox="0 0 43.488 22.207">
+                                                    <path id="Path_1271" data-name="Path 1271"
+                                                        d="M-15383,7197.438l20.555-20.992,20.555,20.992Z"
+                                                        transform="translate(15384.189 -7175.73)" stroke-width="1"></path>
+                                                </svg>
+                                                <h3 class="sherah-dropdown-card__title sherah-border-btm">My Profile</h3>
+                                                <!-- sherah Balance List -->
+                                                <ul class="sherah-dropdown-card_list">
+                                                    <li>
+                                                        <div class="sherah-dropdown-card-info">
+                                                            <div class="sherah-dropdown-card__img sherah-color1__bg">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="18.192"
+                                                                    height="21.5" viewBox="0 0 18.192 21.5">
+                                                                    <g id="user_account_people_man"
+                                                                        data-name="user, account, people, man"
+                                                                        transform="translate(-5 -3)">
+                                                                        <path id="Path_1272" data-name="Path 1272"
+                                                                            d="M20.494,16.131a.827.827,0,1,0-1.163,1.176,7.391,7.391,0,0,1,2.207,5.29c0,1.011-2.9,2.481-7.442,2.481S6.654,23.607,6.654,22.6a7.391,7.391,0,0,1,2.179-5.261.827.827,0,1,0-1.169-1.169A9.036,9.036,0,0,0,5,22.6c0,2.686,4.686,4.135,9.1,4.135s9.1-1.449,9.1-4.135a9.03,9.03,0,0,0-2.7-6.466Z"
+                                                                            transform="translate(0 -2.231)"
+                                                                            fill="#fff" />
+                                                                        <path id="Path_1273" data-name="Path 1273"
+                                                                            d="M14.788,14.577A5.788,5.788,0,1,0,9,8.788,5.788,5.788,0,0,0,14.788,14.577Zm0-9.923a4.135,4.135,0,1,1-4.135,4.135,4.135,4.135,0,0,1,4.135-4.135Z"
+                                                                            transform="translate(-0.692)"
+                                                                            fill="#fff" />
+                                                                    </g>
+                                                                </svg>
                                                             </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="sherah-dropdown-card-info">
-                                                                <div class="sherah-dropdown-card__img sherah-color1__bg">
-                                                                    <!-- SVG Icon -->
-                                                                </div>
-                                                                <h4 class="sherah-dropdown-card-name"><a
-                                                                        href="chat-messages.html">Messages</a></h4>
+                                                            <h4 class="sherah-dropdown-card-name"><a
+                                                                    href="profile-info.html">My Profile</a></h4>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sherah-dropdown-card-info">
+                                                            <div class="sherah-dropdown-card__img sherah-color1__bg">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="22.029"
+                                                                    height="22.368" viewBox="0 0 22.029 22.368">
+                                                                    <g id="Message"
+                                                                        transform="translate(-78.827 -199.134)">
+                                                                        <g id="Icon"
+                                                                            transform="translate(-257.234 -162.564)">
+                                                                            <path id="Path_230" data-name="Path 230"
+                                                                                d="M336.063,371.173q0-3.247,0-6.494a2.764,2.764,0,0,1,2.976-2.979q5.978,0,11.955,0a2.76,2.76,0,0,1,2.962,2.95q.006,3.935,0,7.87a2.759,2.759,0,0,1-2.968,2.944c-3.154,0-6.307,0-9.461.012a1.181,1.181,0,0,0-.685.246c-1.16.936-2.3,1.9-3.444,2.851-.272.227-.543.44-.925.263-.4-.185-.414-.538-.413-.911Q336.067,374.549,336.063,371.173Zm1.378,5.571c.986-.82,1.884-1.554,2.766-2.307a1.4,1.4,0,0,1,.976-.355q4.881.015,9.763.005a1.423,1.423,0,0,0,1.633-1.629q0-3.849,0-7.7c0-1.175-.5-1.681-1.668-1.681H339.126c-1.177,0-1.685.5-1.685,1.664q0,5.742,0,11.484Z"
+                                                                                transform="translate(0 0)"
+                                                                                fill="#fff" />
+                                                                            <path id="Path_231" data-name="Path 231"
+                                                                                d="M415,440.162v-8.715c0-.932,0-1.864,0-2.8a1.38,1.38,0,0,0-1.328-1.5c-.48-.059-.753-.333-.729-.732.025-.417.352-.664.852-.642a2.731,2.731,0,0,1,2.578,2.721c.019,2.251.007,4.5.007,6.752,0,2.036,0,4.071,0,6.107,0,.364-.043.692-.419.864s-.63-.024-.9-.237c-.917-.736-1.828-1.478-2.761-2.193a1.225,1.225,0,0,0-.687-.245c-2.924-.016-5.85-.044-8.773,0A2.889,2.889,0,0,1,399.878,436a.63.63,0,0,1,.678-.59.64.64,0,0,1,.672.6,4.747,4.747,0,0,1,.014.644,1.385,1.385,0,0,0,1.5,1.5c3.025,0,6.05.01,9.075-.007a1.732,1.732,0,0,1,1.211.43C413.65,439.1,414.3,439.6,415,440.162Z"
+                                                                                transform="translate(-58.296 -58.218)"
+                                                                                fill="#fff" />
+                                                                            <path id="Path_232" data-name="Path 232"
+                                                                                d="M388.91,411.084c-1.3,0-2.6,0-3.906,0-.546,0-.855-.252-.859-.682s.306-.693.847-.694q3.971,0,7.941,0c.534,0,.848.271.838.7-.009.416-.313.671-.826.672C391.6,411.086,390.255,411.084,388.91,411.084Z"
+                                                                                transform="translate(-43.947 -43.807)"
+                                                                                fill="#fff" />
+                                                                            <path id="Path_233" data-name="Path 233"
+                                                                                d="M387.582,443.079c-.872,0-1.744,0-2.616,0-.511,0-.814-.259-.822-.675-.008-.432.3-.7.84-.7q2.595,0,5.19,0c.538,0,.849.264.844.7s-.315.677-.861.679C389.3,443.082,388.44,443.079,387.582,443.079Z"
+                                                                                transform="translate(-43.946 -73.004)"
+                                                                                fill="#fff" />
+                                                                        </g>
+                                                                    </g>
+                                                                </svg>
                                                             </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="sherah-dropdown-card-info">
-                                                                <div class="sherah-dropdown-card__img sherah-color1__bg">
-                                                                    <!-- SVG Icon -->
-                                                                </div>
-                                                                <h4 class="sherah-dropdown-card-name"><a
-                                                                        href="settings.html">Settings</a></h4>
+                                                            <h4 class="sherah-dropdown-card-name "><a
+                                                                    href="chat-messages.html">Message</a></h4>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sherah-dropdown-card-info">
+                                                            <div class="sherah-dropdown-card__img sherah-color1__bg">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="22.56"
+                                                                    height="21.99" viewBox="0 0 22.56 21.99">
+                                                                    <g id="Pencil"
+                                                                        transform="translate(-217.009 -330.267)">
+                                                                        <g id="Icon"
+                                                                            transform="translate(-352.978 -147.113)">
+                                                                            <path id="Path_234" data-name="Path 234"
+                                                                                d="M574.063,494.08a3.7,3.7,0,0,1-5.282,0l-1.681-1.681a3.725,3.725,0,0,1,0-5.282l8.363-8.363a3.728,3.728,0,0,1,5.281,5.281ZM576.842,490.4l-.072-.073a.75.75,0,0,0-.75-.75l-5.907,0a.75.75,0,0,0-.529.219l-4.23,4.23a.75.75,0,0,0-.219.529l0,5.907a.75.75,0,0,0,.75.75l5.907,0a.75.75,0,0,0,.529-.219l4.23-4.23a.75.75,0,0,0,.219-.529ZM585.36,488.375a.75.75,0,0,0-1.05-1.05L578.675,490.23l1.05,1.05,5.935-5.933a.75.75,0,0,0-1.05-1.05l-5.935,5.933a.75.75,0,0,0-1.05-1.05Z"
+                                                                                transform="translate(0 0)"
+                                                                                fill="#fff" />
+                                                                            <path id="Path_235" data-name="Path 235"
+                                                                                d="M350.453,485.546a.75.75,0,0,0,.75-.75v-2.343a.75.75,0,0,0-.75-.75h-1.875a.75.75,0,0,0-.75.75v2.343a.75.75,0,0,0,.75.75ZM349.578,483.9h1.125v1.5h-1.125Z"
+                                                                                transform="translate(-128.478 -129.078)"
+                                                                                fill="#fff" />
+                                                                            <path id="Path_236" data-name="Path 236"
+                                                                                d="M322.718,377.443a.75.75,0,0,0,.75.75h1.125a.75.75,0,0,0,.75-.75V374.69a.75.75,0,0,0-.75-.75H323.468a.75.75,0,0,0-.75.75Z"
+                                                                                transform="translate(-109.235 -117.519)"
+                                                                                fill="#fff" />
+                                                                        </g>
+                                                                    </g>
+                                                                </svg>
                                                             </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                            <h4 class="sherah-dropdown-card-name "><a
+                                                                    href="profile-settings.html">Settings</a></h4>
+                                                        </div>
+                                                    </li>
+                                                    <li class="sherah-dropdown-card__btn sherah-logout-card">
+                                                        <a href="{{ route('logout') }}"
+                                                            class="btn sherah-btn-secondary logout">Logout</a>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         @else
                                             <!-- Login and Register Buttons (Visible to guests) -->
                                             <div class="auth-buttons">
-                                                <a href="{{ route('customer.login') }}" class="btn btn-outline-primary">Login</a>
-                                                <a href="{{ route('customer.register') }}" class="btn btn-outline-primary">Register</a>
+                                                <a href="{{ route('customer.login') }}"
+                                                    class="btn btn-outline-primary">Login</a>
+                                                <a href="{{ route('customer.register') }}"
+                                                    class="btn btn-outline-primary">Register</a>
                                             </div>
                                         @endauth
 
