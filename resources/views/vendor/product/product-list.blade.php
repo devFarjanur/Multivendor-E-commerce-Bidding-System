@@ -90,10 +90,10 @@
                                                                 <!-- Card Image -->
                                                                 <div class="sherah-product-card__img">
                                                                     {{-- {{ asset('backend/assets/img/product-detail.png') }} --}}
-                                                                    <img
-                                                                        src="{{ asset('backend/assets/img/product-detail.png') }}">
                                                                     {{-- <img
-                                                                        src="{{ asset('upload/admin_images/' . $product->image) }}"> --}}
+                                                                        src="{{ asset('backend/assets/img/product-detail.png') }}"> --}}
+                                                                    <img
+                                                                        src="{{ asset('upload/admin_images/' . $product->image) }}">
                                                                     <div class="sherah-product-card__buttons">
                                                                         <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                             href="#">
@@ -206,9 +206,11 @@
                                                                             <i class="fas fa-flag"></i>
                                                                             Status:
                                                                             @if ($product->status == 'active')
-                                                                                <span class="text-outline-success ">Active</span>
+                                                                                <span
+                                                                                    class="text-outline-success ">Active</span>
                                                                             @else
-                                                                                <span class="text-outline-danger">Inactive</span>
+                                                                                <span
+                                                                                    class="text-outline-danger">Inactive</span>
                                                                             @endif
                                                                         </a>
 

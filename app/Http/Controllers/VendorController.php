@@ -193,6 +193,7 @@ class VendorController extends Controller
 
     public function vendorProductStore(Request $request)
     {
+        // dd($request->all());
         $this->vendorProductService->productStore($request);
         return redirect()->route('vendor.product.list');
     }

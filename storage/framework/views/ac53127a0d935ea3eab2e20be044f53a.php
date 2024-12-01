@@ -1,5 +1,5 @@
-@extends('vendor.index')
-@section('vendor')
+
+<?php $__env->startSection('vendor'); ?>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -13,17 +13,17 @@
                                     <div class="sherah-breadcrumb mg-top-30">
                                         <h2 class="sherah-breadcrumb__title">Upload Product</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('vendor.upload.product') }}">Upload
+                                            <li><a href="<?php echo e(route('vendor.dashboard')); ?>">Home</a></li>
+                                            <li class="active"><a href="<?php echo e(route('vendor.upload.product')); ?>">Upload
                                                     Product</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="sherah-page-inner sherah-border sherah-basic-page sherah-default-bg mg-top-25 p-0">
-                                <form class="sherah-wc__form-main" action="{{ route('vendor.product.store') }}"
+                                <form class="sherah-wc__form-main" action="<?php echo e(route('vendor.product.store')); ?>"
                                     method="POST" enctype="multipart/form-data">
-                                    @csrf
+                                    <?php echo csrf_field(); ?>
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Product Info -->
@@ -47,10 +47,10 @@
                                                                 aria-label="Category select">
                                                                 <option value="" selected disabled>Select Category
                                                                 </option>
-                                                                @foreach ($categories as $category)
-                                                                    <option value="{{ $category->id }}">
-                                                                        {{ $category->name }}</option>
-                                                                @endforeach
+                                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <option value="<?php echo e($category->id); ?>">
+                                                                        <?php echo e($category->name); ?></option>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -94,7 +94,7 @@
                                                                     <div class="image-upload-group">
                                                                         <div class="image-upload-group__single">
                                                                             <img id="showImage"
-                                                                                src="{{ url('upload/no_image.jpg') }}"
+                                                                                src="<?php echo e(url('upload/no_image.jpg')); ?>"
                                                                                 class="img-fluid" alt="Category Image"
                                                                                 style="max-width: 200px;">
                                                                         </div>
@@ -200,4 +200,6 @@
             });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('vendor.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/vendor/product/product-upload.blade.php ENDPATH**/ ?>
