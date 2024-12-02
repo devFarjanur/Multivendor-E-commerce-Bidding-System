@@ -17,6 +17,11 @@ class AdminVendorService
             ->paginate(10);
     }
 
+    public function getAllVendor()
+    {
+        return Vendor::all();
+    }
+
     public function vendorlist()
     {
         return Vendor::with('user')

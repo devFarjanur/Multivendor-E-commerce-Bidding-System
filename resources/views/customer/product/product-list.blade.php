@@ -1,17 +1,13 @@
 @extends('customer.index')
 @section('customer')
-    <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="sherah-body">
-                        <!-- Dashboard Inner -->
                         <div class="sherah-dsinner">
-
                             <div class="row mg-top-30">
                                 <div class="col-12 sherah-flex-between">
-                                    <!-- Sherah Breadcrumb -->
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Products</h2>
                                         <ul class="sherah-breadcrumb__list">
@@ -21,13 +17,11 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- End Sherah Breadcrumb -->
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xxl-2 col-lg-3 col-12">
-                                    <!-- Product Category Sidebar -->
                                     <div class="sherah-product-sidebar sherah-default-bg mg-top-30">
                                         <h4 class="sherah-product-sidebar__title sherah-border-btm">Product Categories</h4>
 
@@ -53,8 +47,6 @@
                                                                 @endisset
                                                             </span>
                                                         </a>
-
-                                                        <!-- Subcategory Dropdown (Collapsible) -->
                                                         @if (isset($subcategoriesGrouped[$category->id]) && count($subcategoriesGrouped[$category->id]) > 0)
                                                             <div class="collapse" id="category-{{ $category->id }}">
                                                                 <ul class="pt-2 ps-4">
@@ -82,8 +74,6 @@
                                                 <p>No categories found.</p>
                                             @endif
                                         </ul>
-
-
                                         <script>
                                             // Wait for the DOM to be fully loaded
                                             document.addEventListener('DOMContentLoaded', function() {
@@ -108,12 +98,7 @@
                                                 });
                                             });
                                         </script>
-
-
-
-
                                     </div>
-                                    <!-- End Product Category Sidebar -->
                                 </div>
                                 <div class="col-xxl-10 col-lg-9 col-12">
                                     <div class="sherah-breadcrumb__right mg-top-30">
@@ -143,26 +128,18 @@
                                                 <a class="list-group-item" data-bs-toggle="list" href="#tab_1"
                                                     role="tab"><span>Newest</span></a>
                                             </div>
-                                            {{-- <a href="{{ route('vendor.upload.product') }}"
-                                                class="sherah-btn sherah-gbcolor">Upload Product</a> --}}
                                         </div>
                                     </div>
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="tab_1" role="tabpanel"
                                             aria-labelledby="nav-home-tab">
                                             <div class="row">
-
                                                 @if (count($products) > 0)
                                                     @foreach ($products as $product)
                                                         <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
-                                                            <!-- Single Product -->
                                                             <div
                                                                 class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                                <!-- Card Image -->
                                                                 <div class="sherah-product-card__img">
-                                                                    {{-- {{ asset('backend/assets/img/product-detail.png') }} --}}
-                                                                    {{-- <img
-                                                                        src="{{ asset('backend/assets/img/product-detail.png') }}"> --}}
                                                                     <img
                                                                         src="{{ asset('upload/admin_images/' . $product->image) }}">
                                                                     <div class="sherah-product-card__buttons">
@@ -222,7 +199,6 @@
                                                                         </a>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Card Content -->
                                                                 <div
                                                                     class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
                                                                     <h4 class="sherah-product-card__title">
@@ -231,8 +207,6 @@
                                                                     </h4>
                                                                     <div class="sherah-product__bottom">
                                                                         <div class="sherah-product__bottom--single">
-                                                                            {{-- <h5 class="sherah-product-card__price">
-                                                                        <del>$155</del>$135</h5> --}}
                                                                             <h5 class="sherah-product-card__price">
                                                                                 TK. {{ $product->price }}
                                                                             </h5>
@@ -257,73 +231,6 @@
                                                                         <a href="#" class="sherah-btn default">Bid
                                                                             Now</a>
                                                                     </div>
-                                                                    {{-- <div
-                                                                        class="d-flex justify-content-center align-items-center gap-2">
-                                                                        <a href="#"
-                                                                            class="btn btn-outline-success d-flex align-items-center gap-1">
-                                                                            <i class="fas fa-edit"></i> Edit
-                                                                        </a>
-                                                                        <form method="POST" action="#"
-                                                                            style="display:inline;">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button type="submit"
-                                                                                class="btn btn-outline-danger d-flex align-items-center gap-1">
-                                                                                <i class="fa-solid fa-trash"></i> Delete
-                                                                            </button>
-                                                                        </form>
-                                                                        <a href="#"
-                                                                            class="btn btn-outline-success d-flex align-items-center gap-1"
-                                                                            data-bs-toggle="dropdown"
-                                                                            aria-expanded="false">
-                                                                            <i class="fas fa-flag"></i>
-                                                                            Status:
-                                                                            @if ($product->status == 'active')
-                                                                                <span
-                                                                                    class="text-outline-success ">Active</span>
-                                                                            @else
-                                                                                <span
-                                                                                    class="text-outline-danger">Inactive</span>
-                                                                            @endif
-                                                                        </a>
-
-                                                                        <!-- Dropdown Menu -->
-                                                                        <ul class="dropdown-menu">
-                                                                            <li><a class="dropdown-item" href="#"
-                                                                                    onclick="updateStatus({{ $product->id }}, 'active')">Active</a>
-                                                                            </li>
-                                                                            <li><a class="dropdown-item" href="#"
-                                                                                    onclick="updateStatus({{ $product->id }}, 'inactive')">Inactive</a>
-                                                                            </li>
-                                                                        </ul>
-
-                                                                        <script>
-                                                                            function updateStatus(productId, status) {
-                                                                                $.ajax({
-                                                                                    url: '/product/status/' + productId,
-                                                                                    type: 'POST',
-                                                                                    data: {
-                                                                                        _token: '{{ csrf_token() }}',
-                                                                                        status: status
-                                                                                    },
-                                                                                    success: function(response) {
-                                                                                        alert('Product status updated to ' + status);
-                                                                                        if (status == 'active') {
-                                                                                            $('a.btn-outline-success span').text('Active').removeClass('text-danger').addClass(
-                                                                                                'text-success');
-                                                                                        } else {
-                                                                                            $('a.btn-outline-success span').text('Inactive').removeClass('text-success').addClass(
-                                                                                                'text-danger');
-                                                                                        }
-                                                                                    },
-                                                                                    error: function(xhr, status, error) {
-                                                                                        console.error('Error updating status: ' + error);
-                                                                                        alert('Error updating product status.');
-                                                                                    }
-                                                                                });
-                                                                            }
-                                                                        </script>
-                                                                    </div> --}}
                                                                 </div>
                                                             </div>
                                                             <!-- End Single Product -->
@@ -331,7 +238,6 @@
                                                     @endforeach
                                                 @else
                                                 @endif
-
                                             </div>
                                             <div class="row mg-top-40">
                                                 <div class="sherah-pagination">

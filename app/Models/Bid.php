@@ -15,4 +15,19 @@ class Bid extends Model
         'bid_amount',
         'bid_status',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function productRequest()
+    {
+        return $this->belongsTo(ProductRequest::class, 'product_request_id');
+    }
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
 }
