@@ -2,47 +2,140 @@
 
 namespace App\Services\CustomerService;
 use App\Models\Bid;
+use App\Models\BidRequest;
 use App\Services\AdminService\AdminVendorService;
 use App\Services\HelperService;
 use App\Services\ImageService;
+use App\Services\VendorService\VendorCategoryService;
+use App\Services\VendorService\VendorProductService;
 use Auth;
+use Exception;
+use Illuminate\Http\Request;
 
 class CustomerBidService
 {
     protected $helperService;
     protected $imageService;
+    protected $customerCategoryService;
     protected $customerProductService;
+    protected $vendorCategoryService;
+    protected $vendorProductService;
     protected $adminVendorService;
 
     public function __construct(
         HelperService $helperService,
         ImageService $imageService,
+        CustomerCategoryService $customerCategoryService,
         CustomerProductService $customerProductService,
+        VendorCategoryService $vendorCategoryService,
+        VendorProductService $vendorProductService,
         AdminVendorService $adminVendorService,
     ) {
         $this->helperService = $helperService;
         $this->imageService = $imageService;
+        $this->customerCategoryService = $customerCategoryService;
         $this->customerProductService = $customerProductService;
+        $this->vendorCategoryService = $vendorCategoryService;
+        $this->vendorProductService = $vendorProductService;
         $this->adminVendorService = $adminVendorService;
     }
 
     public function bidRequest($id)
     {
-        $product = $this->customerProductService->getActiveProductById($id);
-        $customer = Auth::user();
-        if ($product->bidRequests()->where('customer_id', $customer->id)->exists()) {
-            return redirect()->back()->with('error', 'You have already placed a bid request for this product.');
-        }
+        return BidRequest::with(['customer', 'product', 'vendor'])
+            ->where('customer_id', $id)
+            ->where('bid_status', 'pending')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+    }
 
-        foreach ($vendors as $vendor) {
-            Bid::create([
+    public function bidRequestStore(Request $request, $id)
+    {
+        try {
+
+            if (!auth()->check()) {
+                $this->helperService->setFlashMessage($request, 'Please log in to place a bid request.', 'error');
+                return redirect()->route('login');
+            }
+
+            $product = $this->customerProductService->getActiveProductById($id);
+            $customer = Auth::user();
+
+            $existingBidRequest = $product->bidRequests()->where('customer_id', $customer->id)->where('status', 'pending')->exists();
+
+            if ($existingBidRequest) {
+                $this->helperService->setFlashMessage($request, 'You already have a pending bid request for this product.', 'error');
+                return redirect()->back();
+            }
+
+            BidRequest::create([
+                'customer_id' => $customer->id,
                 'product_id' => $product->id,
-                'vendor_id' => $vendor->id,
                 'bid_amount' => $product->price,
                 'bid_status' => 'pending',
             ]);
+
+            $this->helperService->setFlashMessage($request, 'Your bid request has been placed successfully.', 'success');
+            return true;
+        } catch (Exception $e) {
+            \Log::error("Failed to: " . $e->getMessage());
+            $this->helperService->setFlashMessage($request, 'Failed to.', 'error');
+            return false;
         }
     }
+
+    public function bidResult($id)
+    {
+        return BidRequest::with(['customer', 'product', 'vendor'])
+            ->where('customer_id', $id)
+            ->whereIn('bid_status', ['accepted', 'rejected'])
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+    }
+
+
+
+
+
+    // public function trycatch($request)
+    // {
+    //     try {
+    //         $this->helperService->setFlashMessage($request, 'successfully.', 'success');
+    //         return true;
+    //     } catch (Exception $e) {
+    //         \Log::error("Failed to: " . $e->getMessage());
+    //         $this->helperService->setFlashMessage($request, 'Failed to.', 'error');
+    //         return false;
+    //     }
+    // }
+
+    //     public function bidRequest(Request $request, $id)
+// {
+//     // Check if the user is logged in
+//     if (!auth()->check()) {
+//         return redirect()->route('login')->with('error', 'Please log in to place a bid request.');
+//     }
+
+    //     $product = $this->customerProductService->getActiveProductById($id);
+//     $customer = auth()->user();
+
+    //     // Check if the user already has a pending bid request for the same product
+//     $existingBidRequest = $product->bidRequests()->where('customer_id', $customer->id)->where('status', 'pending')->exists();
+
+    //     if ($existingBidRequest) {
+//         return redirect()->back()->with('error', 'You already have a pending bid request for this product.');
+//     }
+
+    //     // Create a new bid request for the product
+//     BidRequest::create([
+//         'customer_id' => $customer->id,
+//         'product_id' => $product->id,
+//         'status' => 'pending', // Default status is pending
+//     ]);
+
+    //     return redirect()->route('products.index')->with('success', 'Your bid request has been placed successfully.');
+// }
+
 
 
 
