@@ -228,8 +228,13 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <a href="#" class="sherah-btn default">Bid
-                                                                            Now</a>
+                                                                        <form
+                                                                            action="{{ route('customer.bid.store', $product->id) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <button type="submit"
+                                                                                class="sherah-btn default">Bid Now</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>

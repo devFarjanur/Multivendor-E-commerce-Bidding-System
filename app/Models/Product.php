@@ -34,4 +34,9 @@ class Product extends Model
     {
         return $this->belongsTo(Subcategory::class, 'subcategory_id');
     }
+
+    public function bidRequests()
+    {
+        return $this->hasMany(BidRequest::class, 'product_id');
+    }
 }

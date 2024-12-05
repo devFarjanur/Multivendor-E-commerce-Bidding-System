@@ -8,7 +8,7 @@ use App\Services\HelperService;
 use App\Services\ImageService;
 use App\Services\VendorService\VendorCategoryService;
 use App\Services\VendorService\VendorProductService;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -60,17 +60,21 @@ class CustomerBidService
 
     public function bidRequestStore(Request $request, $id)
     {
+        if (!auth()->check()) {
+            // Log out the user if there's any session issue
+            auth()->logout();
+
+            \Log::info('User is not authenticated. Redirecting to login.');
+
+            $this->helperService->setFlashMessage($request, 'Please log in to place a bid request.', 'error');
+            return redirect()->route('customer.login');
+        }
+
         try {
-
-            if (!auth()->check()) {
-                $this->helperService->setFlashMessage($request, 'Please log in to place a bid request.', 'error');
-                return redirect()->route('login');
-            }
-
             $product = $this->customerProductService->getActiveProductById($id);
             $customer = Auth::user();
 
-            $existingBidRequest = $product->bidRequests()->where('customer_id', $customer->id)->where('status', 'pending')->exists();
+            $existingBidRequest = $product->bidRequests()->where('customer_id', $customer->id)->where('bid_status', 'pending')->exists();
 
             if ($existingBidRequest) {
                 $this->helperService->setFlashMessage($request, 'You already have a pending bid request for this product.', 'error');
@@ -85,13 +89,17 @@ class CustomerBidService
             ]);
 
             $this->helperService->setFlashMessage($request, 'Your bid request has been placed successfully.', 'success');
-            return true;
+            return redirect()->route('customer.bid.list', $customer->id);
         } catch (Exception $e) {
-            \Log::error("Failed to: " . $e->getMessage());
-            $this->helperService->setFlashMessage($request, 'Failed to.', 'error');
-            return false;
+            \Log::error("Failed to place bid: " . $e->getMessage());
+            $this->helperService->setFlashMessage($request, 'Failed to place your bid request.', 'error');
+            return redirect()->back();
         }
     }
+
+
+
+
 
     // public function trycatch($request)
     // {

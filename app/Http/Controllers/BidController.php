@@ -41,7 +41,7 @@ class BidController extends Controller
         $this->imageService = $imageService;
         $this->customerCategoryService = $customerCategoryService;
         $this->customerProductService = $customerProductService;
-        $this->$customerBidService = $customerBidService;
+        $this->customerBidService = $customerBidService;
         $this->vendorCategoryService = $vendorCategoryService;
         $this->vendorProductService = $vendorProductService;
         $this->vendorBidService = $vendorBidService;
@@ -60,7 +60,7 @@ class BidController extends Controller
         return view('customer.bid.bid-list',compact('customerbidresults'));
     }
 
-    public function customerBidRequestStore(Request $request, $id)
+    public function customerBidStore(Request $request, $id)
     {
         $this->customerBidService->bidRequestStore($request, $id);
         return redirect()->back();
