@@ -141,9 +141,4 @@ class CustomerController extends Controller
             'subcategoryProductCount'
         ));
     }
-
-    public function customerBidList()
-    {
-        return view('customer.bid.bid-list');
-    }
 }

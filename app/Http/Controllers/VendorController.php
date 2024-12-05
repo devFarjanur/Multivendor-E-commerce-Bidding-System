@@ -203,11 +203,6 @@ class VendorController extends Controller
         return view('vendor.product.product-details');
     }
 
-    public function vendorOrderList()
-    {
-        return view('vendor.order.order-list');
-    }
-
     public function vendorInvoice()
     {
         return view('vendor.invoice.invoice');

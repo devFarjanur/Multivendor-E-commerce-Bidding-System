@@ -1,5 +1,5 @@
-@extends('customer.index')
-@section('customer')
+@extends('vendor.index')
+@section('vendor')
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -11,10 +11,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="sherah-breadcrumb mg-top-30">
-                                        <h2 class="sherah-breadcrumb__title">Bid List</h2>
+                                        <h2 class="sherah-breadcrumb__title">Pages</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('customer.product.list') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('customer.bid.list') }}">Order List</a></li>
+                                            <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
+                                            <li class="active"><a href="{{ route('vendor.bid.list') }}">Bid List</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1397,13 +1397,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Dashboard Inner -->
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
-    <!-- End sherah Dashboard -->
 @endsection

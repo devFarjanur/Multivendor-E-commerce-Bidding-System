@@ -1,8 +1,5 @@
-<!-- sherah Admin Menu -->
 <div class="sherah-smenu">
-    <!-- Admin Menu -->
     <div class="admin-menu">
-
         <!-- Logo -->
         <div class="logo sherah-sidebar-padding">
             <a href="{{ route('customer.product.list') }}">
@@ -21,8 +18,8 @@
             <!-- Nav Menu -->
             <div class="menu-bar">
                 <ul class="menu-bar__one sherah-dashboard-menu" id="sherahMenu">
-                    <li><a href="{{ route('customer.product.list') }}" data-bs-toggle="collapse" data-bs-target="#menu-item_home"><span
-                                class="menu-bar__text">
+                    <li><a href="{{ route('customer.product.list') }}" data-bs-toggle="collapse"
+                            data-bs-target="#menu-item_home"><span class="menu-bar__text">
                                 <span class="sherah-menu-icon sherah-svg-icon__v1">
                                     <svg class="sherah-svg-icon" xmlns="http://www.w3.org/2000/svg" width="18.075"
                                         height="18.075" viewBox="0 0 18.075 18.075">
@@ -90,11 +87,13 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="menu-bar__name">Orders</span></span><span
+                                <span class="menu-bar__name">Bids</span></span><span
                                 class="sherah__toggle"></span></a></span>
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__orders" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
+                                <li><a href="{{ route('customer.bid.request') }}"><span class="menu-bar__text"><span
+                                                class="menu-bar__name">Bid Request</span></span></a></li>
                                 <li><a href="{{ route('customer.bid.list') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Bid List</span></span></a></li>
                             </ul>
@@ -168,10 +167,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- End Nav Menu -->
         </div>
-
     </div>
-    <!-- End Admin Menu -->
 </div>
-<!-- End sherah Admin Menu -->
+

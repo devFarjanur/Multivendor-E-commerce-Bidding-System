@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BidController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
@@ -93,7 +94,8 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
     Route::get('/product/details', [VendorController::class, 'VendorDetailsProduct'])->name('vendor.product.details');
     Route::get('/get-subcategories/{categoryId}', [VendorController::class, 'getVensorSubcategories']);
 
-    Route::get('/order-list', [VendorController::class, 'vendorOrderList'])->name('vendor.order.list');
+    Route::get('/bid-request', [BidController::class, 'vendorBidRequest'])->name('vendor.bid.request');
+    Route::get('/bid-list', [BidController::class, 'vendorBidList'])->name('vendor.bid.list');
     Route::get('/invoice', [VendorController::class, 'vendorInvoice'])->name('vendor.invoice');
 
     Route::get('/chat/message', [VendorController::class, 'VendorChatMessage'])->name('vendor.chat.message');
@@ -123,7 +125,8 @@ Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function
     Route::get('/change/password', [CustomerController::class, 'customerChangePassword'])->name('customer.change.password');
     Route::post('/update/password', [CustomerController::class, 'customerUpdatePassword'])->name('customer.update.password');
 
-    Route::get('/order-list', [CustomerController::class, 'customerBidList'])->name('customer.bid.list');
+    Route::get('/bid-request', [BidController::class, 'customerBidRequest'])->name('customer.bid.request');
+    Route::get('/bid-list', [BidController::class, 'customerBidList'])->name('customer.bid.list');
     Route::get('/invoice', [CustomerController::class, 'customerInvoice'])->name('customer.invoice');
     Route::get('/chat/message', [CustomerController::class, 'customerChatMessage'])->name('customer.chat.message');
     Route::get('/faqs', [CustomerController::class, 'customerPagesFaqs'])->name('customer.pages.faqs');

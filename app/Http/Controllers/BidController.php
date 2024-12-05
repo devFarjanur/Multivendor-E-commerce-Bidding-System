@@ -50,8 +50,14 @@ class BidController extends Controller
 
     public function customerBidRequest($id)
     {
-        $bidrequests = $this->customerBidService->bidRequest($id);
-        return view('customer.bid.bid-request', compact('bidrequests'));
+        $customerbidrequests = $this->customerBidService->bidRequest($id);
+        return view('customer.bid.bid-request', compact('customerbidrequests'));
+    }
+
+    public function customerBidList($id)
+    {
+        $customerbidresults = $this->customerBidService->bidlist($id);
+        return view('customer.bid.bid-list',compact('customerbidresults'));
     }
 
     public function customerBidRequestStore(Request $request, $id)
@@ -60,17 +66,15 @@ class BidController extends Controller
         return redirect()->back();
     }
 
-    public function customerBidResult($id)
+    public function vendorBidRequest($id)
     {
-        $bidresults = $this->customerBidService->bidResult();
-        return view('customer.bid.bid-history', compact('bidresults'));
+        $vendorbidrequest = $this->vendorBidService->bidRequest($id);
+        return view('vendor.bid.bid-request',compact('vendorbidrequest'));
     }
 
-    // public fucntion vendorBidRequest()
-    // {
-        
-    //     return view('vendor.bid.')
-    // }
-
-
+    public function vendorBidlist($id)
+    {
+        $vendorbidrequest = $this->vendorBidService->bidList($id);
+        return view('vendor.bid.bid-list',compact('vendorbidrequest'));
+    }
 }

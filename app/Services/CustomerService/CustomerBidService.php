@@ -49,6 +49,15 @@ class CustomerBidService
             ->paginate(10);
     }
 
+    public function bidlist($id)
+    {
+        return BidRequest::with(['customer', 'product', 'vendor'])
+            ->where('customer_id', $id)
+            ->whereIn('bid_status', ['accepted', 'rejected'])
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+    }
+
     public function bidRequestStore(Request $request, $id)
     {
         try {
@@ -83,19 +92,6 @@ class CustomerBidService
             return false;
         }
     }
-
-    public function bidResult($id)
-    {
-        return BidRequest::with(['customer', 'product', 'vendor'])
-            ->where('customer_id', $id)
-            ->whereIn('bid_status', ['accepted', 'rejected'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-    }
-
-
-
-
 
     // public function trycatch($request)
     // {

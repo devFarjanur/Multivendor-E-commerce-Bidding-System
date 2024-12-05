@@ -14,7 +14,7 @@
                                         <h2 class="sherah-breadcrumb__title">Pages</h2>
                                         <ul class="sherah-breadcrumb__list">
                                             <li><a href="{{ route('customer.dashboard') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('customer.bid.request') }}">Bid List</a></li>
+                                            <li class="active"><a href="{{ route('customer.bid.list') }}">Bid List</a></li>
                                         </ul>
                                     </div>
                                 </div>

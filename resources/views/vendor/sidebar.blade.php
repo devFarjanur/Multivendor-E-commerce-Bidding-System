@@ -138,13 +138,15 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="menu-bar__name">Orders</span></span><span
+                                <span class="menu-bar__name">Bids</span></span><span
                                 class="sherah__toggle"></span></a></span>
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__orders" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
-                                <li><a href="{{ route('vendor.order.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Order List</span></span></a></li>
+                                <li><a href="{{ route('vendor.bid.request') }}"><span class="menu-bar__text"><span
+                                                class="menu-bar__name">Bid Request</span></span></a></li>
+                                <li><a href="{{ route('vendor.bid.list') }}"><span class="menu-bar__text"><span
+                                                class="menu-bar__name">Bid List</span></span></a></li>
                             </ul>
                         </div>
                     </li>
