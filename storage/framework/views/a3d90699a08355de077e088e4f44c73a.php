@@ -1,5 +1,5 @@
-@extends('customer.index')
-@section('customer')
+
+<?php $__env->startSection('customer'); ?>
     <section class="sherah-adashboard sherah-show">
         <div class="container">
             <div class="row">
@@ -11,8 +11,8 @@
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Products</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('customer.product.list') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('customer.product.list') }}">Product
+                                            <li><a href="<?php echo e(route('customer.product.list')); ?>">Home</a></li>
+                                            <li class="active"><a href="<?php echo e(route('customer.product.list')); ?>">Product
                                                     List</a>
                                             </li>
                                         </ul>
@@ -26,53 +26,56 @@
                                         <h4 class="sherah-product-sidebar__title sherah-border-btm">Product Categories</h4>
 
                                         <ul class="sherah-product-sidebar__list">
-                                            @if (count($categories) > 0)
-                                                @foreach ($categories as $category)
+                                            <?php if(count($categories) > 0): ?>
+                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <li>
                                                         <a href="#" class="collapsed" data-bs-toggle="collapse"
-                                                            data-bs-target="#category-{{ $category->id }}" role="button"
+                                                            data-bs-target="#category-<?php echo e($category->id); ?>" role="button"
                                                             aria-expanded="false"
-                                                            aria-controls="category-{{ $category->id }}"
-                                                            data-category-id="{{ $category->id }}">
+                                                            aria-controls="category-<?php echo e($category->id); ?>"
+                                                            data-category-id="<?php echo e($category->id); ?>">
                                                             <span>
                                                                 <i class="fa-solid fa-chevron-right"
-                                                                    id="arrow-{{ $category->id }}"></i>
-                                                                {{ $category->name }}
+                                                                    id="arrow-<?php echo e($category->id); ?>"></i>
+                                                                <?php echo e($category->name); ?>
+
                                                             </span>
                                                             <span class="count">
-                                                                @isset($categoryProductCount[$category->id])
-                                                                    {{ $categoryProductCount[$category->id] }}
-                                                                @else
+                                                                <?php if(isset($categoryProductCount[$category->id])): ?>
+                                                                    <?php echo e($categoryProductCount[$category->id]); ?>
+
+                                                                <?php else: ?>
                                                                     0
-                                                                @endisset
+                                                                <?php endif; ?>
                                                             </span>
                                                         </a>
-                                                        @if (isset($subcategoriesGrouped[$category->id]) && count($subcategoriesGrouped[$category->id]) > 0)
-                                                            <div class="collapse" id="category-{{ $category->id }}">
+                                                        <?php if(isset($subcategoriesGrouped[$category->id]) && count($subcategoriesGrouped[$category->id]) > 0): ?>
+                                                            <div class="collapse" id="category-<?php echo e($category->id); ?>">
                                                                 <ul class="pt-2 ps-4">
-                                                                    @foreach ($subcategoriesGrouped[$category->id] as $subcategory)
+                                                                    <?php $__currentLoopData = $subcategoriesGrouped[$category->id]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <li>
                                                                             <a href="#"
                                                                                 class="d-flex justify-content-between pt-1">
-                                                                                <span>{{ $subcategory->name }}</span>
+                                                                                <span><?php echo e($subcategory->name); ?></span>
                                                                                 <span class="count">
-                                                                                    @isset($subcategoryProductCount[$subcategory->id])
-                                                                                        {{ $subcategoryProductCount[$subcategory->id] }}
-                                                                                    @else
+                                                                                    <?php if(isset($subcategoryProductCount[$subcategory->id])): ?>
+                                                                                        <?php echo e($subcategoryProductCount[$subcategory->id]); ?>
+
+                                                                                    <?php else: ?>
                                                                                         0
-                                                                                    @endisset
+                                                                                    <?php endif; ?>
                                                                                 </span>
                                                                             </a>
                                                                         </li>
-                                                                    @endforeach
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 </ul>
                                                             </div>
-                                                        @endif
+                                                        <?php endif; ?>
                                                     </li>
-                                                @endforeach
-                                            @else
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
                                                 <p>No categories found.</p>
-                                            @endif
+                                            <?php endif; ?>
                                         </ul>
                                         <script>
                                             // Wait for the DOM to be fully loaded
@@ -134,53 +137,39 @@
                                         <div class="tab-pane fade show active" id="tab_1" role="tabpanel"
                                             aria-labelledby="nav-home-tab">
                                             <div class="row">
-                                                @if (count($products) > 0)
-                                                    @foreach ($products as $product)
+                                                <?php if(count($products) > 0): ?>
+                                                    <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
                                                             <div
                                                                 class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-                                                                {{-- <div class="card-img-top d-flex justify-content-center align-items-center"
-                                                                    style="width: 100%; height: 430px;">
-                                                                    <img src="{{ asset('upload/admin_images/' . $product->image) }}"
-                                                                        class="img-fluid"
-                                                                        style="max-width: 500px; height: 430px;">
-                                                                </div> --}}
-                                                                <img src="{{ asset('upload/admin_images/' . $product->image) }}"
-                                                                    class="card-img-top" alt="{{ $product->name }}"
+                                                                
+                                                                <img src="<?php echo e(asset('upload/admin_images/' . $product->image)); ?>"
+                                                                    class="card-img-top" alt="<?php echo e($product->name); ?>"
                                                                     style="width: 100%; height: 350px; object-fit: cover;">
                                                                 <div
                                                                     class="sherah-product-card__content sherah-dflex-column sherah-flex-gap-5">
                                                                     <h4 class="sherah-product-card__title">
                                                                         <a href="product-detail.html"
-                                                                            class="sherah-pcolor">{{ $product->name }}</a>
+                                                                            class="sherah-pcolor"><?php echo e($product->name); ?></a>
                                                                     </h4>
                                                                     <div class="sherah-product__bottom">
                                                                         <div class="sherah-product__bottom--single">
                                                                             <h5 class="sherah-product-card__price">
-                                                                                TK. {{ $product->price }}
+                                                                                TK. <?php echo e($product->price); ?>
+
                                                                             </h5>
                                                                             <div
                                                                                 class="sherah-product-card__meta sherah-dflex sherah-flex-gap-30">
                                                                                 <div
                                                                                     class="sherah-product-card__rating sherah-dflex sherah-flex-gap-5">
-                                                                                    {{-- <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    <span class="sherah-color4"><i
-                                                                                            class="fa fa-star"></i></span>
-                                                                                    (33) --}}
+                                                                                    
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <form
-                                                                            action="{{ route('customer.bid.store', $product->id) }}"
+                                                                            action="<?php echo e(route('customer.bid.store', $product->id)); ?>"
                                                                             method="POST">
-                                                                            @csrf
+                                                                            <?php echo csrf_field(); ?>
                                                                             <button type="submit"
                                                                                 class="sherah-btn default">Bid Now</button>
                                                                         </form>
@@ -189,40 +178,40 @@
                                                             </div>
                                                             <!-- End Single Product -->
                                                         </div>
-                                                    @endforeach
-                                                @else
-                                                @endif
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php else: ?>
+                                                <?php endif; ?>
                                             </div>
                                             <div class="row mg-top-40">
                                                 <div class="sherah-pagination">
                                                     <ul class="sherah-pagination__list">
                                                         <!-- Previous Page Link -->
-                                                        @if ($products->onFirstPage())
+                                                        <?php if($products->onFirstPage()): ?>
                                                             <li class="sherah-pagination__button"><a><i
                                                                         class="fas fa-angle-left"></i></a></li>
-                                                        @else
+                                                        <?php else: ?>
                                                             <li class="sherah-pagination__button"><a
-                                                                    href="{{ $products->previousPageUrl() }}"><i
+                                                                    href="<?php echo e($products->previousPageUrl()); ?>"><i
                                                                         class="fas fa-angle-left"></i></a></li>
-                                                        @endif
+                                                        <?php endif; ?>
 
                                                         <!-- Page Number Links -->
-                                                        @foreach ($products->links()->elements[0] as $page => $url)
+                                                        <?php $__currentLoopData = $products->links()->elements[0]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page => $url): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <li
-                                                                class="{{ $products->currentPage() == $page ? 'active' : '' }}">
-                                                                <a href="{{ $url }}">{{ $page }}</a>
+                                                                class="<?php echo e($products->currentPage() == $page ? 'active' : ''); ?>">
+                                                                <a href="<?php echo e($url); ?>"><?php echo e($page); ?></a>
                                                             </li>
-                                                        @endforeach
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                                         <!-- Next Page Link -->
-                                                        @if ($products->hasMorePages())
+                                                        <?php if($products->hasMorePages()): ?>
                                                             <li class="sherah-pagination__button"><a
-                                                                    href="{{ $products->nextPageUrl() }}"><i
+                                                                    href="<?php echo e($products->nextPageUrl()); ?>"><i
                                                                         class="fas fa-angle-right"></i></a></li>
-                                                        @else
+                                                        <?php else: ?>
                                                             <li class="sherah-pagination__button"><a><i
                                                                         class="fas fa-angle-right"></i></a></li>
-                                                        @endif
+                                                        <?php endif; ?>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -237,7 +226,7 @@
                                                         class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
                                                         <!-- Card Image -->
                                                         <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img7.png') }}">
+                                                            <img src="<?php echo e(asset('backend/assets/img/product-img7.png')); ?>">
                                                             <div class="sherah-product-card__buttons">
                                                                 <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                     href="#">
@@ -328,7 +317,7 @@
                                                         class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
                                                         <!-- Card Image -->
                                                         <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img8.png') }}">
+                                                            <img src="<?php echo e(asset('backend/assets/img/product-img8.png')); ?>">
                                                             <div class="sherah-product-card__buttons">
                                                                 <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                     href="#">
@@ -419,7 +408,7 @@
                                                         class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
                                                         <!-- Card Image -->
                                                         <div class="sherah-product-card__img">
-                                                            <img src="{{ asset('backend/assets/img/product-img9.png') }}">
+                                                            <img src="<?php echo e(asset('backend/assets/img/product-img9.png')); ?>">
                                                             <div class="sherah-product-card__buttons">
                                                                 <a class="sherah-product-card__buttons--single sherah-default-bg sherah-border"
                                                                     href="#">
@@ -530,4 +519,6 @@
         </div>
     </section>
     <!-- End sherah Dashboard -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\multivendor-e-commerce-bidding-system\resources\views/customer/product/product-list.blade.php ENDPATH**/ ?>

@@ -66,15 +66,15 @@ class BidController extends Controller
         return redirect()->back();
     }
 
-    public function vendorBidRequest($id)
+    public function vendorBidRequest()
     {
-        $vendorbidrequest = $this->vendorBidService->bidRequest($id);
-        return view('vendor.bid.bid-request',compact('vendorbidrequest'));
+        $vendorbidrequests = $this->vendorBidService->bidRequest();
+        return view('vendor.bid.bid-request',compact('vendorbidrequests'));
     }
 
-    public function vendorBidlist($id)
+    public function vendorBidlist()
     {
-        $vendorbidrequest = $this->vendorBidService->bidList($id);
-        return view('vendor.bid.bid-list',compact('vendorbidrequest'));
+        $vendorbidresults = $this->vendorBidService->bidList();
+        return view('vendor.bid.bid-list',compact('vendorbidresults'));
     }
 }

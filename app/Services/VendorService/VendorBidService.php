@@ -41,20 +41,18 @@ class VendorBidService
         $this->adminVendorService = $adminVendorService;
     }
 
-    public function bidRequest($id)
+    public function bidRequest()
     {
         return BidRequest::with(['customer', 'product', 'vendor'])
-            ->where('customer_id', $id)
             ->where('bid_status', 'pending')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
     }
 
-    public function bidList($id)
+    public function bidList()
     {
         return BidRequest::with(['customer', 'product', 'vendor'])
-        ->where('customer_id', $id)
-        ->where('bid_status', $id)
+        ->whereIn('bid_status', ['accepted', 'rejected'])
         ->orderBy('created_at', 'desc')
         ->paginate(10);
     }
