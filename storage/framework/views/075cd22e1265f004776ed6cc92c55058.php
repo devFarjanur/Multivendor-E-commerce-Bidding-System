@@ -62,6 +62,10 @@
                         <!-- Dropdown Menu -->
                         <div class="collapse sherah__dropdown" id="menu-item__orders" data-bs-parent="#sherahMenu">
                             <ul class="menu-bar__one-dropdown">
+                                <li><a href="<?php echo e(route('customer.custom.bid.request')); ?>">
+                                        <span class="menu-bar__text"><span class="menu-bar__name">Custom Bid
+                                                Request</span></span>
+                                    </a></li>
                                 <li><a
                                         href="<?php echo e(route('customer.bid.request', ['id' => optional(auth()->user())->id ?? null])); ?>">
                                         <span class="menu-bar__text"><span class="menu-bar__name">Bid

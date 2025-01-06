@@ -139,15 +139,6 @@
                                                         <div class="col-xxl-4 col-lg-6 col-md-6 col-12">
                                                             <div
                                                                 class="sherah-product-card sherah-product-card__v2  sherah-default-bg sherah-border mg-top-30">
-<<<<<<< HEAD
-                                                                {{-- <div class="card-img-top d-flex justify-content-center align-items-center"
-                                                                    style="width: 100%; height: 430px;">
-                                                                    <img src="{{ asset('upload/admin_images/' . $product->image) }}"
-                                                                        class="img-fluid"
-                                                                        style="max-width: 500px; height: 430px;">
-                                                                </div> --}}
-=======
->>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570
                                                                 <img src="{{ asset('upload/admin_images/' . $product->image) }}"
                                                                     class="card-img-top" alt="{{ $product->name }}"
                                                                     style="width: 100%; height: 350px; object-fit: cover;">

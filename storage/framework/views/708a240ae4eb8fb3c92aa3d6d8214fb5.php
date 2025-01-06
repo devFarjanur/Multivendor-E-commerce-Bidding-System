@@ -58,6 +58,18 @@
     <script src="<?php echo e(asset('backend/assets/js/slickslider.min.js')); ?>"></script>
     <script src="<?php echo e(asset('backend/assets/js/main.js')); ?>"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+    </script>
     <script>
         <?php if(Session::has('message')): ?>
             var type = "<?php echo e(Session::get('alert-type', 'info')); ?>"

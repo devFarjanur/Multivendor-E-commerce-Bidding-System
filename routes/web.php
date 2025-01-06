@@ -127,6 +127,9 @@ Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function
 
     Route::post('/bid-store/{id}', [BidController::class, 'customerBidStore'])->name('customer.bid.store');
     Route::get('/bid-request/{id?}', [BidController::class, 'customerBidRequest'])->name('customer.bid.request');
+    Route::get('/custom-bid-request', [BidController::class, 'customerCustomBidRequest'])->name('customer.custom.bid.request');
+    Route::post('/custom-bid-store', [BidController::class, 'customerCustomBidStore'])->name('customer.custom.bid.store');
+    Route::get('/get-customer-subcategories/{categoryId}', [BidController::class, 'getCustomerSubcategories'])->name('get.customer.subcategories');
     Route::get('/bid-list/{id?}', [BidController::class, 'customerBidList'])->name('customer.bid.list');
     Route::get('/invoice', [CustomerController::class, 'customerInvoice'])->name('customer.invoice');
     Route::get('/chat/message', [CustomerController::class, 'customerChatMessage'])->name('customer.chat.message');

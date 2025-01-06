@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subcategory;
 use App\Services\AdminService\AdminVendorService;
 use App\Services\CustomerService\CustomerBidService;
 use App\Services\CustomerService\CustomerCategoryService;
@@ -54,10 +55,25 @@ class BidController extends Controller
         return view('customer.bid.bid-request', compact('customerbidrequests'));
     }
 
+    public function customerCustomBidRequest()
+    {
+        $categories = $this->vendorCategoryService->getCategoryWithSubcategory();
+        // dd($categories);
+        return view('customer.bid.customer-custom-bid-request', compact('categories'));
+    }
+
+    public function getCustomerSubcategories($categoryId)
+    {
+        $subcategories = Subcategory::where('category_id', $categoryId)->get();
+        return response()->json([
+            'subcategories' => $subcategories
+        ]);
+    }
+
     public function customerBidList($id)
     {
         $customerbidresults = $this->customerBidService->bidlist($id);
-        return view('customer.bid.bid-list',compact('customerbidresults'));
+        return view('customer.bid.bid-list', compact('customerbidresults'));
     }
 
     public function customerBidStore(Request $request, $id)
@@ -66,15 +82,22 @@ class BidController extends Controller
         return redirect()->back();
     }
 
+    public function customerCustomBidStore(Request $request)
+    {
+        dd($request->all());
+        $this->customerBidService->bidCustomRequestStore($request);
+        return redirect()->back();
+    }
+
     public function vendorBidRequest()
     {
         $vendorbidrequests = $this->vendorBidService->bidRequest();
-        return view('vendor.bid.bid-request',compact('vendorbidrequests'));
+        return view('vendor.bid.bid-request', compact('vendorbidrequests'));
     }
 
     public function vendorBidlist()
     {
         $vendorbidresults = $this->vendorBidService->bidList();
-        return view('vendor.bid.bid-list',compact('vendorbidresults'));
+        return view('vendor.bid.bid-list', compact('vendorbidresults'));
     }
 }
