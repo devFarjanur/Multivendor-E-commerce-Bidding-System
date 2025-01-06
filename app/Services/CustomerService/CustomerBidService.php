@@ -61,11 +61,8 @@ class CustomerBidService
     public function bidRequestStore(Request $request, $id)
     {
         if (!auth()->check()) {
-            // Log out the user if there's any session issue
             auth()->logout();
-
             \Log::info('User is not authenticated. Redirecting to login.');
-
             $this->helperService->setFlashMessage($request, 'Please log in to place a bid request.', 'error');
             return redirect()->route('customer.login');
         }

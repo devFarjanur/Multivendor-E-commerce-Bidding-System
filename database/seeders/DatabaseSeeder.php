@@ -12,8 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+<<<<<<< HEAD
+        $this->call(CategoriesTableSeeder::class);
+=======
+>>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570
         $this->call(SubcategorySeeder::class);
         $this->call(ProductSeeder::class);
         \App\Models\User::factory(0)->create();

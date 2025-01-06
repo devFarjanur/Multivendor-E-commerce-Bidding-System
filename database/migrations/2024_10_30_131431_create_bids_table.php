@@ -12,15 +12,11 @@ return new class extends Migration {
     {
         Schema::create('bid_requests', function (Blueprint $table) {
             $table->id();
-<<<<<<< HEAD
 <<<<<<<< HEAD:database/migrations/2024_10_30_131430_create_bid_requests_table.php
-=======
->>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-<<<<<<< HEAD
             $table->unsignedBigInteger('vendor_id')->nullable();
             $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('cascade');
             $table->decimal('bid_amount', 10, 2)->nullable();
@@ -31,17 +27,6 @@ return new class extends Migration {
             $table->foreignId('bid_request_id')->constrained()->cascadeOnDelete();
             $table->decimal('bid_price', 10, 2);
 >>>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570:database/migrations/2024_10_30_131431_create_bids_table.php
-=======
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->unsignedBigInteger('subcategory_id')->nullable();
-            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
-            $table->string('type');
-            $table->text('description')->nullable();
-            $table->decimal('target_price', 10, 2)->nullable();
-            $table->string('image_path')->nullable();
-            $table->enum('bid_status', ['pending', 'accepted', 'rejected'])->default('pending');
->>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570
             $table->timestamps();
         });
     }

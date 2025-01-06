@@ -35,6 +35,7 @@ class UsersTableSeeder extends Seeder
             ],
         ]);
 
+<<<<<<< HEAD
         // Create 20 vendor users
         $vendorNames = [];
         for ($i = 1; $i <= 20; $i++) {
@@ -42,6 +43,20 @@ class UsersTableSeeder extends Seeder
         }
 
         // Insert 20 vendor users into the 'users' table and fetch their IDs
+=======
+        $categoryIds = DB::table('categories')->pluck('id')->toArray();
+
+        if (empty($categoryIds)) {
+            $this->command->error("No categories found in the 'categories' table. Seed categories first.");
+            return;
+        }
+
+        $vendorNames = [];
+        for ($i = 1; $i <= 20; $i++) {
+            $vendorNames[] = "Vendor " . $i;
+        }
+
+>>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570
         $vendorUserIds = [];
         foreach ($vendorNames as $i => $name) {
             $userId = DB::table('users')->insertGetId([
@@ -56,11 +71,20 @@ class UsersTableSeeder extends Seeder
             $vendorUserIds[] = $userId;
         }
 
+<<<<<<< HEAD
         // Insert vendors data for each vendor user with random status
         $statuses = ['active', 'pending', 'rejected'];  // Randomly assign one of these statuses
         foreach ($vendorUserIds as $index => $userId) {
             DB::table('vendors')->insert([
                 'user_id' => $userId,
+=======
+        // Insert vendors data for each vendor user with random category and status
+        $statuses = ['active', 'pending', 'rejected']; // Randomly assign one of these statuses
+        foreach ($vendorUserIds as $index => $userId) {
+            DB::table('vendors')->insert([
+                'user_id' => $userId,
+                'category_id' => $categoryIds[array_rand($categoryIds)], // Randomly pick a category ID
+>>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570
                 'store_name' => 'Store of ' . $vendorNames[$index], // Vendor store name
                 'store_logo' => strtolower(str_replace(' ', '_', $vendorNames[$index])) . '_logo.png', // Vendor store logo
                 'status' => $statuses[array_rand($statuses)], // Random status
