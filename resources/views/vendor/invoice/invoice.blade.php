@@ -1,5 +1,5 @@
-@extends('admin.index')
-@section('admin')
+@extends('vendor.index')
+@section('vendor')
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -14,8 +14,8 @@
                                     <div class="sherah-breadcrumb">
                                         <h2 class="sherah-breadcrumb__title">Invoice</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="#">Home</a></li>
-                                            <li class="active"><a href="{{ route('admin.invoice') }}">Invoice</a></li>
+                                            <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
+                                            <li class="active"><a href="{{ route('vendor.invoice') }}">Invoice</a></li>
                                         </ul>
                                     </div>
                                     <!-- End Sherah Breadcrumb -->

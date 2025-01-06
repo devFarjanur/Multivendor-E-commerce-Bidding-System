@@ -11,8 +11,8 @@
                             <div class="sherah-breadcrumb mg-top-30">
                                 <h2 class="sherah-breadcrumb__title">Message</h2>
                                 <ul class="sherah-breadcrumb__list">
-                                    <li><a href="#">Home</a></li>
-                                    <li class="active"><a href="{{ route('admin.chat.message') }}">Message</a></li>
+                                    <li><a href="{{ route('vendor.dashboard') }}">Home</a></li>
+                                    <li class="active"><a href="{{ route('vendor.chat.message') }}">Message</a></li>
                                 </ul>
                             </div>
                             <div class="sherah-chatbox__main">

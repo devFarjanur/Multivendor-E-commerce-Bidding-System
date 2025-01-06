@@ -9,13 +9,14 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'vendor_id',
         'name',
         'image',
+        'status',
     ];
 
-    public function vendor()
+    public function subcategories()
     {
-        $this->belongsTo(Vendor::class, 'vendor_id');
+        return $this->hasMany(Subcategory::class, 'category_id');
     }
+
 }

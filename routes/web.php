@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BidController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -16,7 +18,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -68,6 +70,7 @@ Route::post('/vendor-register', [RegisteredUserController::class, 'VendorRegiste
 
 // Vendor Routes (only accessible by users with 'vendor' role)
 Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () {
+
     Route::get('/dashboard', [VendorController::class, 'VendorDashboard'])->name('vendor.dashboard');
     Route::get('/logout', [VendorController::class, 'VendorLogout'])->name('vendor.logout');
     Route::get('/Profile', [VendorController::class, 'VendorProfile'])->name('vendor.profile');
@@ -75,19 +78,60 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
     Route::get('/change/password', [VendorController::class, 'VendorChangePassword'])->name('vendor.change.password');
     Route::post('/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
 
-    Route::get('/products', [VendorController::class, 'VendorProducts'])->name('vendor.products');
-    Route::get('/upload/products', [VendorController::class, 'VendorProductUpload'])->name('vendor.upload.products');
+    Route::get('/category-subcategory-list', [VendorController::class, 'vendorCategoryList'])->name('vendor.category.list');
+    Route::get('/add-subcategory', [VendorController::class, 'vendorAddSubcategory'])->name('vendor.add.subcategory');
+    Route::post('/subcategory-store', [VendorController::class, 'vendorSubcategoryStore'])->name('vendor.subcategory.store');
+    Route::get('/edit-subcategory/{id}', [VendorController::class, 'vendorEditSubcategory'])->name('vendor.edit.subcategory');
+    Route::post('/update-subcategory/{id}', [VendorController::class, 'vendorUpdateSubcategory'])->name('vendor.update.subcategory');
+    Route::delete('/subcategory-delete/{id}', [VendorController::class, 'vendorSubcategoryDelete'])->name('vendor.subcategory.delete');
+
+    Route::get('/customer-list', [VendorController::class, 'vendorCustomerList'])->name('vendor.customer.list');
+    Route::get('/customer-profile', [VendorController::class, 'vendorCustomerProfile'])->name('vendor.customer.profile');
+
+    Route::get('/product-list', [VendorController::class, 'vendorProductList'])->name('vendor.product.list');
+    Route::get('/upload-product', [VendorController::class, 'vendorProductUpload'])->name('vendor.upload.product');
+    Route::post('/product-store', [VendorController::class, 'vendorProductStore'])->name('vendor.product.store');
     Route::get('/product/details', [VendorController::class, 'VendorDetailsProduct'])->name('vendor.product.details');
-    Route::get('/customer/page', [VendorController::class, 'VendorCustomer'])->name('vendor.customer.page');
-    Route::get('/customer/list', [VendorController::class, 'VendorCustomerList'])->name('vendor.customer.list');
-    Route::get('/order/details', [VendorController::class, 'VendorOrderDetails'])->name('vendor.order.details');
-    Route::get('/order/list', [VendorController::class, 'VendorOrderList'])->name('vendor.order.list');
+    Route::get('/get-subcategories/{categoryId}', [VendorController::class, 'getVensorSubcategories']);
+
+    Route::get('/bid-request', [BidController::class, 'vendorBidRequest'])->name('vendor.bid.request');
+    Route::get('/bid-list', [BidController::class, 'vendorBidList'])->name('vendor.bid.list');
+    Route::get('/invoice', [VendorController::class, 'vendorInvoice'])->name('vendor.invoice');
+
     Route::get('/chat/message', [VendorController::class, 'VendorChatMessage'])->name('vendor.chat.message');
     Route::get('/pages/faqs', [VendorController::class, 'VendorPagesFaqs'])->name('vendor.pages.faqs');
     Route::get('/history', [VendorController::class, 'VendorHistory'])->name('vendor.history');
-    Route::get('/invoice', [VendorController::class, 'VendorInvoice'])->name('vendor.invoice');
     Route::get('/invoice/print', [VendorController::class, 'VendorInvoicePrint'])->name('vendor.invoice.print');
     Route::get('/language', [VendorController::class, 'VendorLanguage'])->name('vendor.language');
     Route::get('/pages/notifications', [VendorController::class, 'VendorNotification'])->name('vendor.pages.notifications');
     Route::get('/pages/terms-conditions', [VendorController::class, 'VendorTermsCondition'])->name('vendor.pages.terms-conditions');
+});
+
+Route::get('/login', [CustomerController::class, 'customerLogin'])->name('customer.login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('customer.login.post');
+Route::get('/register', [CustomerController::class, 'customerRegister'])->name('customer.register');
+Route::post('/register', [RegisteredUserController::class, 'customerRegister'])->name('customer.register.store');
+
+// Route::get('/', [CustomerController::class, 'customerDashboard'])->name('customer.dashboard');
+Route::get('/', [CustomerController::class, 'customerProductList'])->name('customer.product.list');
+Route::get('/product-details', [CustomerController::class, 'customerDetailsProduct'])->name('customer.product.details');
+
+
+// Customer Routes (only accessible by users with 'customer' role)
+Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function () {
+    Route::get('/logout', [CustomerController::class, 'customerLogout'])->name('customer.logout');
+    Route::get('/Profile', [CustomerController::class, 'customerProfile'])->name('customer.profile');
+    Route::post('/Profile/store', [CustomerController::class, 'customerProfileStore'])->name('customer.profile.store');
+    Route::get('/change/password', [CustomerController::class, 'customerChangePassword'])->name('customer.change.password');
+    Route::post('/update/password', [CustomerController::class, 'customerUpdatePassword'])->name('customer.update.password');
+
+    Route::post('/bid-store/{id}', [BidController::class, 'customerBidStore'])->name('customer.bid.store');
+    Route::get('/bid-request/{id?}', [BidController::class, 'customerBidRequest'])->name('customer.bid.request');
+    Route::get('/bid-list/{id?}', [BidController::class, 'customerBidList'])->name('customer.bid.list');
+    Route::get('/invoice', [CustomerController::class, 'customerInvoice'])->name('customer.invoice');
+    Route::get('/chat/message', [CustomerController::class, 'customerChatMessage'])->name('customer.chat.message');
+    Route::get('/faqs', [CustomerController::class, 'customerPagesFaqs'])->name('customer.pages.faqs');
+    Route::get('/history', [CustomerController::class, 'customerHistory'])->name('customer.history');
+    Route::get('/invoice/print', [CustomerController::class, 'customerInvoicePrint'])->name('customer.invoice.print');
+    Route::get('/terms-conditions', [CustomerController::class, 'customerTermsCondition'])->name('customer.pages.terms-conditions');
 });

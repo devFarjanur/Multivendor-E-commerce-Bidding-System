@@ -16,6 +16,7 @@ class AdminController extends Controller
     {
         $this->adminVendorService = $adminVendorService;
     }
+    
     public function AdminDashboard()
     {
         return view('admin.admin_dashboard');

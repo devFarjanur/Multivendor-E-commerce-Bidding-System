@@ -17,10 +17,15 @@ class AdminVendorService
             ->paginate(10);
     }
 
+    public function getAllVendor()
+    {
+        return Vendor::all();
+    }
+
     public function vendorlist()
     {
         return Vendor::with('user')
-            ->where('status', 'approved')
+            ->where('status', 'active')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
     }
@@ -37,9 +42,9 @@ class AdminVendorService
     public function vendeorApprove($id)
     {
         try {
-            $vendor = Vendor::where('user_id', $id)->find($id);
+            $vendor = Vendor::where('user_id', $id)->firstOrFail();
             $vendor->update([
-                $vendor->status = 'approved',
+                $vendor->status = 'active',
             ]);
             return true;
         } catch (Exception $e) {

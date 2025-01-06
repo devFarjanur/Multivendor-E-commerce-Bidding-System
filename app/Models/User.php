@@ -16,7 +16,24 @@ class User extends Authenticatable
         'role',
         'address',
         'phone',
-        'profile_image'
+        'profile_image',
+        'is_active',
+        'email_verified_at',
+        'date_of_birth',
+        'gender',
+        'last_login_at',
+        'last_login_ip',
+        'referral_code',
+        'preferences',
+        'reward_points',
+        'is_suspended',
+        'suspension_reason',
+        'country',
+        'state',
+        'alternate_email',
+        'alternate_phone',
+        'tax_id',
+        'newsletter_subscription',
     ];
 
     public function vendor()

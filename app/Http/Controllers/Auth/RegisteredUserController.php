@@ -67,6 +67,6 @@ class RegisteredUserController extends Controller
         session()->flash('message', 'Welcome! Your account is successfully created.');
         session()->flash('alert-type', 'success');
 
-        return redirect()->route('home');
+        return redirect()->route('customer.product.list');
     }
 }

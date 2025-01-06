@@ -275,3 +275,53 @@ Stores notifications for users.
 
 
 
+# Customer places a bid request on a product.
+# All vendors can view the customer’s bid request and submit their own bids for the product.
+# Vendors provide their own pricing for the product in response to the customer's bid request.
+# The customer then chooses the best offer from the vendors.
+
+
+Got it! Here's an updated version of the **Project Flow** with the clarification that a vendor's submitted bid is visible to all other vendors:
+
+---
+
+### **Project Flow:**
+
+1. **Vendor Adds a Product:**
+   - **Vendors** add products to the platform with a set price.
+   - This price is the **initial price** provided by the vendor for the product.
+
+2. **Customer Views Product:**
+   - **Customers** browse and view products listed by vendors.
+   - The **product price** displayed is the price provided by the vendor.
+
+3. **Customer Places a Bid Request:**
+   - After viewing a product, the **customer** places a **bid request** for that product.
+   - The **product price** displayed becomes the **initial bid price** for the product.
+   - The customer **does not set a specific price** at this stage; they are simply indicating their interest in receiving offers (i.e., bids) from other vendors.
+
+4. **Vendors Respond to Bid Request:**
+   - **All vendors** can view the **customer’s bid request** for the product.
+   - Each vendor responds by submitting their **own bid price** for the product. The bid may be **higher** or **lower** than the product’s initial price, depending on the vendor's offer.
+   - **Vendors’ bids are visible to all other vendors**, enabling them to adjust their offers accordingly.
+
+5. **Customer Chooses the Best Bid:**
+   - After receiving bids from multiple vendors, the **customer** reviews the various offers.
+   - The customer selects the **best bid** based on factors such as price, vendor reputation, delivery time, and additional services.
+   - The selected vendor’s **bid** is accepted by the customer, completing the transaction.
+
+---
+
+### **Key Points:**
+- **Vendors** add products with an initial price.
+- **Customers** place a **bid request** for a product, with the displayed price being the starting bid price.
+- **Vendors** submit their **own bids** (which are visible to all other vendors) in response to the customer's request.
+- **Customers** choose the best offer from the vendors after reviewing the bids.
+
+---
+
+This flow now includes the important detail that **vendor bids are visible to all other vendors**. This feature encourages competition among vendors and allows them to adjust their prices based on what others are offering.
+
+
+
+Multivendor Ecommerce Bidding Project

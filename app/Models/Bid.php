@@ -8,11 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Bid extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'product_id',
-        'product_request_id',
         'vendor_id',
-        'bid_amount',
-        'bid_status',
+        'bid_request_id',
+        'bid_price',
     ];
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
+
+    public function bid_request()
+    {
+        return $this->belongsTo(BidRequest::class, 'bid_request_id');
+    }
 }
