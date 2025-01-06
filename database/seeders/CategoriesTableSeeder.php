@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-<<<<<<< HEAD
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-=======
->>>>>>> edaa50eb216b4ea1d8ac89f28f90a7083c62b570
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

@@ -81,7 +81,8 @@ class CustomerBidService
             BidRequest::create([
                 'customer_id' => $customer->id,
                 'product_id' => $product->id,
-                'bid_amount' => $product->price,
+                'target_price' => $product->price,
+                'type' => 'Selected Product',
                 'bid_status' => 'pending',
             ]);
 
