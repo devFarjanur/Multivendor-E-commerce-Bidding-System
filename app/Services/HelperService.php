@@ -7,6 +7,7 @@ class HelperService
 {
     /**
      * Set a flash message for the session.
+     * help
      *
      * @param \Illuminate\Http\Request $request
      * @param string $message
