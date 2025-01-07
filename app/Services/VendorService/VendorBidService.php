@@ -44,7 +44,6 @@ class VendorBidService
     public function bidRequest()
     {
         return BidRequest::with(['customer', 'product', 'vendor'])
-            ->where('bid_status', 'pending')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
     }

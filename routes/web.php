@@ -95,6 +95,9 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
     Route::get('/get-subcategories/{categoryId}', [VendorController::class, 'getVensorSubcategories']);
 
     Route::get('/bid-request', [BidController::class, 'vendorBidRequest'])->name('vendor.bid.request');
+    Route::get('/bid-request-details/{id}', [BidController::class, 'vendorBidRequestDetails'])->name('vendor.bid.request.details');
+    Route::get('/bid-request/{id}', [BidController::class, 'showBidRequest'])->name('vendor.place.bid');
+    Route::post('/submit-bid/{id}', [BidController::class, 'submitBid'])->name('vendor.submit.bid');
     Route::get('/bid-list', [BidController::class, 'vendorBidList'])->name('vendor.bid.list');
     Route::get('/invoice', [VendorController::class, 'vendorInvoice'])->name('vendor.invoice');
 

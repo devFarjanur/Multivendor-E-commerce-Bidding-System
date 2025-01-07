@@ -57,7 +57,6 @@
                                                                         <?php echo e($request->description ?? '--'); ?>
 
                                                                     <?php endif; ?>
-
                                                                 </p>
                                                             </div>
                                                         </td>
@@ -72,8 +71,7 @@
                                                         <td class="sherah-table__column-5 sherah-table__data-5">
                                                             <div class="sherah-table__product-content">
                                                                 <p class="sherah-table__product-desc">
-                                                                    $<?php echo e(number_format($request->target_price, 2 ?? '--')); ?>
-
+                                                                    <?php echo e(number_format($request->target_price, 2 ?? '--')); ?>TK
                                                                 </p>
                                                             </div>
                                                         </td>

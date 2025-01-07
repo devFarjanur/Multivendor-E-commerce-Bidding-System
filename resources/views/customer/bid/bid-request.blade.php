@@ -55,7 +55,6 @@
                                                                     @else
                                                                         {{ $request->description ?? '--' }}
                                                                     @endif
-
                                                                 </p>
                                                             </div>
                                                         </td>
@@ -70,7 +69,7 @@
                                                         <td class="sherah-table__column-5 sherah-table__data-5">
                                                             <div class="sherah-table__product-content">
                                                                 <p class="sherah-table__product-desc">
-                                                                    ${{ number_format($request->target_price, 2 ?? '--') }}
+                                                                    {{ number_format($request->target_price, 2 ?? '--') }} TK
                                                                 </p>
                                                             </div>
                                                         </td>

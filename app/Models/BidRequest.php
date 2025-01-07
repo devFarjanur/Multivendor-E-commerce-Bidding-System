@@ -35,4 +35,19 @@ class BidRequest extends Model
     {
         return $this->belongsTo(Vendor::class, 'vendor_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class, 'subcategory_id');
+    }
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class, 'bid_request_id');
+    }
 }

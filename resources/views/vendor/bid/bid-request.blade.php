@@ -41,20 +41,21 @@
                                                         <td class="sherah-table__column-7 sherah-table__data-7">
                                                             <div class="sherah-table__product-content">
                                                                 <p class="sherah-table__product-desc">
-                                                                    {{ $bidRequest->created_at->format('d/m/Y') }}</p>
+                                                                    {{ $bidRequest->created_at->format('d/m/Y') ?? '--' }}
+                                                                </p>
                                                             </div>
                                                         </td>
                                                         <td class="sherah-table__column-2 sherah-table__data-2">
                                                             <div class="sherah-table__vendor">
                                                                 <h4 class="sherah-table__vendor--title"><a
-                                                                        href="#">{{ $bidRequest->customer->name }}</a>
+                                                                        href="#">{{ $bidRequest->customer->name ?? '--' }}</a>
                                                                 </h4>
                                                             </div>
                                                         </td>
                                                         <td class="sherah-table__column-1 sherah-table__data-1">
                                                             <div class="d-flex justify-content-center align-items-center">
                                                                 <div class="sherah-table__vendor-img">
-                                                                    <img src="{{ asset('upload/admin_images/' . $bidRequest->product->image) }}"
+                                                                    <img src="{{ asset('upload/admin_images/' . $bidRequest->image_path) }}"
                                                                         alt="Category Image" class="img-fluid">
                                                                 </div>
                                                             </div>
@@ -62,25 +63,32 @@
                                                         <td class="sherah-table__column-3 sherah-table__data-3">
                                                             <div class="sherah-table__product-content">
                                                                 <p class="sherah-table__product-desc">
-                                                                    {{ $bidRequest->product->name }}</p>
+                                                                    @if ($bidRequest->type == 'Selected Product')
+                                                                        {{ $bidRequest->product->name ?? '--' }}
+                                                                    @else
+                                                                        {{ $bidRequest->description ?? '--' }}
+                                                                    @endif
+                                                                </p>
                                                             </div>
                                                         </td>
                                                         <td class="sherah-table__column-4 sherah-table__data-4">
                                                             <div class="sherah-table__product-content">
                                                                 <p class="sherah-table__product-desc">
-                                                                    ${{ number_format($bidRequest->bid_amount, 2) }}</p>
+                                                                    {{ number_format($bidRequest->target_price, 2) ?? '--' }}
+                                                                    TK
+                                                                </p>
                                                             </div>
                                                         </td>
                                                         <td class="sherah-table__column-5 sherah-table__data-5">
                                                             <div class="sherah-table__product-content">
                                                                 <p class="sherah-table__product-desc">
-                                                                    {{ ucfirst($bidRequest->bid_status) }}</p>
+                                                                    {{ ucfirst($bidRequest->bid_status) ?? '--' }}</p>
                                                             </div>
                                                         </td>
                                                         <td class="sherah-table__column-8 sherah-table__data-8">
                                                             <div
                                                                 class="d-flex justify-content-center align-items-center gap-2">
-                                                                <a href="#"
+                                                                <a href="{{ route('vendor.bid.request.details', $bidRequest->id) }}"
                                                                     class="btn btn-outline-primary d-flex align-items-center gap-1">
                                                                     <i class="fas fa-eye"></i> View
                                                                 </a>

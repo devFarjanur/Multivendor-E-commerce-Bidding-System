@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bid;
+use App\Models\BidRequest;
 use App\Models\Subcategory;
 use App\Services\AdminService\AdminVendorService;
 use App\Services\CustomerService\CustomerBidService;
@@ -13,6 +15,8 @@ use App\Services\ImageService;
 use App\Services\VendorService\VendorBidService;
 use App\Services\VendorService\VendorCategoryService;
 use App\Services\VendorService\VendorProductService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Exception;
 use Illuminate\Http\Request;
 
 class BidController extends Controller
@@ -100,4 +104,39 @@ class BidController extends Controller
         $vendorbidresults = $this->vendorBidService->bidList();
         return view('vendor.bid.bid-list', compact('vendorbidresults'));
     }
+    // vendor.bid.request.details
+    public function vendorBidRequestDetails($id)
+    {
+
+        $bidRequest = BidRequest::with(['customer', 'product', 'category', 'subcategory'])->findOrFail($id);
+        $bids = Bid::where('bid_request_id', $id)->with('vendor')->get();
+        return view('vendor.bid.vendor-bid-place', compact('bidRequest', 'bids'));
+    }
+
+    /**
+     * Handle vendor bid submission.
+     */
+    public function submitBid(Request $request, $id)
+    {
+        try {
+            // Check if the bid request exists
+            $bidRequest = BidRequest::findOrFail($id);
+
+            // Save the vendor's bid (no check for existing bid)
+            Bid::create([
+                'vendor_id' => Auth::id(),
+                'bid_request_id' => $id,
+                'bid_price' => $request->bid_price,
+            ]);
+
+            $this->helperService->setFlashMessage($request, 'Your bid has been submitted successfully!', 'success');
+            return redirect()->back();
+        } catch (Exception $e) {
+            \Log::error("Failed to submit bid: " . $e->getMessage());
+            $this->helperService->setFlashMessage($request, 'Failed to submit your bid. Please try again later.', 'error');
+            return redirect()->back();
+        }
+    }
+
+
 }
