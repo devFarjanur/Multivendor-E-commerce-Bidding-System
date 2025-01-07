@@ -1,5 +1,5 @@
-@extends('customer.index')
-@section('customer')
+
+<?php $__env->startSection('customer'); ?>
     <!-- sherah Dashboard -->
     <section class="sherah-adashboard sherah-show">
         <div class="container">
@@ -12,8 +12,8 @@
                                     <div class="sherah-breadcrumb mg-top-30">
                                         <h2 class="sherah-breadcrumb__title">Custom Bid request</h2>
                                         <ul class="sherah-breadcrumb__list">
-                                            <li><a href="{{ route('customer.product.list') }}">Home</a></li>
-                                            <li class="active"><a href="{{ route('customer.custom.bid.request') }}">Custom
+                                            <li><a href="<?php echo e(route('customer.product.list')); ?>">Home</a></li>
+                                            <li class="active"><a href="<?php echo e(route('customer.custom.bid.request')); ?>">Custom
                                                     Bid
                                                     Request</a></li>
                                         </ul>
@@ -22,10 +22,10 @@
                             </div>
                             <div class="sherah-page-inner sherah-border sherah-basic-page sherah-default-bg mg-top-25 p-0">
                                 <form class="sherah-wc__form-main" 
-                                action="{{ route('customer.custom.bid.store') }}"
+                                action="<?php echo e(route('customer.custom.bid.store')); ?>"
                                  method="POST"
                                     enctype="multipart/form-data">
-                                    @csrf
+                                    <?php echo csrf_field(); ?>
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- Product Info -->
@@ -47,10 +47,10 @@
                                                                 aria-label="Category select">
                                                                 <option value="" selected disabled>Select Category
                                                                 </option>
-                                                                @foreach ($categories as $category)
-                                                                    <option value="{{ $category->id }}">
-                                                                        {{ $category->name }}</option>
-                                                                @endforeach
+                                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <option value="<?php echo e($category->id); ?>">
+                                                                        <?php echo e($category->name); ?></option>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -85,7 +85,7 @@
                                                                     <div class="image-upload-group">
                                                                         <div class="image-upload-group__single">
                                                                             <img id="showImage"
-                                                                                src="{{ url('upload/no_image.jpg') }}"
+                                                                                src="<?php echo e(url('upload/no_image.jpg')); ?>"
                                                                                 class="img-fluid" alt="Category Image"
                                                                                 style="max-width: 200px;">
                                                                         </div>
@@ -152,7 +152,7 @@
             $('select[name="category_id"]').change(function() {
                 var categoryId = $(this).val();
                 if (categoryId) {
-                    var url = "{{ route('get.customer.subcategories', ':categoryId') }}".replace(
+                    var url = "<?php echo e(route('get.customer.subcategories', ':categoryId')); ?>".replace(
                         ':categoryId', categoryId);
 
                     $.ajax({
@@ -191,4 +191,6 @@
             });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Multivendor-E-commerce-Bidding-System\resources\views/customer/bid/customer-custom-bid-request.blade.php ENDPATH**/ ?>

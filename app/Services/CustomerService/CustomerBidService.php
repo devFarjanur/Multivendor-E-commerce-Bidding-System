@@ -44,7 +44,6 @@ class CustomerBidService
     {
         return BidRequest::with(['customer', 'product', 'vendor'])
             ->where('customer_id', $id)
-            ->where('bid_status', 'pending')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
     }
@@ -120,11 +119,12 @@ class CustomerBidService
             $imageName = $this->imageService->uploadImage($request);
             BidRequest::create([
                 'customer_id' => $customer->id,
+                'description' => $request->description,
                 'category_id' => $request->category_id,
                 'subcategory_id' => $request->subcategory_id,
                 'target_price' => $request->price,
                 'type' => 'Custom Bid',
-                'image' => $imageName,
+                'image_path' => $imageName,
                 'bid_status' => 'pending',
             ]);
             $this->helperService->setFlashMessage($request, 'Your bid request has been placed successfully.', 'success');

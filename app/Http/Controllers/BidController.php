@@ -84,7 +84,7 @@ class BidController extends Controller
 
     public function customerCustomBidStore(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $this->customerBidService->bidCustomRequestStore($request);
         return redirect()->back();
     }
