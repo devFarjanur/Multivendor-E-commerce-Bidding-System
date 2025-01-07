@@ -145,8 +145,8 @@
                             <ul class="menu-bar__one-dropdown">
                                 <li><a href="{{ route('vendor.bid.request') }}"><span class="menu-bar__text"><span
                                                 class="menu-bar__name">Bid Request</span></span></a></li>
-                                <li><a href="{{ route('vendor.bid.list') }}"><span class="menu-bar__text"><span
-                                                class="menu-bar__name">Bid List</span></span></a></li>
+                                {{-- <li><a href="{{ route('vendor.bid.list') }}"><span class="menu-bar__text"><span
+                                                class="menu-bar__name">Bid List</span></span></a></li> --}}
                             </ul>
                         </div>
                     </li>
