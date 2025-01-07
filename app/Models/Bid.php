@@ -13,6 +13,7 @@ class Bid extends Model
         'vendor_id',
         'bid_request_id',
         'bid_price',
+        'bid_status'
     ];
 
     public function vendor()

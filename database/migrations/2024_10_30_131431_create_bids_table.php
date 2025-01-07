@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('cascade');
             $table->foreignId('bid_request_id')->constrained()->cascadeOnDelete();
             $table->decimal('bid_price', 10, 2);
+            $table->enum('bid_status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }

@@ -138,5 +138,49 @@ class BidController extends Controller
         }
     }
 
+    // public function showBidRequestDetails($request, $id)
+    // {
+    //     $bidRequest = BidRequest::with(['bids.vendor', 'product', 'category', 'subcategory'])->findOrFail($id);
+    //     if ($bidRequest->customer_id !== auth()->id()) {
+    //         $this->helperService->setFlashMessage($request, 'You are not authorized to view this bid request.', 'error');
+    //         return redirect()->route('customer.product.list');
+    //     }
+    //     $bids = $bidRequest->bids;
+    //     return view('customer.bid.customer-accept-bid', compact('bidRequest', 'bids'));
+    // }
 
+    public function showBidRequestDetails($id)
+    {
+        $bidRequest = BidRequest::with(['bids.vendor', 'product', 'category', 'subcategory'])->findOrFail($id);
+
+        // Check if the authenticated customer is the one who created the bid request
+        if ($bidRequest->customer_id !== auth()->id()) {
+            $this->helperService->setFlashMessage(request(), 'You are not authorized to view this bid request.', 'error');
+            return redirect()->route('customer.product.list');
+        }
+
+        $bids = $bidRequest->bids;
+
+        return view('customer.bid.customer-accept-bid', compact('bidRequest', 'bids'));
+    }
+
+
+    public function acceptBid(Request $request, $bidRequestId, $bidId)
+    {
+        $bidRequest = BidRequest::findOrFail($bidRequestId);
+
+        if ($bidRequest->customer_id !== auth()->id()) {
+            $this->helperService->setFlashMessage($request, 'You are not authorized to view this bid request.', 'error');
+            return redirect()->route('customer.product.list');
+        }
+
+        $selectedBid = Bid::findOrFail($bidId);
+        $selectedBid->update(['bid_status' => 'accepted']);
+
+        $bidRequest->update(['bid_status' => 'accepted']);
+        $bidRequest->bids()->where('id', '!=', $bidId)->update(['bid_status' => 'rejected']);
+
+        $this->helperService->setFlashMessage($request, 'Bid accepted successfully.', 'success');
+        return redirect()->route('customer.bid.request.details', ['id' => $bidRequestId]);
+    }
 }

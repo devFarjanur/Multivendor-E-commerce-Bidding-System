@@ -96,7 +96,6 @@ Route::prefix('vendor')->middleware(['auth', 'role:vendor'])->group(function () 
 
     Route::get('/bid-request', [BidController::class, 'vendorBidRequest'])->name('vendor.bid.request');
     Route::get('/bid-request-details/{id}', [BidController::class, 'vendorBidRequestDetails'])->name('vendor.bid.request.details');
-    Route::get('/bid-request/{id}', [BidController::class, 'showBidRequest'])->name('vendor.place.bid');
     Route::post('/submit-bid/{id}', [BidController::class, 'submitBid'])->name('vendor.submit.bid');
     Route::get('/bid-list', [BidController::class, 'vendorBidList'])->name('vendor.bid.list');
     Route::get('/invoice', [VendorController::class, 'vendorInvoice'])->name('vendor.invoice');
@@ -132,6 +131,8 @@ Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function
     Route::get('/bid-request/{id?}', [BidController::class, 'customerBidRequest'])->name('customer.bid.request');
     Route::get('/custom-bid-request', [BidController::class, 'customerCustomBidRequest'])->name('customer.custom.bid.request');
     Route::post('/custom-bid-store', [BidController::class, 'customerCustomBidStore'])->name('customer.custom.bid.store');
+    Route::get('/bid-request-details/{id}', [BidController::class, 'showBidRequestDetails'])->name('customer.bid.request.details');
+    Route::post('/bid-request/{bidRequestId}/accept/{bidId}', [BidController::class, 'acceptBid'])->name('customer.accept.bid');
     Route::get('/get-customer-subcategories/{categoryId}', [BidController::class, 'getCustomerSubcategories'])->name('get.customer.subcategories');
     Route::get('/bid-list/{id?}', [BidController::class, 'customerBidList'])->name('customer.bid.list');
     Route::get('/invoice', [CustomerController::class, 'customerInvoice'])->name('customer.invoice');

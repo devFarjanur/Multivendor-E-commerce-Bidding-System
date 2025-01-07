@@ -69,7 +69,8 @@
                                                         <td class="sherah-table__column-5 sherah-table__data-5">
                                                             <div class="sherah-table__product-content">
                                                                 <p class="sherah-table__product-desc">
-                                                                    {{ number_format($request->target_price, 2 ?? '--') }} TK
+                                                                    {{ number_format($request->target_price, 2 ?? '--') }}
+                                                                    TK
                                                                 </p>
                                                             </div>
                                                         </td>
@@ -82,7 +83,7 @@
                                                         <td class="sherah-table__column-8 sherah-table__data-8">
                                                             <div
                                                                 class="d-flex justify-content-center align-items-center gap-2">
-                                                                <a href="#"
+                                                                <a href="{{ route('customer.bid.request.details', $request->id) }}"
                                                                     class="btn btn-outline-primary d-flex align-items-center gap-1">
                                                                     <i class="fas fa-eye"></i> View
                                                                 </a>
